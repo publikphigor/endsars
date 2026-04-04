@@ -1,0 +1,49 @@
+@import "tailwindcss";
+@import "@fontsource-variable/space-grotesk";
+
+@theme {
+  --font-sans: "Space Grotesk Variable", "Space Grotesk", system-ui, sans-serif;
+
+  --color-green: #008751;
+  --color-green-dark: #006B40;
+  --color-green-light: #00A86B;
+
+  --color-white: #FFFFFF;
+  --color-white-soft: #F7F7F7;
+  --color-white-medium: #EFEFEF;
+
+  --color-black: #000000;
+  --color-black-soft: #0A0A0A;
+  --color-black-medium: #111111;
+  --color-black-text: #1A1A1A;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #FFFFFF;
+  color: #0A0A0A;
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background-color: #008751;
+  color: #FFFFFF;
+}
+
+/* Chart container defaults */
+.chart-container {
+  width: 100%;
+  height: 380px;
+  max-height: 380px;
+}
+
+.chart-container-sm {
+  width: 100%;
+  height: 300px;
+  max-height: 300px;
+}
