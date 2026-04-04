@@ -25,6 +25,14 @@ const currentYear = new Date().getFullYear()
             This project is open source &nearr;
           </a>
           <a
+            href="https://github.com/publikphigor/endsars/issues"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm text-black-text/50 hover:text-green transition-colors duration-150"
+          >
+            Flag false information &nearr;
+          </a>
+          <a
             href="mailto:publikphigor@gmail.com"
             class="text-sm text-black-text/50 hover:text-green transition-colors duration-150"
           >
