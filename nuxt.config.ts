@@ -11,6 +11,10 @@ export default defineNuxtConfig({
     name: "EndSARS.online",
   },
 
+  ogImage: {
+    enabled: false,
+  },
+
   css: ["~/assets/css/main.css"],
 
   vite: {

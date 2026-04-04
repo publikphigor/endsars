@@ -1,19 +1,19 @@
 <script setup lang="ts">
-const datasets = useDatasets()
+const datasets = useDatasets();
 
 interface SourceGroup {
-  category: string
+  category: string;
   sources: {
-    name: string
-    url: string
-    retrieved?: string
-    note?: string
-  }[]
+    name: string;
+    url: string;
+    retrieved?: string;
+    note?: string;
+  }[];
 }
 
 const sourceGroups = computed<SourceGroup[]>(() => [
   {
-    category: 'Exchange Rate',
+    category: "Exchange Rate",
     sources: datasets.exchangeRate.sources.map((s) => ({
       name: s.name,
       url: s.url,
@@ -22,7 +22,7 @@ const sourceGroups = computed<SourceGroup[]>(() => [
     })),
   },
   {
-    category: 'Inflation',
+    category: "Inflation",
     sources: datasets.inflation.sources.map((s) => ({
       name: s.name,
       url: s.url,
@@ -31,7 +31,7 @@ const sourceGroups = computed<SourceGroup[]>(() => [
     })),
   },
   {
-    category: 'Government Debt',
+    category: "Government Debt",
     sources: datasets.governmentDebt.sources.map((s) => ({
       name: s.name,
       url: s.url,
@@ -40,7 +40,7 @@ const sourceGroups = computed<SourceGroup[]>(() => [
     })),
   },
   {
-    category: 'Federal Budget',
+    category: "Federal Budget",
     sources: datasets.budget.sources.map((s) => ({
       name: s.name,
       url: s.url,
@@ -49,7 +49,7 @@ const sourceGroups = computed<SourceGroup[]>(() => [
     })),
   },
   {
-    category: 'Fuel Prices',
+    category: "Fuel Prices",
     sources: datasets.fuelPrice.sources.map((s) => ({
       name: s.name,
       url: s.url,
@@ -58,7 +58,7 @@ const sourceGroups = computed<SourceGroup[]>(() => [
     })),
   },
   {
-    category: 'Poverty',
+    category: "Poverty",
     sources: datasets.poverty.sources.map((s) => ({
       name: s.name,
       url: s.url,
@@ -67,7 +67,7 @@ const sourceGroups = computed<SourceGroup[]>(() => [
     })),
   },
   {
-    category: 'Corruption',
+    category: "Corruption",
     sources: datasets.corruption.sources.map((s) => ({
       name: s.name,
       url: s.url,
@@ -75,7 +75,7 @@ const sourceGroups = computed<SourceGroup[]>(() => [
     })),
   },
   {
-    category: 'Violence & Security',
+    category: "Violence & Security",
     sources: datasets.violence.sources.map((s) => ({
       name: s.name,
       url: s.url,
@@ -83,7 +83,7 @@ const sourceGroups = computed<SourceGroup[]>(() => [
     })),
   },
   {
-    category: 'Government Officials',
+    category: "Government Officials",
     sources: datasets.governmentOfficials.sources.map((s) => ({
       name: s.name,
       url: s.url,
@@ -91,7 +91,7 @@ const sourceGroups = computed<SourceGroup[]>(() => [
       note: s.note,
     })),
   },
-])
+]);
 </script>
 
 <template>
@@ -107,29 +107,29 @@ const sourceGroups = computed<SourceGroup[]>(() => [
       <div class="max-w-3xl">
         <h3 class="text-lg font-semibold text-green mb-3">Methodology</h3>
         <p class="text-sm text-black-text/70 leading-relaxed">
-          All data presented on this site is sourced from credible international institutions
-          (World Bank, IMF, Transparency International, ACLED), Nigerian government agencies
-          (CBN, NBS, Budget Office, DMO), and respected civil society organizations (BudgIT,
-          TheCable, SBM Intelligence). Where official data is unavailable, we use World Bank
-          modelled estimates or projections and clearly label them as such. Historical CPI scores
-          prior to 2012 have been converted from the 0-10 scale to the current 0-100 scale for
-          consistency.
+          All data presented on this site is sourced from credible international
+          institutions (World Bank, IMF, Transparency International, ACLED),
+          Nigerian government agencies (CBN, NBS, Budget Office, DMO), and
+          respected civil society organizations (BudgIT, TheCable, SBM
+          Intelligence). Where official data is unavailable, we use World Bank
+          modelled estimates or projections and clearly label them as such.
+          Historical CPI scores prior to 2012 have been converted from the 0-10
+          scale to the current 0-100 scale for consistency.
         </p>
         <p class="text-sm text-black-text/70 leading-relaxed mt-3">
-          Violence data for 2010-2022 is sourced from media reports and human rights organizations.
-          Granular event-level data from ACLED requires API access (registration at
-          developer.acleddata.com). The NBS Crime Experience Survey (2024) reports significantly
-          higher figures than media-tracked datasets, reflecting underreporting in public records.
+          Violence data for 2010-2022 is sourced from media reports and human
+          rights organizations. The NBS Crime Experience Survey (2024) reports
+          significantly higher figures than media-tracked datasets, reflecting
+          underreporting in public records.
         </p>
       </div>
 
       <!-- Source groups -->
       <div class="space-y-8">
-        <div
-          v-for="group in sourceGroups"
-          :key="group.category"
-        >
-          <h3 class="text-base font-semibold text-green mb-3 border-b border-black/10 pb-2">
+        <div v-for="group in sourceGroups" :key="group.category">
+          <h3
+            class="text-base font-semibold text-green mb-3 border-b border-black/10 pb-2"
+          >
             {{ group.category }}
           </h3>
           <ul class="space-y-2">
