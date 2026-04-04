@@ -1,0 +1,183 @@
+{
+  "category": "Violence and Security",
+  "description": "Armed conflict events, fatalities, and kidnapping incidents in Nigeria",
+  "unit": "count",
+  "sources": [
+    {
+      "name": "ACLED",
+      "url": "https://acleddata.com/country/nigeria",
+      "note": "Armed Conflict Location & Event Data Project"
+    },
+    {
+      "name": "CFR Nigeria Security Tracker",
+      "url": "https://www.cfr.org/nigeria/nigeria-security-tracker/p29483",
+      "note": "Council on Foreign Relations tracker"
+    },
+    {
+      "name": "TheCable / National Security Tracker",
+      "url": "https://www.thecable.ng/in-detail-nigerias-security-falters-as-non-state-actors-killed-3841-persons-abducted-4243-in-2023/",
+      "note": "Media analysis of CFR/ACLED data, 2023 annual figures"
+    },
+    {
+      "name": "National Human Rights Commission (NHRC)",
+      "url": "https://www.nigeriarights.gov.ng/nhrc-media/news-and-events/578-nhrc-reports-570-killings-and-278-kidnappings-in-april-2025.html",
+      "note": "Official NHRC monthly and annual figures"
+    },
+    {
+      "name": "Sahara Reporters / Intersociety",
+      "url": "https://saharareporters.com/2025/07/13/zamfara-tops-list-nigeria-records-5400-kidnappings-6800-deaths-6-months-report",
+      "note": "H1 2025 figures"
+    },
+    {
+      "name": "NBS Crime Experience Survey (2024)",
+      "url": "https://nannews.ng/2024/12/18/kidnapping-incidence-estimated-at-2-2m-cases-nbs/",
+      "note": "National household survey — broader definition than media-tracked data"
+    },
+    {
+      "name": "OCCRP",
+      "url": "https://www.occrp.org/en/news/surge-in-nigeria-7500-abducted-1056-killed-in-a-year",
+      "note": "Investigative journalism — kidnapping surge analysis"
+    },
+    {
+      "name": "Human Rights Watch",
+      "url": "https://www.hrw.org/world-report/2026/country-chapters/nigeria",
+      "note": "Annual country report"
+    },
+    {
+      "name": "Global Centre for R2P",
+      "url": "https://www.globalr2p.org/countries/nigeria/",
+      "note": "Responsibility to Protect monitoring"
+    }
+  ],
+  "data": [
+    {
+      "year": 2010,
+      "killings": null,
+      "kidnappings": null,
+      "note": "Pre-Boko Haram peak. Jos crisis and sectarian violence.",
+      "keyEvents": ["Jos ethno-religious clashes (~1,000 killed)"]
+    },
+    {
+      "year": 2011,
+      "killings": null,
+      "kidnappings": null,
+      "note": "Post-election violence ~800 killed. Boko Haram bombed UN HQ Abuja (Aug).",
+      "keyEvents": ["Post-election violence (~800 killed)", "Boko Haram UN HQ bombing, Abuja"]
+    },
+    {
+      "year": 2012,
+      "killings": null,
+      "kidnappings": null,
+      "note": "Boko Haram intensified attacks in northeast. ~1,200+ killed (HRW estimate).",
+      "keyEvents": ["Boko Haram church bombings", "Kano attacks (Jan, ~185 killed)"]
+    },
+    {
+      "year": 2013,
+      "killings": null,
+      "kidnappings": null,
+      "note": "State of emergency declared in Borno, Yobe, Adamawa.",
+      "keyEvents": ["State of emergency in 3 NE states", "Significant military operations"]
+    },
+    {
+      "year": 2014,
+      "killings": null,
+      "kidnappings": null,
+      "note": "Deadliest year — Boko Haram killed ~6,000+. ACLED estimated ~10,800 total conflict fatalities.",
+      "keyEvents": ["Chibok kidnapping (276 schoolgirls, April)", "#BringBackOurGirls movement", "Gwoza caliphate declaration"]
+    },
+    {
+      "year": 2015,
+      "killings": null,
+      "kidnappings": null,
+      "note": "Baga massacre (~2,000 killed, Jan). Military recaptured territory.",
+      "keyEvents": ["Baga massacre (Jan, ~2,000 killed)", "Military offensive recaptures NE territory"]
+    },
+    {
+      "year": 2016,
+      "killings": null,
+      "kidnappings": null,
+      "note": "Boko Haram weakened but active. Niger Delta Avengers pipeline attacks.",
+      "keyEvents": ["Niger Delta Avengers attacks", "Farmer-herder violence escalation"]
+    },
+    {
+      "year": 2017,
+      "killings": null,
+      "kidnappings": null,
+      "note": "Farmer-herder violence intensified in Middle Belt. ~2,000+ killed.",
+      "keyEvents": ["Middle Belt farmer-herder clashes (~2,000+ killed)"]
+    },
+    {
+      "year": 2018,
+      "killings": null,
+      "kidnappings": null,
+      "note": "Farmer-herder violence surpassed Boko Haram fatalities. ~2,000+ killed in Middle Belt.",
+      "keyEvents": ["Plateau State massacres", "Zamfara banditry emergence"]
+    },
+    {
+      "year": 2019,
+      "killings": null,
+      "kidnappings": null,
+      "note": "Banditry surged in northwest (Zamfara, Katsina, Kaduna). ISWAP gained strength.",
+      "keyEvents": ["Northwest banditry escalation", "ISWAP resurgence in NE"]
+    },
+    {
+      "year": 2020,
+      "killings": null,
+      "kidnappings": null,
+      "note": "#EndSARS protests (Oct) — Lekki tollgate shooting.",
+      "keyEvents": ["#EndSARS protests and Lekki toll gate shooting (Oct 20)", "Multiple jailbreaks", "COVID-19 compounded insecurity"]
+    },
+    {
+      "year": 2021,
+      "killings": null,
+      "kidnappings": null,
+      "note": "Mass school kidnappings escalated. Boko Haram leader Shekau killed.",
+      "keyEvents": ["School kidnappings in Kaduna, Niger, Zamfara", "Shekau killed (May)", "Imo state attacks on police/INEC"]
+    },
+    {
+      "year": 2022,
+      "killings": null,
+      "kidnappings": null,
+      "note": "Owo church attack. Kuje prison break. Kaduna-Abuja train kidnapping.",
+      "keyEvents": ["Owo church attack (June, 40+ killed)", "Kuje prison break (July)", "Kaduna-Abuja train kidnapping (March)"]
+    },
+    {
+      "year": 2023,
+      "killings": 3841,
+      "kidnappings": 4243,
+      "note": "TheCable/CFR analysis: 3,841 killed by non-state actors, 4,243 kidnapped. Average 11 killed and 12 kidnapped daily. Northern region: 83.8% of killings.",
+      "source": "https://www.thecable.ng/in-detail-nigerias-security-falters-as-non-state-actors-killed-3841-persons-abducted-4243-in-2023/",
+      "keyEvents": ["Tinubu takes office amid worsening insecurity", "Banditry intensifies in NW", "ISWAP attacks in NE"]
+    },
+    {
+      "year": 2024,
+      "killings": 9662,
+      "kidnappings": 7568,
+      "note": "ACLED: 9,662 killed in violent incidents. NBS/OCCRP: 7,568 kidnapped (Jul 2023–Jun 2024). Borno (2,143 killed), Zamfara (1,347), Katsina (1,306), Kaduna (813) worst-hit states. Q1 alone: 2,336 killed (26 per day). NBS survey found 2.2 million abduction incidents and ₦2.23 trillion in ransoms paid (May 2023–Apr 2024).",
+      "source": "https://acleddata.com/infographic/nigeria-2024-conflict-index-infographic",
+      "keyEvents": ["9,662 conflict deaths — 86% in northern regions", "NBS reveals 2.2 million kidnap incidents in 12 months", "₦2.23 trillion paid in ransoms", "Kaduna, Benue, Katsina, Plateau, Borno worst affected"]
+    },
+    {
+      "year": 2025,
+      "killings": 6800,
+      "kidnappings": 5402,
+      "note": "Sahara Reporters/Intersociety: 6,800 killed and 5,402 kidnapped in first 6 months (H1 2025). Zamfara worst hit: 1,088 deaths, 1,755 abducted. Q1 alone: 1,420 killed, 537 kidnapped. NHRC April 2025: 570 killings, 278 kidnappings in single month. Nov 2025: 402+ kidnapped across 4 states including 303 schoolchildren from St. Mary's Catholic School.",
+      "source": "https://saharareporters.com/2025/07/13/zamfara-tops-list-nigeria-records-5400-kidnappings-6800-deaths-6-months-report",
+      "keyEvents": ["6,800 killed in H1 alone — on pace to exceed 2024", "5,402 kidnapped in first 6 months", "St. Mary's Catholic School: 303 children kidnapped (Nov)", "Kebbi school attack: 25 schoolgirls kidnapped, vice-principal killed (Nov)", "Kwara church attack: 38 worshippers abducted (Nov)", "Zamfara: 1,088 killed, 1,755 abducted in H1"]
+    },
+    {
+      "year": 2026,
+      "killings": null,
+      "kidnappings": null,
+      "partial": true,
+      "note": "Ongoing violence. Jan: 163 Christians abducted in Kaduna. Feb: 162 killed in Kwara, 176 women/children abducted by Boko Haram. Mar: Palm Sunday massacre in Jos (28+ killed). Plateau killings in Wase LGA.",
+      "source": "https://www.hrw.org/news/2026/04/03/deadly-attack-in-nigeria-highlights-persistent-insecurity",
+      "keyEvents": ["Jos Palm Sunday massacre: 28+ killed in Angwan Rukuba by gunmen on motorcycles (Mar 29)", "162 killed in Woro and Nuku village executions, Kwara (Feb 3)", "176 women and children abducted by Boko Haram (Feb 14)", "163 Christians kidnapped from 2 churches in Kaduna (Jan 18)", "Zamfara Air Force airstrike kills 20 villagers (Jan)", "Plateau: killings in Zurak and Sabon Gari, Wase LGA (Feb)", "Oro-Ago: vigilante commander killed, NSCDC office attacked (Mar 25)", "48-hour curfew imposed on Jos North after Palm Sunday attack"]
+    }
+  ],
+  "summary": {
+    "tinubuEra": "More than 10,000 people have been killed and thousands kidnapped since Tinubu took office in May 2023. Since January 2023, at least 816 pupils have been taken in 22 school attacks.",
+    "kidnappingIndustry": "Kidnapping has become a multi-billion naira industry. The NBS estimated ₦2.23 trillion ($1.4 billion) paid in ransoms in a single year (May 2023–Apr 2024).",
+    "source": "https://www.thenewhumanitarian.org/analysis/2025/12/18/exclusive-what-latest-school-kidnapping-tells-us-about-nigerias-security-crisis"
+  }
+}

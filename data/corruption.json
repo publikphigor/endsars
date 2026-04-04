@@ -1,0 +1,54 @@
+{
+  "category": "Corruption",
+  "description": "Corruption indicators for Nigeria — Transparency International CPI and World Bank WGI Control of Corruption",
+  "sources": [
+    { "name": "World Bank - World Governance Indicators", "url": "https://info.worldbank.org/governance/wgi", "indicator": "CC.EST", "retrieved": "2026-04-04" },
+    { "name": "Transparency International CPI", "url": "https://www.transparency.org/en/cpi/2024/index/nga", "retrieved": "2026-04-04" },
+    { "name": "Transparency International CPI 2025", "url": "https://www.transparency.org/en/cpi/2025", "retrieved": "2026-04-04" },
+    { "name": "Wikipedia - List of countries by CPI", "url": "https://en.wikipedia.org/wiki/List_of_countries_by_Corruption_Perceptions_Index", "note": "Historical CPI scores" },
+    { "name": "Nairametrics", "url": "https://nairametrics.com/2025/02/11/nigeria-moves-up-in-2024-corruption-perception-index-ranks-140/", "note": "2024 CPI analysis" }
+  ],
+  "wgiData": {
+    "description": "Control of Corruption estimate — ranges from -2.5 (weak) to 2.5 (strong governance). World Bank composite indicator.",
+    "unit": "WGI estimate (-2.5 to 2.5)",
+    "data": [
+      { "year": 2010, "value": -1.05 },
+      { "year": 2011, "value": -1.19 },
+      { "year": 2012, "value": -1.18 },
+      { "year": 2013, "value": -1.23 },
+      { "year": 2014, "value": -1.28 },
+      { "year": 2015, "value": -1.10 },
+      { "year": 2016, "value": -1.05 },
+      { "year": 2017, "value": -1.10 },
+      { "year": 2018, "value": -1.08 },
+      { "year": 2019, "value": -1.11 },
+      { "year": 2020, "value": -1.12 },
+      { "year": 2021, "value": -1.10 },
+      { "year": 2022, "value": -1.13 },
+      { "year": 2023, "value": -1.04 }
+    ]
+  },
+  "cpiData": {
+    "description": "Corruption Perceptions Index — score 0-100 (higher = less corrupt). Pre-2012 used 0-10 scale (converted here to 0-100 equivalent).",
+    "unit": "CPI Score (0-100)",
+    "data": [
+      { "year": 2010, "score": 24, "rank": 134, "totalCountries": 178, "note": "Original scale 2.4/10, converted to 0-100" },
+      { "year": 2011, "score": 24, "rank": 143, "totalCountries": 183, "note": "Original scale 2.4/10, converted to 0-100" },
+      { "year": 2012, "score": 27, "rank": 139, "totalCountries": 176 },
+      { "year": 2013, "score": 25, "rank": 144, "totalCountries": 177 },
+      { "year": 2014, "score": 27, "rank": 136, "totalCountries": 175 },
+      { "year": 2015, "score": 26, "rank": 136, "totalCountries": 168 },
+      { "year": 2016, "score": 28, "rank": 136, "totalCountries": 176 },
+      { "year": 2017, "score": 27, "rank": 148, "totalCountries": 180 },
+      { "year": 2018, "score": 27, "rank": 144, "totalCountries": 180 },
+      { "year": 2019, "score": 26, "rank": 146, "totalCountries": 180 },
+      { "year": 2020, "score": 25, "rank": 149, "totalCountries": 180 },
+      { "year": 2021, "score": 24, "rank": 154, "totalCountries": 180 },
+      { "year": 2022, "score": 24, "rank": 150, "totalCountries": 180 },
+      { "year": 2023, "score": 25, "rank": 145, "totalCountries": 180 },
+      { "year": 2024, "score": 26, "rank": 140, "totalCountries": 180, "source": "https://www.transparency.org/en/cpi/2024/index/nga" },
+      { "year": 2025, "score": 26, "rank": 142, "totalCountries": 182, "source": "https://www.transparency.org/en/cpi/2025" }
+    ],
+    "context": "Nigeria's CPI score has remained in the 24-28 range since 2012, well below the global average of 43 and Sub-Saharan African average of 33. Nigeria shares its ranking tier with countries like Uganda, Mexico, and Iraq."
+  }
+}

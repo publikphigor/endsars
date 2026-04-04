@@ -1,0 +1,49 @@
+{
+  "category": "Inflation",
+  "description": "Consumer Price Index - annual percentage change",
+  "unit": "% annual",
+  "sources": [
+    { "name": "World Bank", "url": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG?locations=NG", "indicator": "FP.CPI.TOTL.ZG", "retrieved": "2026-04-04" },
+    { "name": "National Bureau of Statistics", "url": "https://nigerianstat.gov.ng/elibrary?queries=cpi", "note": "Primary Nigerian source" },
+    { "name": "IMF", "url": "https://www.imf.org/en/Countries/NGA", "note": "Alternative source" },
+    { "name": "FRED", "url": "https://fred.stlouisfed.org/series/FPCPITOTLZGNGA", "note": "Alternative source" }
+  ],
+  "data": [
+    { "year": 2010, "value": 13.74 },
+    { "year": 2011, "value": 10.83 },
+    { "year": 2012, "value": 12.22 },
+    { "year": 2013, "value": 8.50 },
+    { "year": 2014, "value": 8.05 },
+    { "year": 2015, "value": 9.01 },
+    { "year": 2016, "value": 15.70 },
+    { "year": 2017, "value": 16.50 },
+    { "year": 2018, "value": 12.10 },
+    { "year": 2019, "value": 11.40 },
+    { "year": 2020, "value": 13.25 },
+    { "year": 2021, "value": 16.95 },
+    { "year": 2022, "value": 18.85 },
+    { "year": 2023, "value": 24.66 },
+    { "year": 2024, "value": 33.24, "note": "World Bank figure; NBS annual average was 31.4%" },
+    { "year": 2025, "value": 15.15, "note": "December 2025 year-on-year rate (NBS). Methodology rebased in 2025 — new base period is 2024 average = 100. Annual average higher due to early-year elevated rates.", "source": "https://nairametrics.com/2026/01/15/nigeria-inflation-hits-15-15-by-december-2025-after-cpi-methodology-review/" },
+    { "year": 2026, "value": 15.06, "note": "February 2026 year-on-year rate (NBS). 11th consecutive month of decline.", "partial": true, "source": "https://www.channelstv.com/2026/03/16/nigerias-inflation-rate-drops-marginally-to-15-06-in-february/" }
+  ],
+  "monthly2025": {
+    "note": "NBS monthly headline inflation rates for 2025 (year-on-year, rebased CPI with 2024 = 100)",
+    "data": [
+      { "month": "2025-01", "value": 26.30 },
+      { "month": "2025-02", "value": 27.40 },
+      { "month": "2025-03", "value": 26.80 },
+      { "month": "2025-04", "value": 26.10 },
+      { "month": "2025-05", "value": 25.30 },
+      { "month": "2025-06", "value": 24.90 },
+      { "month": "2025-07", "value": 23.10 },
+      { "month": "2025-08", "value": 21.00 },
+      { "month": "2025-09", "value": 18.02 },
+      { "month": "2025-10", "value": 16.05 },
+      { "month": "2025-11", "value": 15.15 },
+      { "month": "2025-12", "value": 15.15 }
+    ],
+    "source": "https://tradingeconomics.com/nigeria/inflation-cpi"
+  },
+  "methodologyNote": "NBS rebased the CPI in 2025 using a 12-month 2024 average as reference (100) instead of December 2024 alone. Weight reference period is 2023. This makes 2025 rates not directly comparable with pre-2025 figures without adjustment."
+}

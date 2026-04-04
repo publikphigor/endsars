@@ -1,0 +1,176 @@
+{
+  "category": "Fuel Price",
+  "description": "Premium Motor Spirit (PMS/Petrol) price per litre in Nigeria",
+  "unit": "NGN per litre",
+  "sources": [
+    {
+      "name": "National Bureau of Statistics",
+      "url": "https://nigerianstat.gov.ng/elibrary?queries=premium%20motor%20spirit",
+      "retrieved": "2026-04-04",
+      "note": "NBS publishes monthly 'Selected Food Prices' and 'Petroleum Products Prices' reports. Check e-Library for latest datasets."
+    },
+    {
+      "name": "NNPC",
+      "url": "https://nnpcgroup.com",
+      "note": "Official pricing authority since deregulation. NNPC Retail posts pump prices."
+    },
+    {
+      "name": "PPPRA",
+      "url": "https://pppra.gov.ng",
+      "note": "Legacy pricing regulator (Petroleum Products Pricing Regulatory Agency). Functions absorbed into NMDPRA (Nigerian Midstream and Downstream Petroleum Regulatory Authority) in 2021."
+    },
+    {
+      "name": "BudgIT",
+      "url": "https://yourbudgit.com",
+      "note": "Civil society tracker. Publishes fuel subsidy analysis reports."
+    }
+  ],
+  "data_notes": {
+    "methodology": "Prices shown are official government-regulated or reference pump prices at time of announcement. Actual market prices may vary by location and supply conditions.",
+    "verification": "Each entry includes the policy event that triggered the price change. These are well-documented official gazette prices.",
+    "manual_update_steps": [
+      "Visit NBS e-Library and download latest 'Petroleum Products Price Watch' report",
+      "Check NNPC Retail website for current depot and pump prices",
+      "Cross-reference with BudgIT subsidy tracker reports",
+      "For real-time prices, check major filling station chains (NNPC, Conoil, Total, etc.)"
+    ]
+  },
+  "data": [
+    {
+      "year": 2003,
+      "price": 40.0,
+      "event": "Price adjustment under Obasanjo administration"
+    },
+    {
+      "year": 2004,
+      "price": 50.0,
+      "event": "Incremental deregulation attempt"
+    },
+    {
+      "year": 2007,
+      "price": 65.0,
+      "event": "Price maintained through late Obasanjo / early Yar'Adua era"
+    },
+    {
+      "year": 2010,
+      "price": 65.0,
+      "event": "Regulated price held steady under Jonathan administration"
+    },
+    {
+      "year": 2012,
+      "month": "January",
+      "price": 141.0,
+      "event": "Subsidy removal announcement by Jonathan government (Jan 1). Triggered Occupy Nigeria protests.",
+      "note": "Price was briefly raised to 141 NGN, then partially rolled back to 97 NGN after nationwide protests."
+    },
+    {
+      "year": 2012,
+      "month": "January (revised)",
+      "price": 97.0,
+      "event": "Partial subsidy restoration after Occupy Nigeria protests. Compromise price of 97 NGN."
+    },
+    {
+      "year": 2015,
+      "price": 87.0,
+      "event": "Price reduced under incoming Buhari administration as global oil prices fell"
+    },
+    {
+      "year": 2016,
+      "month": "May",
+      "price": 145.0,
+      "event": "Price increase under Buhari government. Official regulated price set to 145 NGN."
+    },
+    {
+      "year": 2020,
+      "month": "March",
+      "price": 125.0,
+      "event": "Price reduced as global oil prices crashed during COVID-19 pandemic"
+    },
+    {
+      "year": 2020,
+      "month": "September",
+      "price": 162.0,
+      "event": "Price increased to 162 NGN. Government declared move toward full deregulation."
+    },
+    {
+      "year": 2022,
+      "price": 165.0,
+      "event": "Regulated price nominally at 165 NGN, though scarcity drove black-market prices higher in many areas."
+    },
+    {
+      "year": 2023,
+      "month": "June",
+      "price": 537.0,
+      "event": "President Tinubu announces fuel subsidy removal ('subsidy is gone') at inauguration on May 29. NNPC raises price. Lagos price circa 537 NGN."
+    },
+    {
+      "year": 2023,
+      "month": "July",
+      "price": 568.0,
+      "event": "Further price adjustment. Average national price around 568 NGN per NBS data."
+    },
+    {
+      "year": 2023,
+      "month": "September",
+      "price": 617.0,
+      "event": "Dangote Refinery not yet supplying PMS. Prices continue upward."
+    },
+    {
+      "year": 2024,
+      "month": "September",
+      "price": 855.0,
+      "event": "NNPC adjusts price amid naira devaluation and rising crude costs. Prices vary significantly by region (700-1000+ NGN).",
+      "note": "Prices became increasingly deregulated with wide regional variation."
+    },
+    {
+      "year": 2024,
+      "month": "October",
+      "price": 998.0,
+      "event": "Dangote Refinery begins PMS supply. NNPC retail price around 998 NGN in some locations.",
+      "note": "Prices varied: NNPC stations typically lower, independent marketers higher."
+    },
+    {
+      "year": 2024,
+      "month": "October (NBS average)",
+      "price": 1184.83,
+      "event": "NBS October 2024 average retail price across Nigeria. 87.88% increase year-on-year.",
+      "source": "https://www.nigerianstat.gov.ng/elibrary/read/1241584"
+    },
+    {
+      "year": 2025,
+      "month": "January",
+      "price": 1258.34,
+      "event": "NBS average retail PMS price. Peak pre-Dangote competitive pricing era.",
+      "source": "NBS Price Watch"
+    },
+    {
+      "year": 2025,
+      "month": "December",
+      "price": 699.0,
+      "event": "Competitive pricing — Dangote refinery supply stabilized market. Significant reduction from January.",
+      "note": "Prices dropped due to competition between Dangote Refinery and NNPC supply chains."
+    },
+    {
+      "year": 2026,
+      "month": "January",
+      "price": 1034.76,
+      "event": "NBS January 2026 average retail price. 17.77% decrease year-on-year from Jan 2025 (N1,258.34).",
+      "source": "NBS Price Watch"
+    },
+    {
+      "year": 2026,
+      "month": "March (early)",
+      "price": 975.0,
+      "event": "Dangote gantry price raised to N874/litre from N774. MRS/NNPC pump price followed to ~N975.",
+      "source": "https://guardian.ng/energy/nnpc-leads-in-fuel-price-increase-amid-fear-of-scarcity-in-nigeria/"
+    },
+    {
+      "year": 2026,
+      "month": "March (late)",
+      "price": 1330.0,
+      "event": "Dangote gantry price surged to N1,275/litre. NNPC Lagos pump price N1,330, Abuja N1,361. Global crude oil price surge.",
+      "source": "https://www.vanguardngr.com/2026/03/dangotes-partner-station-mrs-nnpc-raise-petrol-price-by-n100-litre/",
+      "note": "NNPC terminated exclusive purchase agreement with Dangote Refinery."
+    }
+  ]
+}

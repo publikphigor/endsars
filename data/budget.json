@@ -1,0 +1,157 @@
+{
+  "category": "Federal Budget",
+  "description": "Annual federal government budget appropriation and key figures",
+  "unit": "NGN (Trillions)",
+  "sources": [
+    {
+      "name": "Budget Office of the Federation",
+      "url": "https://budgetoffice.gov.ng",
+      "retrieved": "2026-04-04",
+      "note": "Official source for Appropriation Acts. Publishes approved budgets, implementation reports, and citizen guides."
+    },
+    {
+      "name": "BudgIT",
+      "url": "https://yourbudgit.com",
+      "note": "Civil society budget analysis. Publishes annual budget breakdowns, infographics, and state-level data."
+    },
+    {
+      "name": "Open Treasury",
+      "url": "https://opentreasury.gov.ng",
+      "note": "Government spending transparency portal. Shows daily treasury disbursements and MDA allocations."
+    }
+  ],
+  "data_notes": {
+    "methodology": "Figures are the total appropriation as signed into law (Appropriation Act). Supplementary budgets are noted separately where applicable. Figures are nominal (not inflation-adjusted).",
+    "verification": "Each figure corresponds to the signed Appropriation Act for that fiscal year. Cross-reference with Budget Office publications and BudgIT analysis.",
+    "manual_update_steps": [
+      "Visit Budget Office website for latest Appropriation Act and breakdown",
+      "Download BudgIT annual budget analysis for detailed sector breakdowns",
+      "Check Open Treasury portal for execution/disbursement data",
+      "For sub-national data, check BudgIT state budget trackers"
+    ]
+  },
+  "data": [
+    {
+      "year": 2010,
+      "total_appropriation_trn": 4.61,
+      "label": "2010 Appropriation Act",
+      "president": "Goodluck Jonathan"
+    },
+    {
+      "year": 2011,
+      "total_appropriation_trn": 4.97,
+      "label": "2011 Appropriation Act",
+      "president": "Goodluck Jonathan"
+    },
+    {
+      "year": 2012,
+      "total_appropriation_trn": 4.75,
+      "label": "2012 Appropriation Act",
+      "president": "Goodluck Jonathan",
+      "note": "Year of partial subsidy removal and Occupy Nigeria protests"
+    },
+    {
+      "year": 2013,
+      "total_appropriation_trn": 4.99,
+      "label": "2013 Appropriation Act",
+      "president": "Goodluck Jonathan"
+    },
+    {
+      "year": 2014,
+      "total_appropriation_trn": 4.96,
+      "label": "2014 Appropriation Act",
+      "president": "Goodluck Jonathan"
+    },
+    {
+      "year": 2015,
+      "total_appropriation_trn": 4.49,
+      "label": "2015 Appropriation Act",
+      "president": "Goodluck Jonathan / Muhammadu Buhari",
+      "note": "Oil price crash led to reduced budget"
+    },
+    {
+      "year": 2016,
+      "total_appropriation_trn": 6.06,
+      "label": "2016 Appropriation Act",
+      "president": "Muhammadu Buhari",
+      "note": "Budget of Change. Signed in May 2016 after prolonged legislative delays."
+    },
+    {
+      "year": 2017,
+      "total_appropriation_trn": 7.44,
+      "label": "2017 Appropriation Act",
+      "president": "Muhammadu Buhari",
+      "note": "Budget of Recovery and Growth"
+    },
+    {
+      "year": 2018,
+      "total_appropriation_trn": 9.12,
+      "label": "2018 Appropriation Act",
+      "president": "Muhammadu Buhari",
+      "note": "Budget of Consolidation"
+    },
+    {
+      "year": 2019,
+      "total_appropriation_trn": 8.92,
+      "label": "2019 Appropriation Act",
+      "president": "Muhammadu Buhari",
+      "note": "Budget of Continuity. Year of #EndSARS precursor protests."
+    },
+    {
+      "year": 2020,
+      "total_appropriation_trn": 10.81,
+      "label": "2020 Appropriation Act (revised)",
+      "president": "Muhammadu Buhari",
+      "note": "Originally 10.59 TRN, revised upward due to COVID-19 supplementary budget. Year of #EndSARS protests (October 2020)."
+    },
+    {
+      "year": 2021,
+      "total_appropriation_trn": 13.59,
+      "label": "2021 Appropriation Act",
+      "president": "Muhammadu Buhari",
+      "note": "Budget of Economic Recovery. Includes supplementary."
+    },
+    {
+      "year": 2022,
+      "total_appropriation_trn": 17.13,
+      "label": "2022 Appropriation Act",
+      "president": "Muhammadu Buhari",
+      "note": "Budget of Fiscal Sustainability. Fuel subsidy costs escalated significantly."
+    },
+    {
+      "year": 2023,
+      "total_appropriation_trn": 21.83,
+      "label": "2023 Appropriation Act",
+      "president": "Muhammadu Buhari / Bola Tinubu",
+      "note": "Transition year. Tinubu inaugurated May 29, announced subsidy removal."
+    },
+    {
+      "year": 2024,
+      "total_appropriation_trn": 28.77,
+      "label": "2024 Appropriation Act",
+      "president": "Bola Tinubu",
+      "note": "Budget of Renewed Hope. Signed December 2023. First full Tinubu budget."
+    },
+    {
+      "year": 2025,
+      "total_appropriation_trn": 49.74,
+      "label": "2025 Appropriation Act",
+      "president": "Bola Tinubu",
+      "note": "Budget of Restoration. Significant increase driven by naira devaluation effects and expanded capital spending plans."
+    },
+    {
+      "year": 2026,
+      "total_appropriation_trn": 68.30,
+      "proposal_trn": 58.18,
+      "label": "2026 Appropriation Act",
+      "president": "Bola Tinubu",
+      "note": "Budget of Consolidation. Tinubu proposed N58.18 trillion, National Assembly approved N68.30 trillion. Includes N15.52 trillion for debt servicing and N15.25 trillion recurrent (non-debt). Exchange rate assumption: N1,400/USD.",
+      "sources": [
+        "https://statehouse.gov.ng/president-tinubu-presents-%E2%82%A658-18-trillion-2026-appropriation-bill-vows-stronger-discipline-in-budget-execution/",
+        "https://naltf.gov.ng/reps-approve-n68-3-trillion-budget-of-consolidation-for-2026-fiscal-year/",
+        "https://budgetoffice.gov.ng/index.php/resources/internal-resources/budget-documents/2026-budget"
+      ]
+    }
+  ],
+  "currencyNote": "All budget figures are in Nigerian Naira (NGN). Trillions = 10^12. The significant jump from 2023 onward partly reflects naira devaluation — the same USD-equivalent spending appears much larger in naira terms."
+}

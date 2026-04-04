@@ -1,0 +1,44 @@
+{
+  "category": "Poverty",
+  "description": "Poverty indicators for Nigeria — multiple measures from different sources",
+  "sources": [
+    { "name": "World Bank", "url": "https://data.worldbank.org/indicator/SI.POV.DDAY?locations=NG", "indicator": "SI.POV.DDAY", "retrieved": "2026-04-04" },
+    { "name": "World Bank Poverty & Equity Brief (Oct 2025)", "url": "https://documents.worldbank.org/en/publication/documents-reports/documentdetail/099253204222517873", "retrieved": "2026-04-04" },
+    { "name": "NBS Multidimensional Poverty Index (2022)", "url": "https://nigerianstat.gov.ng/elibrary/read/1241254", "retrieved": "2026-04-04" },
+    { "name": "UNDP MPI Country Profile", "url": "https://hdr.undp.org/sites/default/files/Country-Profiles/MPI/NGA.pdf", "note": "2023 global MPI" },
+    { "name": "Finance in Africa / World Bank projections", "url": "https://financeinafrica.com/insights/nigeria-poverty-rate-falling-to-61-in-2027/", "note": "Forward projections" }
+  ],
+  "note": "Poverty data uses multiple definitions. International poverty line ($2.15/day), national poverty line, and multidimensional poverty index (MPI) all tell different stories. Survey data is sparse — estimates between survey years are World Bank modeled projections.",
+  "internationalPovertyLine": {
+    "description": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population) — World Bank",
+    "unit": "% of population",
+    "data": [
+      { "year": 2010, "value": 38.5 },
+      { "year": 2012, "value": 37.4 },
+      { "year": 2015, "value": 35.8 },
+      { "year": 2018, "value": 34.2 },
+      { "year": 2022, "value": 41.8 }
+    ]
+  },
+  "nationalPovertyLine": {
+    "description": "Poverty rate at national poverty line — World Bank estimates and projections",
+    "unit": "% of population",
+    "data": [
+      { "year": 2019, "value": 40.0, "note": "World Bank estimate — 81 million people" },
+      { "year": 2023, "value": 56.0, "note": "World Bank projection — consumption fell 6.7% 2019-2023, ultra-poor rose from 14% to 27% (~70M people)" },
+      { "year": 2025, "value": 61.0, "note": "World Bank projection — estimated 139 million Nigerians below poverty line" },
+      { "year": 2026, "value": 62.0, "note": "World Bank projection — expected peak before modest decline" },
+      { "year": 2027, "value": 61.0, "note": "World Bank projection — first predicted reversal in nearly a decade" }
+    ],
+    "source": "https://financeinafrica.com/insights/nigeria-poverty-rate-falling-to-61-in-2027/"
+  },
+  "multidimensionalPoverty": {
+    "description": "NBS Multidimensional Poverty Index (2022) — measures deprivation across health, education, and living standards",
+    "value": 63.0,
+    "absoluteNumber": "133 million people",
+    "surveyPeriod": "November 2021 – February 2022",
+    "sampleSize": "56,000+ households across 36 states and FCT",
+    "source": "https://nigerianstat.gov.ng/elibrary/read/1241254"
+  },
+  "keyInsight": "Food inflation is the single biggest driver of poverty in Nigeria — staple food prices consumed by the poor rose fivefold between 2020 and 2024 (World Bank)."
+}

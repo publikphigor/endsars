@@ -1,0 +1,353 @@
+{
+  "category": "Government Officials",
+  "description": "Key Nigerian government officials from 2010 to present (April 2026)",
+  "lastUpdated": "2026-04-04",
+  "sources": [
+    {
+      "name": "Wikipedia - President of Nigeria",
+      "url": "https://en.wikipedia.org/wiki/President_of_Nigeria",
+      "retrieved": "2026-04-04",
+      "note": "Cross-reference with official government sources for exact dates"
+    },
+    {
+      "name": "Wikipedia - Vice President of Nigeria",
+      "url": "https://en.wikipedia.org/wiki/Vice_President_of_Nigeria",
+      "retrieved": "2026-04-04",
+      "note": "Cross-reference with official government sources for exact dates"
+    },
+    {
+      "name": "Wikipedia - President of the Senate (Nigeria)",
+      "url": "https://en.wikipedia.org/wiki/President_of_the_Senate_(Nigeria)",
+      "retrieved": "2026-04-04",
+      "note": "Cross-reference with official government sources for exact dates"
+    },
+    {
+      "name": "Wikipedia - Speaker of the House of Representatives (Nigeria)",
+      "url": "https://en.wikipedia.org/wiki/Speaker_of_the_House_of_Representatives_(Nigeria)",
+      "retrieved": "2026-04-04",
+      "note": "Cross-reference with official government sources for exact dates"
+    },
+    {
+      "name": "Wikipedia - Minister of Finance (Nigeria)",
+      "url": "https://en.wikipedia.org/wiki/Minister_of_Finance_(Nigeria)",
+      "retrieved": "2026-04-04",
+      "note": "Cross-reference with official government sources for exact dates"
+    }
+  ],
+  "officials": {
+    "presidents": [
+      {
+        "name": "Goodluck Ebele Jonathan",
+        "party": "PDP",
+        "startDate": "2010-05-06",
+        "endDate": "2015-05-29",
+        "note": "Assumed office after death of President Umaru Musa Yar'Adua on 5 May 2010. Previously served as Acting President from 9 February 2010.",
+        "stateOfOrigin": "Bayelsa"
+      },
+      {
+        "name": "Muhammadu Buhari",
+        "party": "APC",
+        "startDate": "2015-05-29",
+        "endDate": "2023-05-29",
+        "note": "First opposition candidate to win a presidential election in Nigeria's history. Served two terms.",
+        "stateOfOrigin": "Katsina"
+      },
+      {
+        "name": "Bola Ahmed Tinubu",
+        "party": "APC",
+        "startDate": "2023-05-29",
+        "endDate": null,
+        "note": "Former Governor of Lagos State (1999-2007). Incumbent president.",
+        "stateOfOrigin": "Lagos"
+      }
+    ],
+    "vicePresidents": [
+      {
+        "name": "Namadi Sambo",
+        "party": "PDP",
+        "startDate": "2010-05-06",
+        "endDate": "2015-05-29",
+        "note": "Became Vice President when Jonathan assumed presidency. Previously Governor of Kaduna State.",
+        "stateOfOrigin": "Kaduna"
+      },
+      {
+        "name": "Yemi Osinbajo",
+        "party": "APC",
+        "startDate": "2015-05-29",
+        "endDate": "2023-05-29",
+        "note": "Professor of Law. Served as Acting President during Buhari's medical leaves in 2017.",
+        "stateOfOrigin": "Ogun"
+      },
+      {
+        "name": "Kashim Shettima",
+        "party": "APC",
+        "startDate": "2023-05-29",
+        "endDate": null,
+        "note": "Former Governor of Borno State (2011-2019). Incumbent vice president.",
+        "stateOfOrigin": "Borno"
+      }
+    ],
+    "senatePresidents": [
+      {
+        "name": "David Mark",
+        "party": "PDP",
+        "startDate": "2007-06-06",
+        "endDate": "2015-06-09",
+        "note": "Served two terms as Senate President spanning the 6th and 7th National Assemblies.",
+        "stateOfOrigin": "Benue"
+      },
+      {
+        "name": "Bukola Saraki",
+        "party": "APC",
+        "startDate": "2015-06-09",
+        "endDate": "2019-06-11",
+        "note": "Elected Senate President of the 8th National Assembly. His election was controversial as he was not the APC leadership's preferred candidate.",
+        "stateOfOrigin": "Kwara"
+      },
+      {
+        "name": "Ahmad Ibrahim Lawan",
+        "party": "APC",
+        "startDate": "2019-06-11",
+        "endDate": "2023-06-13",
+        "note": "Senate President of the 9th National Assembly.",
+        "stateOfOrigin": "Yobe"
+      },
+      {
+        "name": "Godswill Akpabio",
+        "party": "APC",
+        "startDate": "2023-06-13",
+        "endDate": null,
+        "note": "Former Governor of Akwa Ibom State (2007-2015). Senate President of the 10th National Assembly. Incumbent.",
+        "stateOfOrigin": "Akwa Ibom"
+      }
+    ],
+    "speakers": [
+      {
+        "name": "Dimeji Bankole",
+        "party": "PDP",
+        "startDate": "2007-06-06",
+        "endDate": "2011-06-06",
+        "note": "Speaker of the 6th House of Representatives. Served until end of the assembly term.",
+        "stateOfOrigin": "Ogun"
+      },
+      {
+        "name": "Aminu Waziri Tambuwal",
+        "party": "PDP",
+        "startDate": "2011-06-06",
+        "endDate": "2015-06-09",
+        "note": "Speaker of the 7th House of Representatives. Later defected to APC and became Governor of Sokoto State.",
+        "stateOfOrigin": "Sokoto"
+      },
+      {
+        "name": "Yakubu Dogara",
+        "party": "APC",
+        "startDate": "2015-06-09",
+        "endDate": "2019-06-11",
+        "note": "Speaker of the 8th House of Representatives.",
+        "stateOfOrigin": "Bauchi"
+      },
+      {
+        "name": "Femi Gbajabiamila",
+        "party": "APC",
+        "startDate": "2019-06-11",
+        "endDate": "2023-06-13",
+        "note": "Speaker of the 9th House of Representatives. Later appointed Chief of Staff to President Tinubu.",
+        "stateOfOrigin": "Lagos"
+      },
+      {
+        "name": "Tajudeen Abbas",
+        "party": "APC",
+        "startDate": "2023-06-13",
+        "endDate": null,
+        "note": "Speaker of the 10th House of Representatives. Incumbent.",
+        "stateOfOrigin": "Kaduna"
+      }
+    ],
+    "financeMinsters": [
+      {
+        "name": "Olusegun Olutoyin Aganga",
+        "party": null,
+        "startDate": "2010-04-06",
+        "endDate": "2011-07-04",
+        "note": "Served under Jonathan as Minister of Finance. Later moved to Minister of Trade and Investment.",
+        "administration": "Jonathan"
+      },
+      {
+        "name": "Ngozi Okonjo-Iweala",
+        "party": null,
+        "startDate": "2011-08-17",
+        "endDate": "2015-05-29",
+        "note": "Served as Coordinating Minister for the Economy and Minister of Finance. Previously held the same role under Obasanjo (2003-2006). Later became Director-General of the WTO.",
+        "administration": "Jonathan"
+      },
+      {
+        "name": "Kemi Adeosun",
+        "party": null,
+        "startDate": "2015-11-11",
+        "endDate": "2018-09-14",
+        "note": "First Finance Minister under Buhari. Resigned over NYSC certificate controversy.",
+        "administration": "Buhari"
+      },
+      {
+        "name": "Zainab Shamsuna Ahmed",
+        "party": null,
+        "startDate": "2018-09-14",
+        "endDate": "2023-05-29",
+        "note": "Served as Minister of Finance, Budget and National Planning. Held the position until the end of the Buhari administration.",
+        "administration": "Buhari"
+      },
+      {
+        "name": "Wale Edun",
+        "party": null,
+        "startDate": "2023-08-21",
+        "endDate": null,
+        "note": "Appointed Minister of Finance and Coordinating Minister of the Economy under Tinubu. Incumbent.",
+        "administration": "Tinubu"
+      }
+    ]
+  },
+  "administrations": [
+    {
+      "name": "Jonathan Administration",
+      "startDate": "2010-05-06",
+      "endDate": "2015-05-29",
+      "party": "PDP",
+      "president": "Goodluck Ebele Jonathan",
+      "vicePresident": "Namadi Sambo",
+      "senatePresidents": ["David Mark"],
+      "speakers": ["Dimeji Bankole", "Aminu Waziri Tambuwal"],
+      "financeMinisters": ["Olusegun Olutoyin Aganga", "Ngozi Okonjo-Iweala"],
+      "nationalAssemblies": ["6th (2007-2011)", "7th (2011-2015)"],
+      "keyEvents": [
+        "Assumed office after Yar'Adua's death (May 2010)",
+        "Independence Day bombing in Abuja (Oct 2010)",
+        "Post-election violence kills ~800 (April 2011)",
+        "Partial fuel subsidy removal sparks Occupy Nigeria protests (Jan 2012)",
+        "Boko Haram insurgency escalates — state of emergency in 3 NE states (2013)",
+        "Nigeria rebased as Africa's largest economy (April 2014)",
+        "Chibok schoolgirls kidnapping — 276 taken (April 2014)",
+        "#BringBackOurGirls global movement",
+        "Successful Ebola outbreak containment (2014)",
+        "Power sector privatisation — PHCN broken into 15 firms",
+        "Lost election to Buhari — first democratic transfer to opposition (2015)"
+      ]
+    },
+    {
+      "name": "Buhari Administration (First Term)",
+      "startDate": "2015-05-29",
+      "endDate": "2019-05-29",
+      "party": "APC",
+      "president": "Muhammadu Buhari",
+      "vicePresident": "Yemi Osinbajo",
+      "senatePresident": "Bukola Saraki",
+      "speaker": "Yakubu Dogara",
+      "financeMinisters": ["Kemi Adeosun", "Zainab Shamsuna Ahmed"],
+      "nationalAssembly": "8th (2015-2019)",
+      "keyEvents": [
+        "Declared Boko Haram 'technically defeated' (Dec 2015)",
+        "Economy enters recession — GDP contracts (2016)",
+        "Naira devalued and floated for the first time (June 2016)",
+        "Extended medical leave in London — VP Osinbajo acts as president (2017)",
+        "Anti-corruption drive: 603 convictions by EFCC by 2018",
+        "Farmer-herder clashes kill thousands in Middle Belt (2017-2018)",
+        "Finance Minister Kemi Adeosun resigns over NYSC certificate scandal (Sept 2018)",
+        "Banditry surges in northwest — Zamfara, Katsina, Kaduna"
+      ]
+    },
+    {
+      "name": "Buhari Administration (Second Term)",
+      "startDate": "2019-05-29",
+      "endDate": "2023-05-29",
+      "party": "APC",
+      "president": "Muhammadu Buhari",
+      "vicePresident": "Yemi Osinbajo",
+      "senatePresident": "Ahmad Ibrahim Lawan",
+      "speaker": "Femi Gbajabiamila",
+      "financeMinister": "Zainab Shamsuna Ahmed",
+      "nationalAssembly": "9th (2019-2023)",
+      "keyEvents": [
+        "COVID-19 pandemic — economy enters second recession (-3.62% Q3 2020)",
+        "#EndSARS protests and Lekki toll gate shooting (Oct 2020)",
+        "Twitter banned for 7 months (June 2021 - Jan 2022)",
+        "Boko Haram leader Shekau killed (May 2021)",
+        "Mass school kidnappings escalate — Kaduna, Niger, Zamfara (2021)",
+        "Owo church massacre — 40+ killed (June 2022)",
+        "Kuje prison break — inmates freed by insurgents (July 2022)",
+        "Kaduna-Abuja train kidnapping (March 2022)",
+        "Naira redesign cash crisis (2022-2023)",
+        "Lekki Deep Sea Port commissioned (Jan 2023)"
+      ]
+    },
+    {
+      "name": "Tinubu Administration",
+      "startDate": "2023-05-29",
+      "endDate": null,
+      "party": "APC",
+      "president": "Bola Ahmed Tinubu",
+      "vicePresident": "Kashim Shettima",
+      "senatePresident": "Godswill Akpabio",
+      "speaker": "Tajudeen Abbas",
+      "financeMinister": "Wale Edun",
+      "nationalAssembly": "10th (2023-2027)",
+      "keyEvents": [
+        "Fuel subsidy removed on inauguration day — 'Subsidy is gone' (May 2023)",
+        "Naira floated again — crashes from ₦460 to ₦750+ overnight (June 2023)",
+        "Supreme Court upholds contested election result (Oct 2023)",
+        "Petrol prices surge from ₦65 to ₦537-617 per litre (2023)",
+        "Naira hits all-time low of ₦1,717/USD (Nov 2024)",
+        "NBS reveals 2.2 million kidnappings in 12 months (Dec 2024)",
+        "Cost of living crisis — nationwide #EndBadGovernance protests (Aug 2024)",
+        "National anthem changed back to 1960 version (May 2024)",
+        "9,662 killed in conflict in 2024 — worst year on record (ACLED)",
+        "St. Mary's school kidnapping — 303 children taken (Nov 2025)",
+        "6,800 killed and 5,400 kidnapped in H1 2025 alone",
+        "Coup plot uncovered — 16 military officers arrested (Sept 2025)",
+        "U.S. military strikes ISIS in NW Nigeria at Tinubu's request (Dec 2025)",
+        "Jos Palm Sunday massacre — 28+ killed (Mar 2026)",
+        "₦68.3T budget approved for 2026 — largest in history"
+      ]
+    }
+  ],
+  "nationalAssemblies": [
+    {
+      "assembly": "6th National Assembly",
+      "startDate": "2007-06-06",
+      "endDate": "2011-06-06",
+      "senatePresident": "David Mark",
+      "speaker": "Dimeji Bankole",
+      "note": "Overlaps with start of Jonathan presidency"
+    },
+    {
+      "assembly": "7th National Assembly",
+      "startDate": "2011-06-06",
+      "endDate": "2015-06-09",
+      "senatePresident": "David Mark",
+      "speaker": "Aminu Waziri Tambuwal",
+      "note": "Full Jonathan first elected term"
+    },
+    {
+      "assembly": "8th National Assembly",
+      "startDate": "2015-06-09",
+      "endDate": "2019-06-11",
+      "senatePresident": "Bukola Saraki",
+      "speaker": "Yakubu Dogara",
+      "note": "Buhari first term. Notable friction between executive and legislature."
+    },
+    {
+      "assembly": "9th National Assembly",
+      "startDate": "2019-06-11",
+      "endDate": "2023-06-13",
+      "senatePresident": "Ahmad Ibrahim Lawan",
+      "speaker": "Femi Gbajabiamila",
+      "note": "Buhari second term. Period of #EndSARS protests (October 2020)."
+    },
+    {
+      "assembly": "10th National Assembly",
+      "startDate": "2023-06-13",
+      "endDate": null,
+      "senatePresident": "Godswill Akpabio",
+      "speaker": "Tajudeen Abbas",
+      "note": "Tinubu administration. Current assembly."
+    }
+  ]
+}

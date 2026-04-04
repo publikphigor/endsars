@@ -1,0 +1,49 @@
+{
+  "category": "Government Debt",
+  "description": "Nigeria total public debt — external debt stocks from World Bank, plus DMO total public debt (external + domestic) for recent years",
+  "sources": [
+    { "name": "World Bank", "url": "https://data.worldbank.org/indicator/DT.DOD.DECT.CD?locations=NG", "indicator": "DT.DOD.DECT.CD", "retrieved": "2026-04-04", "note": "External debt stocks only (DOD, current US$)" },
+    { "name": "Debt Management Office Nigeria", "url": "https://www.dmo.gov.ng/debt-profile/total-public-debt", "retrieved": "2026-04-04", "note": "Total public debt (external + domestic)" },
+    { "name": "IMF", "url": "https://www.imf.org/external/datamapper/DEBTGDP@WEO/NGA", "note": "Debt-to-GDP ratio" },
+    { "name": "Nairametrics", "url": "https://nairametrics.com/2025/04/05/nigerias-total-public-debt-hits-n144-67-trillion-in-december-2024/", "note": "Q4 2024 breakdown" },
+    { "name": "Nairametrics", "url": "https://nairametrics.com/2026/02/20/nigerias-public-debt-hits-n153-29-trillion-in-q3-2025-dmo/", "note": "Q3 2025 data" }
+  ],
+  "externalDebt": {
+    "description": "External debt stocks, total (DOD, current US$) — World Bank",
+    "unit": "USD",
+    "data": [
+      { "year": 2010, "valueUSD": 29148883008.7 },
+      { "year": 2011, "valueUSD": 34129232146.0 },
+      { "year": 2012, "valueUSD": 39282745538.8 },
+      { "year": 2013, "valueUSD": 42604005424.4 },
+      { "year": 2014, "valueUSD": 46672476310.2 },
+      { "year": 2015, "valueUSD": 45024833871.7 },
+      { "year": 2016, "valueUSD": 43735939488.9 },
+      { "year": 2017, "valueUSD": 65142821169.8 },
+      { "year": 2018, "valueUSD": 69440288784.6 },
+      { "year": 2019, "valueUSD": 81342753974.7 },
+      { "year": 2020, "valueUSD": 87591245939.4 },
+      { "year": 2021, "valueUSD": 96254706293.5 },
+      { "year": 2022, "valueUSD": 103064224482.6 },
+      { "year": 2023, "valueUSD": 102472750412.9 },
+      { "year": 2024, "valueUSD": 108757630161.5 }
+    ]
+  },
+  "totalPublicDebt": {
+    "description": "Total public debt (external + domestic) — DMO Nigeria. Includes Federal Government, States, and FCT.",
+    "note": "Figures in both NGN and USD. Naira figures reflect exchange rate at reporting date, so large NGN increases partly reflect devaluation.",
+    "data": [
+      { "year": 2023, "quarter": "Q4", "date": "2023-12-31", "totalNGN_trn": 97.34, "totalUSD_bn": 108.23, "externalUSD_bn": 42.49, "domesticNGN_trn": 59.12, "source": "DMO" },
+      { "year": 2024, "quarter": "Q1", "date": "2024-03-31", "totalNGN_trn": 121.67, "totalUSD_bn": 91.46, "externalUSD_bn": 42.12, "domesticNGN_trn": 65.65, "source": "DMO/NBS" },
+      { "year": 2024, "quarter": "Q2", "date": "2024-06-30", "totalNGN_trn": 134.30, "totalUSD_bn": 91.35, "externalNGN_trn": 63.07, "domesticNGN_trn": 71.22, "source": "DMO" },
+      { "year": 2024, "quarter": "Q4", "date": "2024-12-31", "totalNGN_trn": 144.67, "totalUSD_bn": 94.23, "externalUSD_bn": 45.78, "externalNGN_trn": 70.29, "domesticNGN_trn": 74.38, "domesticUSD_bn": 48.44, "source": "DMO", "sourceURL": "https://www.dmo.gov.ng/debt-profile/total-public-debt/5215-total-public-debt-as-at-december-31-2024" },
+      { "year": 2025, "quarter": "Q1", "date": "2025-03-31", "totalNGN_trn": 149.39, "source": "DMO" },
+      { "year": 2025, "quarter": "Q2", "date": "2025-06-30", "totalNGN_trn": 152.40, "source": "DMO/ICIR", "sourceURL": "https://www.icirnigeria.org/nigerias-public-debt-hits-%E2%82%A6152-4trn-in-q2-2025-dmo/" },
+      { "year": 2025, "quarter": "Q3", "date": "2025-09-30", "totalNGN_trn": 153.29, "totalUSD_bn": 103.94, "externalNGN_trn": 71.47, "externalUSD_bn": 48.46, "domesticNGN_trn": 81.81, "domesticUSD_bn": 55.47, "source": "DMO", "sourceURL": "https://nairametrics.com/2026/02/20/nigerias-public-debt-hits-n153-29-trillion-in-q3-2025-dmo/" }
+    ],
+    "projection2026": {
+      "note": "Debt stock projected to exceed N177.14 trillion by end of 2026, driven by estimated N23.85 trillion budget deficit",
+      "source": "BudgIT analysis"
+    }
+  }
+}
