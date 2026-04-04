@@ -74,3 +74,10 @@ public/                     # favicon.svg, og-image.png, robots.txt, llms.txt
 
 - Components in `sections/` are auto-imported as `SectionsXxxSection`
 - Components in `ui/` are auto-imported as `UiXxx`
+
+## Commit Rules
+
+- Max 72 characters per commit message
+- No co-author lines
+- Group related changes into logical commits
+- Use imperative mood: "Add", "Fix", "Update", not "Added" or "Fixes"
