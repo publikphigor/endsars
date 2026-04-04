@@ -1,0 +1,41 @@
+# EndSARS.online
+
+> Data-driven transparency platform documenting Nigerian governance from 2010 to present.
+
+## Purpose
+
+EndSARS.online is a non-partisan, data-driven website that tracks key governance and socioeconomic indicators in Nigeria over the past decade and beyond. The platform presents factual, verifiable data to promote accountability and informed public discourse about Nigeria's trajectory.
+
+## Topics Covered
+
+- **Exchange Rates**: Historical Naira/USD parallel and official market rates from 2010 to present
+- **Inflation**: Consumer price index trends and purchasing power erosion
+- **Fuel Prices**: Petrol (PMS) price changes and subsidy removal impacts
+- **National Debt**: Federal and subnational debt stock, domestic vs. external borrowing
+- **Budget & Spending**: Federal budget allocations, capital vs. recurrent expenditure
+- **Poverty**: Multidimensional poverty index, headcount ratios, income inequality
+- **Violence & Security**: Conflict events, fatalities, displacement data
+- **Corruption**: Corruption Perceptions Index rankings, governance indicators
+
+## Data Sources
+
+All data is sourced from credible, internationally recognized institutions with full citations provided on every chart and data point:
+
+- **World Bank** — World Development Indicators, poverty data
+- **Central Bank of Nigeria (CBN)** — Exchange rates, monetary policy data
+- **National Bureau of Statistics (NBS)** — CPI, inflation, poverty surveys
+- **International Monetary Fund (IMF)** — Fiscal data, economic outlook
+- **Transparency International** — Corruption Perceptions Index
+- **Armed Conflict Location & Event Data Project (ACLED)** — Violence and protest data
+- **Debt Management Office (DMO)** — Public debt statistics
+
+## Technical Details
+
+- Built with Nuxt 4, Vue 3, and TypeScript
+- Static site generation for performance and accessibility
+- Fully responsive design optimized for Nigerian mobile users
+- Open data approach with downloadable datasets where available
+
+## Contact
+
+Website: https://endsars.online
