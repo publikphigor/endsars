@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@fontsource-variable/space-grotesk": "^5.2.10",
+    "@posthog/nuxt": "^1.5.103",
     "@vueuse/motion": "^3.0.3",
     "d3-geo": "^3.1.1",
     "d3-selection": "^3.0.0",
