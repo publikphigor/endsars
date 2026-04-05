@@ -10,6 +10,7 @@ const links = [
   { label: 'Map', href: '#map' },
 ]
 
+const posthog = usePostHog()
 const scrolled = ref(false)
 const mobileOpen = ref(false)
 
@@ -17,13 +18,25 @@ function onScroll() {
   scrolled.value = window.scrollY > 20
 }
 
-function scrollTo(href: string) {
+function scrollTo(href: string, label: string) {
+  if (!mobileOpen.value) {
+    posthog?.capture('nav_section_clicked', { section: label, source: 'desktop' })
+  } else {
+    posthog?.capture('nav_section_clicked', { section: label, source: 'mobile' })
+  }
   mobileOpen.value = false
   const id = href.replace('#', '')
   const el = document.getElementById(id)
   if (el) {
     el.scrollIntoView({ behavior: 'smooth' })
   }
+}
+
+function toggleMobileMenu() {
+  if (!mobileOpen.value) {
+    posthog?.capture('mobile_menu_opened')
+  }
+  mobileOpen.value = !mobileOpen.value
 }
 
 onMounted(() => {
@@ -57,7 +70,7 @@ onUnmounted(() => {
             :key="link.href"
             :href="link.href"
             class="text-sm text-black-text/70 hover:text-black transition-colors duration-150"
-            @click.prevent="scrollTo(link.href)"
+            @click.prevent="scrollTo(link.href, link.label)"
           >
             {{ link.label }}
           </a>
@@ -67,7 +80,7 @@ onUnmounted(() => {
         <button
           class="md:hidden p-2 text-black-soft"
           aria-label="Toggle menu"
-          @click="mobileOpen = !mobileOpen"
+          @click="toggleMobileMenu()"
         >
           <svg
             v-if="!mobileOpen"
@@ -107,7 +120,7 @@ onUnmounted(() => {
             :key="link.href"
             :href="link.href"
             class="block px-3 py-2 text-sm text-black-text/70 hover:text-black hover:bg-black/5 rounded transition-colors duration-150"
-            @click.prevent="scrollTo(link.href)"
+            @click.prevent="scrollTo(link.href, link.label)"
           >
             {{ link.label }}
           </a>

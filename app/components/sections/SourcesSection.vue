@@ -1,5 +1,10 @@
 <script setup lang="ts">
 const datasets = useDatasets();
+const posthog = usePostHog();
+
+function trackSourceLink(sourceName: string, category: string) {
+  posthog?.capture('source_link_clicked', { source_name: sourceName, category })
+}
 
 interface SourceGroup {
   category: string;
@@ -143,6 +148,7 @@ const sourceGroups = computed<SourceGroup[]>(() => [
                 target="_blank"
                 rel="noopener noreferrer"
                 class="text-sm text-black hover:text-green transition-colors duration-150"
+                @click="trackSourceLink(source.name, group.category)"
               >
                 {{ source.name }}
                 <span class="text-green ml-1">&nearr;</span>

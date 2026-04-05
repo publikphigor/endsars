@@ -1,5 +1,10 @@
 <script setup lang="ts">
 const currentYear = new Date().getFullYear()
+const posthog = usePostHog()
+
+function trackFooterLink(label: string) {
+  posthog?.capture('footer_link_clicked', { label })
+}
 </script>
 
 <template>
@@ -21,6 +26,7 @@ const currentYear = new Date().getFullYear()
             target="_blank"
             rel="noopener noreferrer"
             class="text-sm text-black-text/50 hover:text-green transition-colors duration-150"
+            @click="trackFooterLink('open_source')"
           >
             This project is open source &nearr;
           </a>
@@ -29,12 +35,14 @@ const currentYear = new Date().getFullYear()
             target="_blank"
             rel="noopener noreferrer"
             class="text-sm text-black-text/50 hover:text-green transition-colors duration-150"
+            @click="trackFooterLink('flag_false_info')"
           >
             Flag false information &nearr;
           </a>
           <a
             href="mailto:publikphigor@gmail.com"
             class="text-sm text-black-text/50 hover:text-green transition-colors duration-150"
+            @click="trackFooterLink('contact_developer')"
           >
             Contact Developer
           </a>
