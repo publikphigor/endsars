@@ -1,30 +1,32 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: "EndSARS.online — A Decade of Decline: Nigeria's Governance in Numbers",
-  description:
-    "Explore 14 years of Nigerian governance data: Naira collapse, rising debt, inflation, poverty, violence & corruption — all sourced from World Bank, CBN & IMF.",
-  ogTitle: "A Decade of Decline: Nigeria's Governance in Numbers",
-  ogDescription:
-    "Since 2015, the APC has governed Nigeria. The naira collapsed, inflation surged, and poverty deepened. This is not opinion — it is data.",
-  ogImage: "https://endsars.online/og-image.png",
-  ogImageWidth: "1200",
-  ogImageHeight: "630",
-  ogImageType: "image/png",
+  title: "Six years after Lekki: Nigeria in numbers",
+  description: "What happened to Nigeria after #EndSARS: the naira, prices, debt, poverty, power, health, emigration, violence and corruption. Every number is sourced.",
+  ogTitle: "Six years after Lekki: Nigeria in numbers",
+  ogDescription: "In 2025, 15,878 Nigerians were killed in political violence, the most on record. A dollar costs ₦1,331. 63% of Nigerians are poor. Every number is sourced.",
+  ogImage: "https://endsars.online/og-image.jpg",
+  ogImageSecureUrl: "https://endsars.online/og-image.jpg",
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
+  ogImageType: "image/jpeg",
+  ogImageAlt: "They asked for five things. Six years after Lekki, the state of Nigeria in sourced numbers: ₦196 to ₦1,331 per dollar, 15,878 killed in 2025, 63% below the poverty line.",
   ogType: "website",
-  ogUrl: "https://endsars.online",
-  ogSiteName: "EndSARS.online",
+  ogUrl: "https://endsars.online/",
+  ogSiteName: "endsars.online",
+  ogLocale: "en_NG",
   twitterCard: "summary_large_image",
-  twitterTitle: "A Decade of Decline: Nigeria's Governance in Numbers",
-  twitterDescription:
-    "Since 2015, the APC has governed Nigeria. The naira collapsed, inflation surged, and poverty deepened. This is not opinion — it is data.",
-  twitterImage: "https://endsars.online/og-image.png",
+  twitterTitle: "Six years after Lekki: Nigeria in numbers",
+  twitterDescription: "In 2025, 15,878 Nigerians were killed in political violence, the most on record. A dollar costs ₦1,331. 63% of Nigerians are poor. Every number is sourced.",
+  twitterImage: "https://endsars.online/og-image.jpg",
+  twitterImageAlt: "They asked for five things. Six years after Lekki, the state of Nigeria in sourced numbers: ₦196 to ₦1,331 per dollar, 15,878 killed in 2025, 63% below the poverty line.",
+  robots: "index, follow, max-image-preview:large",
 });
 
 useHead({
   htmlAttrs: { lang: "en" },
   link: [
     { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
-    { rel: "canonical", href: "https://endsars.online" },
+    { rel: "canonical", href: "https://endsars.online/" },
   ],
   script: [
     {
@@ -33,21 +35,21 @@ useHead({
         {
           "@context": "https://schema.org",
           "@type": "Article",
-          headline: "A Decade of Decline: Nigeria's Governance in Numbers",
+          headline: "Six Years After Lekki: Nigeria in Numbers",
           description:
-            "Data-driven investigation into Nigerian governance from 2010 to present, covering exchange rates, inflation, debt, poverty, violence, and corruption.",
+            "What happened to Nigeria after the #EndSARS protests: the naira, prices, debt, poverty, power, health, emigration, violence and corruption, with every number sourced.",
           url: "https://endsars.online",
-          image: "https://endsars.online/og-image.png",
+          image: "https://endsars.online/og-image.jpg",
           datePublished: "2024-10-20",
-          dateModified: "2026-04-04",
+          dateModified: "2026-09-18",
           publisher: {
             "@type": "Organization",
-            name: "EndSARS.online",
+            name: "endsars.online",
             url: "https://endsars.online",
           },
           author: {
             "@type": "Organization",
-            name: "EndSARS.online",
+            name: "endsars.online",
           },
           mainEntityOfPage: {
             "@type": "WebPage",
@@ -59,7 +61,7 @@ useHead({
           "@type": "Dataset",
           name: "Nigeria Governance Indicators (2010–Present)",
           description:
-            "Aggregated dataset of Nigerian socioeconomic and governance indicators including exchange rates, inflation, fuel prices, national debt, poverty metrics, conflict events, and corruption indices.",
+            "Nigerian socioeconomic and governance indicators, 2010 to 2026: exchange rates, inflation, fuel and food prices, public debt, poverty, food insecurity, electricity, health, education, emigration, political violence, corruption, civic space and elections.",
           url: "https://endsars.online",
           license: "https://creativecommons.org/licenses/by/4.0/",
           temporalCoverage: "2010/2026",
@@ -69,7 +71,7 @@ useHead({
           },
           creator: {
             "@type": "Organization",
-            name: "EndSARS.online",
+            name: "endsars.online",
           },
           distribution: [
             {
@@ -86,6 +88,8 @@ useHead({
             { "@type": "Organization", name: "Transparency International" },
             { "@type": "Organization", name: "Armed Conflict Location & Event Data Project (ACLED)" },
             { "@type": "Organization", name: "Debt Management Office (DMO)" },
+            { "@type": "Organization", name: "Afrobarometer" },
+            { "@type": "Organization", name: "SBM Intelligence" },
           ],
         },
       ]),
@@ -97,14 +101,19 @@ useHead({
 <template>
   <div>
     <SectionsHeroSection />
+    <SectionsEndsarsSection />
     <SectionsPowerSection />
     <SectionsNairaSection />
     <SectionsCostOfLivingSection />
     <SectionsDebtSection />
     <SectionsPovertySection />
+    <SectionsElectricitySection />
+    <SectionsHealthSection />
+    <SectionsJapaSection />
     <SectionsViolenceSection />
-    <SectionsCorruptionSection />
     <SectionsMapSection />
+    <SectionsCorruptionSection />
+    <SectionsVoteSection />
     <SectionsSourcesSection />
     <SectionsFooterSection />
   </div>

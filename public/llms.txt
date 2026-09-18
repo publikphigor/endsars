@@ -1,33 +1,37 @@
-# EndSARS.online
+# endsars.online
 
 > Data-driven transparency platform documenting Nigerian governance from 2010 to present.
 
 ## Purpose
 
-EndSARS.online is a non-partisan, data-driven website that tracks key governance and socioeconomic indicators in Nigeria over the past decade and beyond. The platform presents factual, verifiable data to promote accountability and informed public discourse about Nigeria's trajectory.
+endsars.online is a non-partisan, data-driven website that tracks key governance and socioeconomic indicators in Nigeria over the past decade and beyond. The platform presents factual, verifiable data to promote accountability and informed public discourse about Nigeria's trajectory.
 
 ## Topics Covered
 
-- **Exchange Rates**: Historical Naira/USD parallel and official market rates from 2010 to present
-- **Inflation**: Consumer price index trends and purchasing power erosion
-- **Fuel Prices**: Petrol (PMS) price changes and subsidy removal impacts
-- **National Debt**: Federal and subnational debt stock, domestic vs. external borrowing
-- **Budget & Spending**: Federal budget allocations, capital vs. recurrent expenditure
-- **Poverty**: Multidimensional poverty index, headcount ratios, income inequality
-- **Violence & Security**: Conflict events, fatalities, displacement data
-- **Corruption**: Corruption Perceptions Index rankings, governance indicators
+- #EndSARS: the five demands of October 2020, the Lekki panel findings, protest deaths, press freedom
+- Exchange rate: CBN official naira/US dollar rate, 2010 to 2026; the minimum wage in dollars
+- Prices: petrol, diesel, cooking gas and food prices; inflation before and after the 2025 CPI rebasing
+- Debt and budget: DMO public debt in naira and dollars, debt service against revenue, budgets as signed
+- Poverty and hunger: World Bank national poverty line, Cadre Harmonise food insecurity
+- Electricity: access and use per person
+- Health and education: maternal and child mortality, health spending, WAEC results, ASUU strikes
+- Emigration: UK visas and Canadian permanent residence for Nigerians, doctors leaving
+- Violence: ACLED political violence deaths 2010 to 2026, kidnapping, displacement
+- Corruption: Transparency International CPI, World Bank WGI, status of major cases
+- Elections: turnout 2011 to 2023, Afrobarometer public opinion, the January 2027 election
 
 ## Data Sources
 
 All data is sourced from credible, internationally recognized institutions with full citations provided on every chart and data point:
 
-- **World Bank** — World Development Indicators, poverty data
-- **Central Bank of Nigeria (CBN)** — Exchange rates, monetary policy data
-- **National Bureau of Statistics (NBS)** — CPI, inflation, poverty surveys
-- **International Monetary Fund (IMF)** — Fiscal data, economic outlook
-- **Transparency International** — Corruption Perceptions Index
-- **Armed Conflict Location & Event Data Project (ACLED)** — Violence and protest data
-- **Debt Management Office (DMO)** — Public debt statistics
+- **World Bank**: World Development Indicators, poverty data
+- **Central Bank of Nigeria (CBN)**: Exchange rates, monetary policy data
+- **National Bureau of Statistics (NBS)**: CPI, inflation, poverty surveys
+- **International Monetary Fund (IMF)**: Fiscal data, economic outlook
+- **Transparency International**: Corruption Perceptions Index
+- **Armed Conflict Location & Event Data Project (ACLED)**: Violence and protest data
+- **Debt Management Office (DMO)**: Public debt statistics
+- **Afrobarometer**, **SBM Intelligence**, **IDMC**, **UK Home Office**, **IRCC** and others, listed on the page
 
 ## Technical Details
 

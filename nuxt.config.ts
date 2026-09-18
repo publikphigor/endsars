@@ -4,29 +4,13 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
 
-  modules: ["@vueuse/motion/nuxt", "@nuxtjs/seo", "@posthog/nuxt"],
-
-  runtimeConfig: {
-    public: {
-      posthog: {
-        publicKey: process.env.NUXT_PUBLIC_POSTHOG_PROJECT_TOKEN || "",
-        host: process.env.NUXT_PUBLIC_POSTHOG_HOST || "",
-      },
-    },
-  },
-
-  posthogConfig: {
-    publicKey: process.env.NUXT_PUBLIC_POSTHOG_PROJECT_TOKEN || "",
-    host: process.env.NUXT_PUBLIC_POSTHOG_HOST || "",
-    clientConfig: {
-      capture_exceptions: true,
-      __add_tracing_headers: ["localhost", "endsars.online"],
-    },
-  },
+  modules: ["@vueuse/motion/nuxt", "@nuxtjs/seo"],
 
   site: {
     url: "https://endsars.online",
-    name: "EndSARS.online",
+    name: "endsars.online",
+    description: "What happened to Nigeria after #EndSARS: the naira, prices, debt, poverty, power, health, emigration, violence and corruption. Every number is sourced.",
+    defaultLocale: "en",
   },
 
   ogImage: {
