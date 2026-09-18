@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   site: {
     url: "https://endsars.online",
     name: "endsars.online",
-    description: "What happened to Nigeria after #EndSARS: the naira, prices, debt, poverty, power, health, emigration, violence and corruption. Every number is sourced.",
+    description: "How Nigeria has been governed since 2010: the naira, prices, debt, poverty, power, health, emigration, violence and corruption. Every number is sourced.",
     defaultLocale: "en",
   },
 
