@@ -10,7 +10,7 @@ defineProps<Props>()
 </script>
 
 <template>
-  <div class="bg-white-soft border-l-2 border-green px-6 py-5">
+  <div class="border-t border-black/15 pt-5">
     <p class="text-2xl md:text-3xl font-bold text-black leading-tight">
       {{ value }}
     </p>
@@ -20,7 +20,7 @@ defineProps<Props>()
         v-if="source && sourceUrl"
         :source="source"
         :url="sourceUrl"
-        :number="1"
+       
       />
     </p>
   </div>

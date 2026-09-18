@@ -19,6 +19,7 @@
 }
 
 html {
+  font-size: 16px;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -35,15 +36,47 @@ body {
   color: #FFFFFF;
 }
 
+/* Scale everything up a little on very large screens (Tailwind sizes are rem-based) */
+@media (min-width: 1920px) {
+  html { font-size: 18px; }
+}
+@media (min-width: 2560px) {
+  html { font-size: 20px; }
+}
+
+/* Page width: fills the screen, with gutters that grow with it */
+.page-container {
+  width: 100%;
+  max-width: 2400px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+.page-container-inner {
+  width: 100%;
+  max-width: 2400px;
+  margin-inline: auto;
+}
+@media (min-width: 640px) { .page-container { padding-inline: 1.5rem; } }
+@media (min-width: 1024px) { .page-container { padding-inline: 3rem; } }
+@media (min-width: 1536px) { .page-container { padding-inline: 5rem; } }
+
 /* Chart container defaults */
 .chart-container {
   width: 100%;
-  height: 380px;
-  max-height: 380px;
+  height: clamp(340px, 26vw, 620px);
 }
 
 .chart-container-sm {
   width: 100%;
-  height: 300px;
-  max-height: 300px;
+  height: clamp(300px, 22vw, 520px);
+}
+
+/* Charts keep a readable width on phones and scroll sideways instead of squashing */
+.chart-scroll {
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.chart-scroll::-webkit-scrollbar {
+  display: none;
 }

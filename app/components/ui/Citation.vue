@@ -2,7 +2,7 @@
 interface Props {
   source: string
   url: string
-  number: number
+  number?: number
 }
 
 defineProps<Props>()
@@ -22,9 +22,10 @@ const showTooltip = ref(false)
       :href="url"
       target="_blank"
       rel="noopener noreferrer"
+      :aria-label="`Source: ${source}`"
       class="cursor-pointer text-green text-xs font-semibold ml-0.5 tabular-nums hover:underline"
     >
-      <sup>[{{ number }}]</sup>
+      <sup>{{ number ? `[${number}]` : '↗' }}</sup>
     </a>
 
     <Transition name="tooltip">
@@ -32,7 +33,7 @@ const showTooltip = ref(false)
         v-if="showTooltip"
         class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-50 min-w-48 pointer-events-auto"
       >
-        <div class="bg-black-soft border-t-2 border-green rounded px-3 py-2 text-xs shadow-lg">
+        <div class="bg-black-soft rounded px-3 py-2 text-xs shadow-lg">
           <a
             :href="url"
             target="_blank"
