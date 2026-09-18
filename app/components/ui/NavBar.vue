@@ -13,11 +13,62 @@ const links = [
   { label: '2027', href: '#vote' },
 ]
 
+// Sections without their own nav link light up the nearest one
+const sectionToLink: Record<string, string> = {
+  lekki: '#lekki',
+  power: '#lekki',
+  naira: '#naira',
+  'cost-of-living': '#cost-of-living',
+  debt: '#debt',
+  poverty: '#poverty',
+  grid: '#grid',
+  health: '#health',
+  japa: '#japa',
+  violence: '#violence',
+  map: '#violence',
+  corruption: '#corruption',
+  vote: '#vote',
+  sources: '#vote',
+}
+
 const scrolled = ref(false)
 const mobileOpen = ref(false)
+const active = ref<string | null>(null)
+const hovered = ref<string | null>(null)
 
+// Sliding highlight behind the desktop links
+const linkEls = new Map<string, HTMLElement>()
+const pill = ref({ left: 0, width: 0, visible: false })
+const target = computed(() => hovered.value ?? active.value)
+
+function setLinkEl(href: string, el: unknown) {
+  if (el instanceof HTMLElement) linkEls.set(href, el)
+}
+
+function placePill() {
+  const el = target.value ? linkEls.get(target.value) : undefined
+  pill.value = el
+    ? { left: el.offsetLeft, width: el.offsetWidth, visible: true }
+    : { ...pill.value, visible: false }
+}
+
+watch(target, placePill)
+
+function updateActive() {
+  const line = window.innerHeight * 0.35
+  let current: string | null = null
+  for (const section of document.querySelectorAll<HTMLElement>('section[id]')) {
+    if (section.getBoundingClientRect().top <= line) current = sectionToLink[section.id] ?? null
+    else break
+  }
+  active.value = current
+}
+
+let frame = 0
 function onScroll() {
   scrolled.value = window.scrollY > 20
+  cancelAnimationFrame(frame)
+  frame = requestAnimationFrame(updateActive)
 }
 
 function scrollTo(href: string) {
@@ -35,11 +86,16 @@ function toggleMobileMenu() {
 
 onMounted(() => {
   window.addEventListener('scroll', onScroll, { passive: true })
+  window.addEventListener('resize', placePill, { passive: true })
   onScroll()
+  // Link widths change once the web font loads
+  document.fonts?.ready.then(placePill)
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', onScroll)
+  window.removeEventListener('resize', placePill)
+  cancelAnimationFrame(frame)
 })
 </script>
 
@@ -58,12 +114,27 @@ onUnmounted(() => {
         </NuxtLink>
 
         <!-- Desktop links -->
-        <div class="hidden xl:flex items-center gap-5">
+        <div class="hidden xl:flex relative items-center gap-1" @mouseleave="hovered = null">
+          <span
+            aria-hidden="true"
+            class="nav-pill absolute top-1/2 h-8 rounded-full bg-green/10 pointer-events-none"
+            :style="{
+              width: `${pill.width}px`,
+              transform: `translate(${pill.left}px, -50%)`,
+              opacity: pill.visible ? 1 : 0,
+            }"
+          />
           <a
             v-for="link in links"
             :key="link.href"
+            :ref="el => setLinkEl(link.href, el)"
             :href="link.href"
-            class="text-sm text-black-text/70 hover:text-black transition-colors duration-150"
+            :aria-current="active === link.href ? 'location' : undefined"
+            class="relative px-3 py-1.5 text-sm transition-colors duration-200"
+            :class="target === link.href ? 'text-green' : 'text-black-text/70'"
+            @mouseenter="hovered = link.href"
+            @focus="hovered = link.href"
+            @blur="hovered = null"
             @click.prevent="scrollTo(link.href)"
           >
             {{ link.label }}
@@ -125,6 +196,20 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+.nav-pill {
+  left: 0;
+  transition:
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    width 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 200ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-pill {
+    transition: opacity 150ms ease;
+  }
+}
+
 .mobile-menu-enter-active,
 .mobile-menu-leave-active {
   transition: opacity 200ms ease, max-height 200ms ease;
