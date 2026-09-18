@@ -3,6 +3,8 @@ interface Props {
   id: string
   title: string
   titleHtml?: string
+  /** One word of the title to show in green */
+  highlight?: string
   subtitle?: string
   lede?: string
   image?: string
@@ -10,8 +12,18 @@ interface Props {
   dark?: boolean
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   dark: false,
+})
+
+const titleParts = computed(() => {
+  const i = props.highlight ? props.title.indexOf(props.highlight) : -1
+  if (i < 0) return { before: props.title, word: '', after: '' }
+  return {
+    before: props.title.slice(0, i),
+    word: props.highlight!,
+    after: props.title.slice(i + props.highlight!.length),
+  }
 })
 </script>
 
@@ -34,7 +46,7 @@ withDefaults(defineProps<Props>(), {
           v-html="titleHtml"
         />
         <h2 v-else class="text-3xl md:text-5xl lg:text-6xl font-bold text-black leading-tight max-w-4xl">
-          {{ title }}
+          {{ titleParts.before }}<span v-if="titleParts.word" class="text-green">{{ titleParts.word }}</span>{{ titleParts.after }}
         </h2>
         <p v-if="subtitle" class="text-lg md:text-xl text-black-text/60 mt-4 max-w-2xl">
           {{ subtitle }}

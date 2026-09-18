@@ -33,6 +33,7 @@ const latestOpinion = opinion[opinion.length - 1]!
   <UiSectionWrapper
     id="vote"
     title="The next vote is on 16 January 2027"
+    highlight="vote"
     subtitle="Turnout in presidential elections has fallen at every election since 2011, from 54% to 27%."
     image="/images/vote.webp"
     image-alt="Linocut illustration of a hand dropping a folded ballot into a clear ballot box on a wooden table"

@@ -43,6 +43,7 @@ const efccOption = computed(() => {
   <UiSectionWrapper
     id="corruption"
     title="Many cases, few verdicts"
+    highlight="verdicts"
     :subtitle="`Nigeria scored ${latestCPI.score} out of 100 on Transparency International's 2025 corruption index, ranking ${latestCPI.rank}th of ${latestCPI.totalCountries}. The score has barely moved since 2012.`"
     lede="Every administration since 2010 has promised to fight corruption, and each has produced headline cases. Very few of the biggest ones have ended in a conviction that stuck. Trials run for a decade, charges are dropped, convictions are overturned on appeal, and in 2022 two jailed former governors were pardoned. The table below follows cases from all three presidencies."
     dark

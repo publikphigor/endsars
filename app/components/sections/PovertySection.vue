@@ -43,6 +43,7 @@ const latestUnder = poverty.undernourishment[poverty.undernourishment.length - 1
   <UiSectionWrapper
     id="poverty"
     title="Most Nigerians are now poor"
+    highlight="poor"
     subtitle="The World Bank estimates that 63% of Nigerians lived below the national poverty line in 2025. In 2019 the figure was 40%."
     image="/images/market.webp"
     image-alt="Linocut illustration of a market trader seen from behind, sitting before bowls of garri, beans and tomatoes, most only half full"

@@ -40,6 +40,7 @@ const gdpOption = computed(() => timeSeries({
   <UiSectionWrapper
     id="naira"
     title="The naira lost most of its value"
+    highlight="naira"
     subtitle="A dollar cost ₦196.50 at the official rate in May 2015. On 17 September 2026 it cost ₦1,330.78."
     image="/images/naira.webp"
     image-alt="Linocut illustration of two hands counting a thick bundle of banknotes beside a small bag of rice on a market table"

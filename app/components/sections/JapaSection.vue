@@ -36,6 +36,7 @@ const latestRemit = remit[remit.length - 1]!
   <UiSectionWrapper
     id="japa"
     title="The ones who left"
+    highlight="left"
     subtitle="In 2023 the UK issued 281,658 visas to Nigerians, the most in any year since at least 2010."
     image="/images/japa.webp"
     image-alt="Linocut illustration of three young travellers pulling green suitcases across an airport hall toward a waiting plane"

@@ -35,6 +35,7 @@ const latestU5 = h.under5[h.under5.length - 1]!
   <UiSectionWrapper
     id="health"
     title="Hospitals and classrooms"
+    highlight="Hospitals"
     :subtitle="`Nigeria accounts for about ${h.maternalShareGlobal}% of all maternal deaths in the world.`"
     image="/images/school.webp"
     image-alt="Linocut illustration of an empty rural classroom with wooden benches, a blank chalkboard and a small pair of sandals by the door"

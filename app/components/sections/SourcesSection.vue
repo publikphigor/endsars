@@ -41,6 +41,7 @@ const sourceGroups = computed<SourceGroup[]>(() =>
   <UiSectionWrapper
     id="sources"
     title="Sources and method"
+    highlight="Sources"
     subtitle="Every number on this page links back to where it came from."
     dark
   >

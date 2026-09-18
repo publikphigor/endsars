@@ -25,6 +25,7 @@ const useOption = computed(() => rankedBars(
   <UiSectionWrapper
     id="grid"
     title="The lights are still off"
+    highlight="off"
     :subtitle="`About ${electricity.withoutPower2024.nigeria_m} million Nigerians had no electricity in 2024, more than in any other country.`"
     image="/images/power.webp"
     image-alt="Linocut illustration of dark apartment blocks at night, with a single petrol generator smoking on the street and a cable running into the building"

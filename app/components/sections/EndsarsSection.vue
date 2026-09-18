@@ -32,7 +32,8 @@ const fhOption = computed(() => timeSeries({
 <template>
   <UiSectionWrapper
     id="lekki"
-    title="What happened to the five demands"
+    title="What happened to the five demands?"
+    highlight="five"
     lede="SARS, a police unit set up to fight armed robbery, had been accused for years of extortion, torture and killings. In October 2020 young Nigerians took to the streets with five demands, and the presidency said it accepted all of them. The record since then is thin."
     dark
   >
@@ -77,7 +78,7 @@ const fhOption = computed(() => timeSeries({
 
       <div>
         <h3 class="text-2xl md:text-3xl font-bold text-black max-w-3xl">
-          Speaking up has become riskier
+          Speaking up has become <span class="text-green">riskier</span>
         </h3>
         <p class="text-black-text/70 mt-3 max-w-3xl leading-relaxed">
           Twitter was blocked nationwide for {{ protests.twitterBanDays }} days in 2021 after it deleted a post by

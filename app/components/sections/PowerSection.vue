@@ -54,6 +54,7 @@ const eras = computed<TimelineEra[]>(() => {
   <UiSectionWrapper
     id="power"
     title="Who has held power"
+    highlight="power"
     subtitle="Three presidents since 2010. The PDP governed until May 2015 and the APC has governed since. The shaded bands on every chart below mark these terms."
   >
     <!-- Horizontal timeline line -->

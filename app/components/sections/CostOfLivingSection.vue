@@ -53,6 +53,7 @@ const latestJollof = jollof.newBasis[jollof.newBasis.length - 1]!
   <UiSectionWrapper
     id="cost-of-living"
     title="The price of getting by"
+    highlight="price"
     subtitle="Petrol cost ₦65 a litre in 2010. On 12 September 2026, NNPC stations in Lagos raised it to ₦1,375."
     image="/images/fuel.webp"
     image-alt="Linocut illustration of a long queue of cars and motorcycle taxis stretching away from a single petrol pump"

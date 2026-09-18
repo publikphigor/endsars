@@ -42,6 +42,7 @@ const debtShare = Math.round((latestBudget.debt_service_trn! / latestBudget.tota
   <UiSectionWrapper
     id="debt"
     title="Borrowing to pay for borrowing"
+    highlight="pay"
     subtitle="Public debt was ₦12.6 trillion at the end of 2015. By March 2026 it was ₦159.35 trillion."
     lede="Part of that jump comes from the naira's fall, which makes foreign loans look bigger when they are counted in naira. Measured in dollars, the debt still grew from $65 billion to $115 billion. The harder problem is what it costs to carry. For the first four months of 2022, the federal government spent more servicing its debts than it collected in revenue."
     dark

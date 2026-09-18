@@ -71,6 +71,7 @@ const hoveredZone = computed(() => {
   <UiSectionWrapper
     id="map"
     title="No region is spared"
+    highlight="spared"
     subtitle="The north carries most of the killing, but every geopolitical zone has its own conflict. Hover over a state to see its zone. Death tolls are from ACLED."
   >
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
