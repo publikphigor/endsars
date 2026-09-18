@@ -130,28 +130,38 @@
       "total_appropriation_trn": 28.77,
       "label": "2024 Appropriation Act",
       "president": "Bola Tinubu",
-      "note": "Budget of Renewed Hope. Signed December 2023. First full Tinubu budget."
+      "note": "Signed at ₦28.78tn, raised to ₦35.05tn by amendment in 2024, re-enacted at ₦43.56tn in December 2025."
     },
     {
       "year": 2025,
-      "total_appropriation_trn": 49.74,
+      "total_appropriation_trn": 54.99,
       "label": "2025 Appropriation Act",
       "president": "Bola Tinubu",
-      "note": "Budget of Restoration. Significant increase driven by naira devaluation effects and expanded capital spending plans."
+      "note": "Signed 28 February 2025 at ₦54.99tn (proposal was ₦49.74tn). Repealed and re-enacted at ₦48.32tn in December 2025.",
+      "proposal_trn": 49.74,
+      "sources": [
+        "https://nairametrics.com/2025/02/28/tinubu-signs-n54-9-trillion-2025-budget-into-law/",
+        "https://economicconfidential.com/nass-revise-budget/"
+      ]
     },
     {
       "year": 2026,
-      "total_appropriation_trn": 68.30,
+      "total_appropriation_trn": 68.32,
       "proposal_trn": 58.18,
       "label": "2026 Appropriation Act",
       "president": "Bola Tinubu",
-      "note": "Budget of Consolidation. Tinubu proposed N58.18 trillion, National Assembly approved N68.30 trillion. Includes N15.52 trillion for debt servicing and N15.25 trillion recurrent (non-debt). Exchange rate assumption: N1,400/USD.",
+      "note": "Signed 17 April 2026. Tinubu proposed ₦58.18tn. Debt service ₦15.8tn, capital ₦32.2tn.",
       "sources": [
-        "https://statehouse.gov.ng/president-tinubu-presents-%E2%82%A658-18-trillion-2026-appropriation-bill-vows-stronger-discipline-in-budget-execution/",
-        "https://naltf.gov.ng/reps-approve-n68-3-trillion-budget-of-consolidation-for-2026-fiscal-year/",
-        "https://budgetoffice.gov.ng/index.php/resources/internal-resources/budget-documents/2026-budget"
-      ]
+        "https://statehouse.gov.ng/president-tinubu-assents-to-2026-appropriation-bill-and-2025-budget-extension/"
+      ],
+      "debt_service_trn": 15.8,
+      "capital_trn": 32.2
     }
   ],
-  "currencyNote": "All budget figures are in Nigerian Naira (NGN). Trillions = 10^12. The significant jump from 2023 onward partly reflects naira devaluation — the same USD-equivalent spending appears much larger in naira terms."
+  "currencyNote": "All budget figures are in Nigerian Naira (NGN). Trillions = 10^12. The significant jump from 2023 onward partly reflects naira devaluation — the same USD-equivalent spending appears much larger in naira terms.",
+  "capitalRelease2025": {
+    "value": 17.7,
+    "note": "₦3.10tn of the 2025 capital budget released by Q3 2025",
+    "source": "https://statehouse.gov.ng/president-tinubu-presents-%E2%82%A658-18-trillion-2026-appropriation-bill-vows-stronger-discipline-in-budget-execution/"
+  }
 }

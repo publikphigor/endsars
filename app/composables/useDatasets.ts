@@ -9,6 +9,12 @@ import type {
   FuelPriceData,
   BudgetData,
   GovernmentOfficialsData,
+  CostOfLivingData,
+  EconomyData,
+  ElectricityData,
+  HealthEducationData,
+  JapaData,
+  AccountabilityData,
 } from '~/types/data'
 
 import exchangeRateJson from '../../data/exchange-rate.json'
@@ -20,6 +26,12 @@ import violenceJson from '../../data/violence.json'
 import fuelPriceJson from '../../data/fuel-price.json'
 import budgetJson from '../../data/budget.json'
 import governmentOfficialsJson from '../../data/government-officials.json'
+import costOfLivingJson from '../../data/cost-of-living.json'
+import economyJson from '../../data/economy.json'
+import electricityJson from '../../data/electricity.json'
+import healthEducationJson from '../../data/health-education.json'
+import japaJson from '../../data/japa.json'
+import accountabilityJson from '../../data/accountability.json'
 
 const exchangeRate = exchangeRateJson as unknown as ExchangeRateData
 const inflation = inflationJson as unknown as InflationData
@@ -30,6 +42,12 @@ const violence = violenceJson as unknown as ViolenceData
 const fuelPrice = fuelPriceJson as unknown as FuelPriceData
 const budget = budgetJson as unknown as BudgetData
 const governmentOfficials = governmentOfficialsJson as unknown as GovernmentOfficialsData
+const costOfLiving = costOfLivingJson as unknown as CostOfLivingData
+const economy = economyJson as unknown as EconomyData
+const electricity = electricityJson as unknown as ElectricityData
+const healthEducation = healthEducationJson as unknown as HealthEducationData
+const japa = japaJson as unknown as JapaData
+const accountability = accountabilityJson as unknown as AccountabilityData
 
 export function useDatasets(): AllDatasets {
   return {
@@ -42,5 +60,11 @@ export function useDatasets(): AllDatasets {
     fuelPrice,
     budget,
     governmentOfficials,
+    costOfLiving,
+    economy,
+    electricity,
+    healthEducation,
+    japa,
+    accountability,
   }
 }

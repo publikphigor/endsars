@@ -1,0 +1,169 @@
+{
+  "category": "Cost of Living",
+  "description": "Wages, food prices and the SBM Jollof Index",
+  "sources": [
+    {
+      "name": "Channels TV, Buhari signs ₦30,000 minimum wage",
+      "url": "https://www.channelstv.com/2019/04/18/breaking-buhari-signs-n30000-minimum-wage-bill-into-law/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Channels TV, Tinubu signs ₦70,000 minimum wage",
+      "url": "https://www.channelstv.com/2024/07/29/breaking-tinubu-signs-new-minimum-wage-bill-into-law/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "CBN daily exchange rates",
+      "url": "https://www.cbn.gov.ng/rates/ExchRateByCurrency.html",
+      "retrieved": "2026-09-18",
+      "note": "USD conversions use the CBN rate on the signing date"
+    },
+    {
+      "name": "NBS Selected Food Prices Watch, May 2023",
+      "url": "https://www.nigerianstat.gov.ng/pdfuploads/SELECTED%20FOOD%20PRICE%20MAY%202023%20REPORT.pdf",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Nairametrics, NBS food prices March 2026",
+      "url": "http://nairametrics.com/2026/05/07/food-prices-beans-garri-eggs-record-sharp-declines-in-march-nbs/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Newsdiary, NBS food prices May 2026",
+      "url": "https://newsdiaryonline.com/tomato-food-prices-rise-in-may-nbs/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "SBM Intelligence, Jollof Index Q2 2026",
+      "url": "https://sbmintelligence.substack.com/p/the-sbm-jollof-index-q2-2026-rebasing",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "SBM Intelligence, Jollof Index (June 2025)",
+      "url": "https://sbmintelligence.substack.com/p/the-sbm-jollof-index-the-crushing",
+      "retrieved": "2026-09-18"
+    }
+  ],
+  "minimumWage": [
+    {
+      "year": 2011,
+      "naira": 18000,
+      "rate": 150.62,
+      "usd": 119.5,
+      "president": "Jonathan",
+      "note": "Signed March 2011"
+    },
+    {
+      "year": 2019,
+      "naira": 30000,
+      "rate": 306.45,
+      "usd": 97.9,
+      "president": "Buhari",
+      "note": "Signed 18 April 2019"
+    },
+    {
+      "year": 2024,
+      "naira": 70000,
+      "rate": 1609.57,
+      "usd": 43.5,
+      "president": "Tinubu",
+      "note": "Signed 29 July 2024"
+    },
+    {
+      "year": 2026,
+      "naira": 70000,
+      "rate": 1330.78,
+      "usd": 52.6,
+      "president": "Tinubu",
+      "note": "Same wage at the 17 September 2026 rate"
+    }
+  ],
+  "wageInPetrol": {
+    "2011": 277,
+    "2026": 44,
+    "note": "₦18,000 ÷ ₦65 in 2011; ₦70,000 ÷ ₦1,596.25 (NBS May 2026)"
+  },
+  "foodPrices": [
+    {
+      "item": "Beans (brown), 1kg",
+      "may2023": 629.75,
+      "latest": 1344.93,
+      "latestDate": "May 2026"
+    },
+    {
+      "item": "Tomatoes, 1kg",
+      "may2023": 498.34,
+      "latest": 1560.56,
+      "latestDate": "May 2026"
+    },
+    {
+      "item": "Garri (white), 1kg",
+      "may2023": 371.42,
+      "latest": 801.54,
+      "latestDate": "Mar 2026"
+    },
+    {
+      "item": "Local rice, 1kg",
+      "may2023": 555.18,
+      "latest": 1944.64,
+      "latestDate": "Oct 2024"
+    },
+    {
+      "item": "Sliced bread, 500g",
+      "may2023": 596.11,
+      "latest": 1550.24,
+      "latestDate": "Oct 2024"
+    }
+  ],
+  "jollofIndex": {
+    "note": "Cost of a pot of jollof rice for a family of five. SBM changed its basket in 2025, so the two series are shown separately.",
+    "oldBasis": [
+      {
+        "date": "2022-09",
+        "value": 9917
+      },
+      {
+        "date": "2023-03",
+        "value": 10882
+      },
+      {
+        "date": "2023-06",
+        "value": 12373
+      },
+      {
+        "date": "2023-10",
+        "value": 13106
+      },
+      {
+        "date": "2024-03",
+        "value": 16955
+      },
+      {
+        "date": "2025-06",
+        "value": 27528
+      }
+    ],
+    "newBasis": [
+      {
+        "date": "2025-07",
+        "value": 25798
+      },
+      {
+        "date": "2025-10",
+        "value": 25486
+      },
+      {
+        "date": "2026-03",
+        "value": 30435
+      },
+      {
+        "date": "2026-06",
+        "value": 29578
+      }
+    ],
+    "firstReading": {
+      "date": "2016-07",
+      "value": 4087
+    }
+  }
+}

@@ -1,0 +1,315 @@
+{
+  "category": "Accountability and Civic Space",
+  "description": "#EndSARS, protest, press freedom, elections and public opinion",
+  "sources": [
+    {
+      "name": "BusinessDay, key points of the Lagos #EndSARS panel report",
+      "url": "https://businessday.ng/news/article/key-points-from-the-endsars-lagos-state-panel-of-inquiry-report/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "TheCable, Lagos panel lists 48 victims of Lekki shooting",
+      "url": "https://www.thecable.ng/full-list-nine-dead-four-missing-lagos-endsars-panel-lists-48-victims-of-lekki-shooting",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Al Jazeera, #EndSARS victims await justice five years on",
+      "url": "https://www.aljazeera.com/features/2025/10/20/nigerias-victims-of-endsars-protest-violence-await-justice-five-years-on",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Amnesty International Nigeria, #EndSARS killings",
+      "url": "https://www.amnesty.org.ng/2020/10/21/nigeria-killing-of-endsars-protesters-by-the-military-must-be-investigated/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Amnesty International Nigeria, #EndBadGovernance protests",
+      "url": "https://www.amnesty.org.ng/2024/11/28/nigeria-police-used-excessive-force-to-violently-quash-endbadgovernance-protests/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "BBC, treason charges against children dropped",
+      "url": "https://www.bbc.com/news/articles/cr4lzqe79x3o",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Premium Times, ECOWAS court declares Twitter ban illegal",
+      "url": "https://www.premiumtimesng.com/news/headlines/542696-why-ecowas-court-declared-twitter-ban-by-nigerian-govt-illegal.html",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "RSF World Press Freedom Index",
+      "url": "https://rsf.org/en/country/nigeria",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Freedom House, Freedom in the World: Nigeria",
+      "url": "https://freedomhouse.org/country/nigeria/freedom-world/2026",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "CIVICUS Monitor, Nigeria",
+      "url": "https://monitor.civicus.org/country/nigeria/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "BusinessDay, INEC declares 2023 result",
+      "url": "https://businessday.ng/nigeriadecidesliveupdates/article/inec-declares-tinubu-winner-of-nigerias-2023-presidential-election/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Wikipedia, Nigerian presidential elections 2011-2023 (INEC and International IDEA figures)",
+      "url": "https://en.wikipedia.org/wiki/2023_Nigerian_presidential_election",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Premium Times, INEC 2027 election timetable",
+      "url": "https://www.premiumtimesng.com/news/top-news/859957-updated-inec-reschedules-2027-general-election-releases-new-election-timetable.html",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Vanguard, INEC final presidential candidates list",
+      "url": "https://www.vanguardngr.com/2026/09/2027-tinubu-atiku-obi-15-others-make-inec-final-presidential-candidates-list/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Afrobarometer, Nigeria survey data (Rounds 5-10)",
+      "url": "https://www.afrobarometer.org/surveys-and-methods/survey-resources/?select-countries%5B%5D=nigeria",
+      "retrieved": "2026-09-18",
+      "note": "Weighted percentages calculated by endsars.online from the public data files"
+    }
+  ],
+  "endsars": {
+    "demands": [
+      "Release every arrested protester",
+      "Justice and compensation for the families of people killed by police",
+      "An independent body, within ten days, to investigate and prosecute police misconduct",
+      "Psychological evaluation and retraining of SARS officers before redeployment",
+      "Better pay for police officers"
+    ],
+    "outcomes": [
+      {
+        "fact": "SARS dissolved",
+        "detail": "Announced 11 October 2020. Two days later police announced a replacement unit, SWAT."
+      },
+      {
+        "fact": "9 dead, 4 missing at Lekki",
+        "detail": "The Lagos judicial panel listed 48 casualties and said the shooting could be described as a massacre. The Lagos State white paper rejected that finding."
+      },
+      {
+        "fact": "No one charged",
+        "detail": "Five years on, no soldier or police officer has been charged over the Lekki shooting (Al Jazeera, October 2025)."
+      },
+      {
+        "fact": "₦410m to 70 victims",
+        "detail": "Compensation paid by Lagos State to victims of police abuse and their families, about $279,000."
+      },
+      {
+        "fact": "ECOWAS court ruling",
+        "detail": "In July 2024 the regional court found that Nigeria violated protesters' rights under the African Charter."
+      }
+    ],
+    "deathsNationwide": 56
+  },
+  "protests": {
+    "endBadGovernance": {
+      "killed": 24,
+      "detained": 1200,
+      "minorsCharged": 30,
+      "note": "August 2024. More than 30 children were charged with treason in November 2024; the charges were dropped days later."
+    },
+    "twitterBanDays": 222
+  },
+  "pressFreedomRank": [
+    {
+      "year": 2013,
+      "rank": 115
+    },
+    {
+      "year": 2014,
+      "rank": 112
+    },
+    {
+      "year": 2015,
+      "rank": 111
+    },
+    {
+      "year": 2016,
+      "rank": 116
+    },
+    {
+      "year": 2017,
+      "rank": 122
+    },
+    {
+      "year": 2018,
+      "rank": 119
+    },
+    {
+      "year": 2019,
+      "rank": 120
+    },
+    {
+      "year": 2020,
+      "rank": 115
+    },
+    {
+      "year": 2021,
+      "rank": 120
+    },
+    {
+      "year": 2022,
+      "rank": 129
+    },
+    {
+      "year": 2023,
+      "rank": 123
+    },
+    {
+      "year": 2024,
+      "rank": 112
+    },
+    {
+      "year": 2025,
+      "rank": 122
+    },
+    {
+      "year": 2026,
+      "rank": 112
+    }
+  ],
+  "freedomHouse": [
+    {
+      "year": 2017,
+      "score": 50
+    },
+    {
+      "year": 2018,
+      "score": 50
+    },
+    {
+      "year": 2019,
+      "score": 50
+    },
+    {
+      "year": 2020,
+      "score": 47
+    },
+    {
+      "year": 2021,
+      "score": 45
+    },
+    {
+      "year": 2022,
+      "score": 43
+    },
+    {
+      "year": 2023,
+      "score": 43
+    },
+    {
+      "year": 2024,
+      "score": 44
+    },
+    {
+      "year": 2025,
+      "score": 44
+    },
+    {
+      "year": 2026,
+      "score": 44
+    }
+  ],
+  "civicus": {
+    "rating": "Repressed",
+    "since": "December 2019"
+  },
+  "elections": [
+    {
+      "year": 2011,
+      "winner": "Goodluck Jonathan",
+      "party": "PDP",
+      "votes": 22495187,
+      "share": 58.87,
+      "registered": 73528040,
+      "turnout": 53.68
+    },
+    {
+      "year": 2015,
+      "winner": "Muhammadu Buhari",
+      "party": "APC",
+      "votes": 15424921,
+      "share": 53.96,
+      "registered": 68833476,
+      "turnout": 43.65
+    },
+    {
+      "year": 2019,
+      "winner": "Muhammadu Buhari",
+      "party": "APC",
+      "votes": 15191847,
+      "share": 55.6,
+      "registered": 82344107,
+      "turnout": 34.75
+    },
+    {
+      "year": 2023,
+      "winner": "Bola Tinubu",
+      "party": "APC",
+      "votes": 8794726,
+      "share": 36.61,
+      "registered": 93469008,
+      "turnout": 26.71
+    }
+  ],
+  "nextElection": {
+    "date": "2027-01-16",
+    "candidates": 18,
+    "note": "Presidential and National Assembly elections are on 16 January 2027, and governorship elections follow on 6 February."
+  },
+  "opinion": [
+    {
+      "survey": "2012/13",
+      "president": "Jonathan",
+      "wrongDirection": 70.4,
+      "approve": 49.3,
+      "trustPolice": 16.1
+    },
+    {
+      "survey": "2014/15",
+      "president": "Jonathan",
+      "wrongDirection": 74.7,
+      "approve": 38.8,
+      "trustPolice": 21.0
+    },
+    {
+      "survey": "2017",
+      "president": "Buhari",
+      "wrongDirection": 62.6,
+      "approve": 52.4,
+      "trustPolice": 26.7
+    },
+    {
+      "survey": "2020",
+      "president": "Buhari",
+      "wrongDirection": 69.0,
+      "approve": 54.4,
+      "trustPolice": 24.2
+    },
+    {
+      "survey": "2022",
+      "president": "Buhari",
+      "wrongDirection": 89.2,
+      "approve": 30.8,
+      "trustPolice": 13.8
+    },
+    {
+      "survey": "2024",
+      "president": "Tinubu",
+      "wrongDirection": 93.0,
+      "approve": 13.7,
+      "trustPolice": 17.1
+    }
+  ],
+  "wentHungry2024": 82.5
+}

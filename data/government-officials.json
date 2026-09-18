@@ -1,7 +1,7 @@
 {
   "category": "Government Officials",
   "description": "Key Nigerian government officials from 2010 to present (April 2026)",
-  "lastUpdated": "2026-04-04",
+  "lastUpdated": "2026-09-18",
   "sources": [
     {
       "name": "Wikipedia - President of Nigeria",
@@ -214,22 +214,31 @@
       "party": "PDP",
       "president": "Goodluck Ebele Jonathan",
       "vicePresident": "Namadi Sambo",
-      "senatePresidents": ["David Mark"],
-      "speakers": ["Dimeji Bankole", "Aminu Waziri Tambuwal"],
-      "financeMinisters": ["Olusegun Olutoyin Aganga", "Ngozi Okonjo-Iweala"],
-      "nationalAssemblies": ["6th (2007-2011)", "7th (2011-2015)"],
+      "senatePresidents": [
+        "David Mark"
+      ],
+      "speakers": [
+        "Dimeji Bankole",
+        "Aminu Waziri Tambuwal"
+      ],
+      "financeMinisters": [
+        "Olusegun Olutoyin Aganga",
+        "Ngozi Okonjo-Iweala"
+      ],
+      "nationalAssemblies": [
+        "6th (2007-2011)",
+        "7th (2011-2015)"
+      ],
       "keyEvents": [
-        "Assumed office after Yar'Adua's death (May 2010)",
-        "Independence Day bombing in Abuja (Oct 2010)",
-        "Post-election violence kills ~800 (April 2011)",
-        "Partial fuel subsidy removal sparks Occupy Nigeria protests (Jan 2012)",
-        "Boko Haram insurgency escalates — state of emergency in 3 NE states (2013)",
-        "Nigeria rebased as Africa's largest economy (April 2014)",
-        "Chibok schoolgirls kidnapping — 276 taken (April 2014)",
-        "#BringBackOurGirls global movement",
-        "Successful Ebola outbreak containment (2014)",
-        "Power sector privatisation — PHCN broken into 15 firms",
-        "Lost election to Buhari — first democratic transfer to opposition (2015)"
+        "Took office after President Yar'Adua died (May 2010)",
+        "Independence Day bombing in Abuja (October 2010)",
+        "About 800 killed in violence after the April 2011 election",
+        "Petrol price raised from ₦65 to ₦141, then cut to ₦97 after the Occupy Nigeria protests (January 2012)",
+        "State of emergency declared in three north-eastern states (2013)",
+        "276 schoolgirls abducted from Chibok (April 2014)",
+        "Ebola outbreak contained (2014)",
+        "Power sector privatised; PHCN split into 15 companies",
+        "Lost the 2015 election and handed over, the first transfer of power to an opposition party"
       ]
     },
     {
@@ -241,17 +250,19 @@
       "vicePresident": "Yemi Osinbajo",
       "senatePresident": "Bukola Saraki",
       "speaker": "Yakubu Dogara",
-      "financeMinisters": ["Kemi Adeosun", "Zainab Shamsuna Ahmed"],
+      "financeMinisters": [
+        "Kemi Adeosun",
+        "Zainab Shamsuna Ahmed"
+      ],
       "nationalAssembly": "8th (2015-2019)",
       "keyEvents": [
-        "Declared Boko Haram 'technically defeated' (Dec 2015)",
-        "Economy enters recession — GDP contracts (2016)",
-        "Naira devalued and floated for the first time (June 2016)",
-        "Extended medical leave in London — VP Osinbajo acts as president (2017)",
-        "Anti-corruption drive: 603 convictions by EFCC by 2018",
-        "Farmer-herder clashes kill thousands in Middle Belt (2017-2018)",
-        "Finance Minister Kemi Adeosun resigns over NYSC certificate scandal (Sept 2018)",
-        "Banditry surges in northwest — Zamfara, Katsina, Kaduna"
+        "Declared Boko Haram \"technically defeated\" (December 2015)",
+        "Recession in 2016",
+        "Naira moved to a flexible rate (June 2016)",
+        "Months of medical leave in London; Vice President Osinbajo acted as president (2017)",
+        "Farmer-herder clashes kill thousands in the Middle Belt (2017 to 2018)",
+        "Finance Minister Kemi Adeosun resigned over a forged NYSC certificate (September 2018)",
+        "Banditry spreads across Zamfara, Katsina and Kaduna"
       ]
     },
     {
@@ -266,16 +277,13 @@
       "financeMinister": "Zainab Shamsuna Ahmed",
       "nationalAssembly": "9th (2019-2023)",
       "keyEvents": [
-        "COVID-19 pandemic — economy enters second recession (-3.62% Q3 2020)",
-        "#EndSARS protests and Lekki toll gate shooting (Oct 2020)",
-        "Twitter banned for 7 months (June 2021 - Jan 2022)",
-        "Boko Haram leader Shekau killed (May 2021)",
-        "Mass school kidnappings escalate — Kaduna, Niger, Zamfara (2021)",
-        "Owo church massacre — 40+ killed (June 2022)",
-        "Kuje prison break — inmates freed by insurgents (July 2022)",
-        "Kaduna-Abuja train kidnapping (March 2022)",
-        "Naira redesign cash crisis (2022-2023)",
-        "Lekki Deep Sea Port commissioned (Jan 2023)"
+        "Second recession as COVID-19 hits (2020)",
+        "#EndSARS protests; soldiers open fire at the Lekki toll gate (October 2020)",
+        "Twitter blocked for 222 days (June 2021 to January 2022)",
+        "Mass school abductions in Kaduna, Niger and Zamfara (2021)",
+        "Debt service costs more than the government earns, January to April 2022",
+        "Kaduna-Abuja train attacked (March 2022); Kuje prison break (July 2022)",
+        "Naira redesign leaves banks without cash (2022 to 2023)"
       ]
     },
     {
@@ -290,21 +298,16 @@
       "financeMinister": "Wale Edun",
       "nationalAssembly": "10th (2023-2027)",
       "keyEvents": [
-        "Fuel subsidy removed on inauguration day — 'Subsidy is gone' (May 2023)",
-        "Naira floated again — crashes from ₦460 to ₦750+ overnight (June 2023)",
-        "Supreme Court upholds contested election result (Oct 2023)",
-        "Petrol prices surge from ₦65 to ₦537-617 per litre (2023)",
-        "Naira hits all-time low of ₦1,717/USD (Nov 2024)",
-        "NBS reveals 2.2 million kidnappings in 12 months (Dec 2024)",
-        "Cost of living crisis — nationwide #EndBadGovernance protests (Aug 2024)",
-        "National anthem changed back to 1960 version (May 2024)",
-        "9,662 killed in conflict in 2024 — worst year on record (ACLED)",
-        "St. Mary's school kidnapping — 303 children taken (Nov 2025)",
-        "6,800 killed and 5,400 kidnapped in H1 2025 alone",
-        "Coup plot uncovered — 16 military officers arrested (Sept 2025)",
-        "U.S. military strikes ISIS in NW Nigeria at Tinubu's request (Dec 2025)",
-        "Jos Palm Sunday massacre — 28+ killed (Mar 2026)",
-        "₦68.3T budget approved for 2026 — largest in history"
+        "\"Subsidy is gone\": petrol subsidy ended on inauguration day (May 2023)",
+        "Exchange rate unified; the official rate goes from ₦463 to ₦632 per dollar in a week (June 2023)",
+        "Supreme Court upholds the election result (October 2023)",
+        "Naira's weakest official rate: ₦1,688 per dollar (November 2024)",
+        "At least 24 killed as police break up #EndBadGovernance protests (August 2024)",
+        "NBS survey finds 2.2 million kidnappings in 12 months (December 2024)",
+        "Deadliest year in ACLED records: 15,878 killed in political violence (2025)",
+        "230 pupils and staff abducted from St Mary's, Papiri; all later freed (November 2025)",
+        "US strikes in Sokoto State, in coordination with Nigerian authorities (December 2025)",
+        "₦68.32tn budget signed for 2026, the largest ever in naira (April 2026)"
       ]
     }
   ],

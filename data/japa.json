@@ -1,0 +1,132 @@
+{
+  "category": "Emigration",
+  "description": "Nigerians leaving for the UK and Canada",
+  "sources": [
+    {
+      "name": "UK Home Office, entry clearance visa outcomes (year ending June 2026)",
+      "url": "https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables",
+      "retrieved": "2026-09-18",
+      "note": "Visas issued to Nigerian nationals, main applicants plus dependants. Summed by calendar year by endsars.online."
+    },
+    {
+      "name": "IRCC, permanent residents by citizenship",
+      "url": "https://open.canada.ca/data/en/dataset/f7e5498e-0ad8-4417-85c9-9b8aff9b9eda",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "NMC register report 2025-26",
+      "url": "https://www.nmc.org.uk/globalassets/sitedocuments/data-reports/2026/0184ca-data-report-uk-web.pdf",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Afrobarometer Round 10, Nigeria (2024)",
+      "url": "https://www.afrobarometer.org/survey-resource/nigeria-round-10-data-2024/",
+      "retrieved": "2026-09-18",
+      "note": "Weighted percentages calculated by endsars.online from the public data file"
+    },
+    {
+      "name": "Advocate, health minister: 16,000 doctors left",
+      "url": "https://advocatengr.com/2025/04/08/16000-doctors-left-nigeria-in-seven-years-health-minister/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Vanguard, NMA: 55,000 doctors left for 220m Nigerians",
+      "url": "https://www.vanguardngr.com/2026/06/japa-only-55000-doctors-left-for-220m-nigerians/",
+      "retrieved": "2026-09-18"
+    }
+  ],
+  "ukVisas": [
+    {
+      "year": 2019,
+      "study": 8053,
+      "care": 0
+    },
+    {
+      "year": 2020,
+      "study": 12581,
+      "care": 95
+    },
+    {
+      "year": 2021,
+      "study": 42625,
+      "care": 8864
+    },
+    {
+      "year": 2022,
+      "study": 118571,
+      "care": 28424
+    },
+    {
+      "year": 2023,
+      "study": 95225,
+      "care": 76419
+    },
+    {
+      "year": 2024,
+      "study": 26985,
+      "care": 19363
+    },
+    {
+      "year": 2025,
+      "study": 36767,
+      "care": 7712
+    }
+  ],
+  "ukNonVisitor2023": 182832,
+  "canadaPR": [
+    {
+      "year": 2015,
+      "value": 4090
+    },
+    {
+      "year": 2016,
+      "value": 4415
+    },
+    {
+      "year": 2017,
+      "value": 5445
+    },
+    {
+      "year": 2018,
+      "value": 10920
+    },
+    {
+      "year": 2019,
+      "value": 12600
+    },
+    {
+      "year": 2020,
+      "value": 6360
+    },
+    {
+      "year": 2021,
+      "value": 15595
+    },
+    {
+      "year": 2022,
+      "value": 22130
+    },
+    {
+      "year": 2023,
+      "value": 17465
+    },
+    {
+      "year": 2024,
+      "value": 20395
+    },
+    {
+      "year": 2025,
+      "value": 16355
+    }
+  ],
+  "consideredEmigrating2024": 56.3,
+  "consideredALot2024": 33.4,
+  "doctorsLeft": {
+    "value": 16000,
+    "note": "Doctors estimated to have left in five to seven years (Health Minister Pate, April 2025)"
+  },
+  "activeDoctors": {
+    "value": 55000,
+    "note": "Of 130,000+ registered doctors, about 55,000 practise in Nigeria (NMA, June 2026)"
+  }
+}

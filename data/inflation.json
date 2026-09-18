@@ -3,47 +3,213 @@
   "description": "Consumer Price Index - annual percentage change",
   "unit": "% annual",
   "sources": [
-    { "name": "World Bank", "url": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG?locations=NG", "indicator": "FP.CPI.TOTL.ZG", "retrieved": "2026-04-04" },
-    { "name": "National Bureau of Statistics", "url": "https://nigerianstat.gov.ng/elibrary?queries=cpi", "note": "Primary Nigerian source" },
-    { "name": "IMF", "url": "https://www.imf.org/en/Countries/NGA", "note": "Alternative source" },
-    { "name": "FRED", "url": "https://fred.stlouisfed.org/series/FPCPITOTLZGNGA", "note": "Alternative source" }
+    {
+      "name": "World Bank, inflation, consumer prices (annual %)",
+      "url": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG?locations=NG",
+      "retrieved": "2026-09-18",
+      "note": "Annual series 2010-2024"
+    },
+    {
+      "name": "National Bureau of Statistics (NBS), CPI and inflation reports",
+      "url": "https://nigerianstat.gov.ng/elibrary?queries=cpi",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Nairametrics, December 2025 CPI and methodology review",
+      "url": "http://nairametrics.com/2026/01/15/nigeria-inflation-hits-15-15-by-december-2025-after-cpi-methodology-review/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Tekedia, original vs revised 2025 inflation series",
+      "url": "https://www.tekedia.com/nigerias-2025-inflation-was-on-decline-but-its-the-nbs-revised-method-not-prices-falling/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Nairametrics, August 2026 CPI",
+      "url": "https://nairametrics.com/2026/09/15/nigerias-headline-inflation-eases-to-15-39-in-august/",
+      "retrieved": "2026-09-18"
+    }
   ],
   "data": [
-    { "year": 2010, "value": 13.74 },
-    { "year": 2011, "value": 10.83 },
-    { "year": 2012, "value": 12.22 },
-    { "year": 2013, "value": 8.50 },
-    { "year": 2014, "value": 8.05 },
-    { "year": 2015, "value": 9.01 },
-    { "year": 2016, "value": 15.70 },
-    { "year": 2017, "value": 16.50 },
-    { "year": 2018, "value": 12.10 },
-    { "year": 2019, "value": 11.40 },
-    { "year": 2020, "value": 13.25 },
-    { "year": 2021, "value": 16.95 },
-    { "year": 2022, "value": 18.85 },
-    { "year": 2023, "value": 24.66 },
-    { "year": 2024, "value": 33.24, "note": "World Bank figure; NBS annual average was 31.4%" },
-    { "year": 2025, "value": 15.15, "note": "December 2025 year-on-year rate (NBS). Methodology rebased in 2025 — new base period is 2024 average = 100. Annual average higher due to early-year elevated rates.", "source": "https://nairametrics.com/2026/01/15/nigeria-inflation-hits-15-15-by-december-2025-after-cpi-methodology-review/" },
-    { "year": 2026, "value": 15.06, "note": "February 2026 year-on-year rate (NBS). 11th consecutive month of decline.", "partial": true, "source": "https://www.channelstv.com/2026/03/16/nigerias-inflation-rate-drops-marginally-to-15-06-in-february/" }
+    {
+      "year": 2010,
+      "value": 13.74
+    },
+    {
+      "year": 2011,
+      "value": 10.83
+    },
+    {
+      "year": 2012,
+      "value": 12.22
+    },
+    {
+      "year": 2013,
+      "value": 8.5
+    },
+    {
+      "year": 2014,
+      "value": 8.05
+    },
+    {
+      "year": 2015,
+      "value": 9.01
+    },
+    {
+      "year": 2016,
+      "value": 15.7
+    },
+    {
+      "year": 2017,
+      "value": 16.5
+    },
+    {
+      "year": 2018,
+      "value": 12.1
+    },
+    {
+      "year": 2019,
+      "value": 11.4
+    },
+    {
+      "year": 2020,
+      "value": 13.25
+    },
+    {
+      "year": 2021,
+      "value": 16.95
+    },
+    {
+      "year": 2022,
+      "value": 18.85
+    },
+    {
+      "year": 2023,
+      "value": 24.66
+    },
+    {
+      "year": 2024,
+      "value": 33.24,
+      "note": "World Bank figure; NBS annual average was 31.4%"
+    }
   ],
-  "monthly2025": {
-    "note": "NBS monthly headline inflation rates for 2025 (year-on-year, rebased CPI with 2024 = 100)",
+  "methodologyNote": "NBS rebased the CPI in early 2025 (2024 average = 100, weights from 2023 household spending). In January 2026 it revised the whole 2025 series up by about 3 points. Figures before 2025 use the old base and are not strictly comparable.",
+  "monthly": {
+    "note": "NBS headline, food and core inflation, year on year. Rebased CPI (2024 average = 100). 2025 uses the revised series NBS published in January 2026.",
     "data": [
-      { "month": "2025-01", "value": 26.30 },
-      { "month": "2025-02", "value": 27.40 },
-      { "month": "2025-03", "value": 26.80 },
-      { "month": "2025-04", "value": 26.10 },
-      { "month": "2025-05", "value": 25.30 },
-      { "month": "2025-06", "value": 24.90 },
-      { "month": "2025-07", "value": 23.10 },
-      { "month": "2025-08", "value": 21.00 },
-      { "month": "2025-09", "value": 18.02 },
-      { "month": "2025-10", "value": 16.05 },
-      { "month": "2025-11", "value": 15.15 },
-      { "month": "2025-12", "value": 15.15 }
-    ],
-    "source": "https://tradingeconomics.com/nigeria/inflation-cpi"
+      {
+        "month": "2025-01",
+        "headline": 27.61,
+        "food": 29.63,
+        "core": 25.27
+      },
+      {
+        "month": "2025-02",
+        "headline": 26.27
+      },
+      {
+        "month": "2025-03",
+        "headline": 27.35,
+        "core": 27.12
+      },
+      {
+        "month": "2025-04",
+        "headline": 26.82
+      },
+      {
+        "month": "2025-05",
+        "headline": 26.06,
+        "food": 24.55,
+        "core": 24.92
+      },
+      {
+        "month": "2025-06",
+        "headline": 25.29,
+        "food": 25.41
+      },
+      {
+        "month": "2025-07",
+        "headline": 24.94,
+        "food": 26.2,
+        "core": 23.95
+      },
+      {
+        "month": "2025-08",
+        "headline": 23.14,
+        "food": 25.3,
+        "core": 22.93
+      },
+      {
+        "month": "2025-09",
+        "headline": 20.98
+      },
+      {
+        "month": "2025-10",
+        "headline": 18.97
+      },
+      {
+        "month": "2025-11",
+        "headline": 17.33
+      },
+      {
+        "month": "2025-12",
+        "headline": 15.15,
+        "food": 10.84,
+        "core": 18.63
+      },
+      {
+        "month": "2026-01",
+        "headline": 15.1,
+        "food": 8.89,
+        "core": 17.72
+      },
+      {
+        "month": "2026-02",
+        "headline": 15.06,
+        "food": 12.12,
+        "core": 15.88
+      },
+      {
+        "month": "2026-03",
+        "headline": 15.38,
+        "food": 14.31,
+        "core": 16.21
+      },
+      {
+        "month": "2026-04",
+        "headline": 15.69,
+        "food": 16.06,
+        "core": 15.86
+      },
+      {
+        "month": "2026-05",
+        "headline": 15.93,
+        "food": 16.96,
+        "core": 16.82
+      },
+      {
+        "month": "2026-06",
+        "headline": 15.91,
+        "food": 17.52,
+        "core": 15.92
+      },
+      {
+        "month": "2026-07",
+        "headline": 15.43,
+        "food": 20.31,
+        "core": 14.97
+      },
+      {
+        "month": "2026-08",
+        "headline": 15.39,
+        "food": 19.57,
+        "core": 13.29
+      }
+    ]
   },
-  "methodologyNote": "NBS rebased the CPI in 2025 using a 12-month 2024 average as reference (100) instead of December 2024 alone. Weight reference period is 2023. This makes 2025 rates not directly comparable with pre-2025 figures without adjustment."
+  "peak2024": {
+    "month": "2024-12",
+    "value": 34.8,
+    "note": "Old CPI base (Nov 2009 = 100), not comparable with the rebased series"
+  }
 }

@@ -2,48 +2,361 @@
   "category": "Government Debt",
   "description": "Nigeria total public debt — external debt stocks from World Bank, plus DMO total public debt (external + domestic) for recent years",
   "sources": [
-    { "name": "World Bank", "url": "https://data.worldbank.org/indicator/DT.DOD.DECT.CD?locations=NG", "indicator": "DT.DOD.DECT.CD", "retrieved": "2026-04-04", "note": "External debt stocks only (DOD, current US$)" },
-    { "name": "Debt Management Office Nigeria", "url": "https://www.dmo.gov.ng/debt-profile/total-public-debt", "retrieved": "2026-04-04", "note": "Total public debt (external + domestic)" },
-    { "name": "IMF", "url": "https://www.imf.org/external/datamapper/DEBTGDP@WEO/NGA", "note": "Debt-to-GDP ratio" },
-    { "name": "Nairametrics", "url": "https://nairametrics.com/2025/04/05/nigerias-total-public-debt-hits-n144-67-trillion-in-december-2024/", "note": "Q4 2024 breakdown" },
-    { "name": "Nairametrics", "url": "https://nairametrics.com/2026/02/20/nigerias-public-debt-hits-n153-29-trillion-in-q3-2025-dmo/", "note": "Q3 2025 data" }
+    {
+      "name": "World Bank",
+      "url": "https://data.worldbank.org/indicator/DT.DOD.DECT.CD?locations=NG",
+      "indicator": "DT.DOD.DECT.CD",
+      "retrieved": "2026-04-04",
+      "note": "External debt stocks only (DOD, current US$)"
+    },
+    {
+      "name": "Debt Management Office Nigeria",
+      "url": "https://www.dmo.gov.ng/debt-profile/total-public-debt",
+      "retrieved": "2026-04-04",
+      "note": "Total public debt (external + domestic)"
+    },
+    {
+      "name": "IMF",
+      "url": "https://www.imf.org/external/datamapper/DEBTGDP@WEO/NGA",
+      "note": "Debt-to-GDP ratio"
+    },
+    {
+      "name": "Nairametrics",
+      "url": "https://nairametrics.com/2025/04/05/nigerias-total-public-debt-hits-n144-67-trillion-in-december-2024/",
+      "note": "Q4 2024 breakdown"
+    },
+    {
+      "name": "Nairametrics",
+      "url": "https://nairametrics.com/2026/02/20/nigerias-public-debt-hits-n153-29-trillion-in-q3-2025-dmo/",
+      "note": "Q3 2025 data"
+    },
+    {
+      "name": "NBS, Nigerian Domestic and Foreign Debt Q4 2019",
+      "url": "https://www.nigerianstat.gov.ng/pdfuploads/NIGERIAN_DOMESTIC_AND_FOREIGN_DEBT_Q4_2019.pdf",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "DMO, total public debt as at 31 December 2015",
+      "url": "https://www.dmo.gov.ng/debt-profile/total-public-debts/60-total-public-debt-stock-as-at-31st-december-2015/file",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Nairametrics, public debt December 2025",
+      "url": "https://nairametrics.com/2026/04/15/nigerias-public-debt-rises-to-n159-28-trillion-in-december-2025-dmo/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Nairametrics, public debt Q1 2026",
+      "url": "http://nairametrics.com/2026/08/08/nigerias-public-debt-rises-to-n159-35-trillion-in-q1-2026/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "IMF World Economic Outlook, general government gross debt (% of GDP)",
+      "url": "https://www.imf.org/external/datamapper/GGXWDG_NGDP@WEO/NGA",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Nairametrics, debt service vs revenue Jan-Apr 2022",
+      "url": "https://nairametrics.com/2022/07/21/nigeria-spends-n1-94-trillion-on-debt-service-between-january-april-2022-surpasses-revenue",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Nairametrics, FG spends 67% of revenue on debt service (2025 Q3)",
+      "url": "https://nairametrics.com/2026/05/29/fg-spends-67-of-revenue-on-debt-servicing/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Nairametrics, Ways and Means securitisation approved",
+      "url": "https://nairametrics.com/2023/05/04/house-of-reps-approves-president-buharis-n23-7-trillion-ways-and-means-loan-request/",
+      "retrieved": "2026-09-18"
+    }
   ],
   "externalDebt": {
     "description": "External debt stocks, total (DOD, current US$) — World Bank",
     "unit": "USD",
     "data": [
-      { "year": 2010, "valueUSD": 29148883008.7 },
-      { "year": 2011, "valueUSD": 34129232146.0 },
-      { "year": 2012, "valueUSD": 39282745538.8 },
-      { "year": 2013, "valueUSD": 42604005424.4 },
-      { "year": 2014, "valueUSD": 46672476310.2 },
-      { "year": 2015, "valueUSD": 45024833871.7 },
-      { "year": 2016, "valueUSD": 43735939488.9 },
-      { "year": 2017, "valueUSD": 65142821169.8 },
-      { "year": 2018, "valueUSD": 69440288784.6 },
-      { "year": 2019, "valueUSD": 81342753974.7 },
-      { "year": 2020, "valueUSD": 87591245939.4 },
-      { "year": 2021, "valueUSD": 96254706293.5 },
-      { "year": 2022, "valueUSD": 103064224482.6 },
-      { "year": 2023, "valueUSD": 102472750412.9 },
-      { "year": 2024, "valueUSD": 108757630161.5 }
+      {
+        "year": 2010,
+        "valueUSD": 29148883008.7
+      },
+      {
+        "year": 2011,
+        "valueUSD": 34129232146.0
+      },
+      {
+        "year": 2012,
+        "valueUSD": 39282745538.8
+      },
+      {
+        "year": 2013,
+        "valueUSD": 42604005424.4
+      },
+      {
+        "year": 2014,
+        "valueUSD": 46672476310.2
+      },
+      {
+        "year": 2015,
+        "valueUSD": 45024833871.7
+      },
+      {
+        "year": 2016,
+        "valueUSD": 43735939488.9
+      },
+      {
+        "year": 2017,
+        "valueUSD": 65142821169.8
+      },
+      {
+        "year": 2018,
+        "valueUSD": 69440288784.6
+      },
+      {
+        "year": 2019,
+        "valueUSD": 81342753974.7
+      },
+      {
+        "year": 2020,
+        "valueUSD": 87591245939.4
+      },
+      {
+        "year": 2021,
+        "valueUSD": 96254706293.5
+      },
+      {
+        "year": 2022,
+        "valueUSD": 103064224482.6
+      },
+      {
+        "year": 2023,
+        "valueUSD": 102472750412.9
+      },
+      {
+        "year": 2024,
+        "valueUSD": 108757630161.5
+      }
     ]
   },
   "totalPublicDebt": {
     "description": "Total public debt (external + domestic) — DMO Nigeria. Includes Federal Government, States, and FCT.",
     "note": "Figures in both NGN and USD. Naira figures reflect exchange rate at reporting date, so large NGN increases partly reflect devaluation.",
     "data": [
-      { "year": 2023, "quarter": "Q4", "date": "2023-12-31", "totalNGN_trn": 97.34, "totalUSD_bn": 108.23, "externalUSD_bn": 42.49, "domesticNGN_trn": 59.12, "source": "DMO" },
-      { "year": 2024, "quarter": "Q1", "date": "2024-03-31", "totalNGN_trn": 121.67, "totalUSD_bn": 91.46, "externalUSD_bn": 42.12, "domesticNGN_trn": 65.65, "source": "DMO/NBS" },
-      { "year": 2024, "quarter": "Q2", "date": "2024-06-30", "totalNGN_trn": 134.30, "totalUSD_bn": 91.35, "externalNGN_trn": 63.07, "domesticNGN_trn": 71.22, "source": "DMO" },
-      { "year": 2024, "quarter": "Q4", "date": "2024-12-31", "totalNGN_trn": 144.67, "totalUSD_bn": 94.23, "externalUSD_bn": 45.78, "externalNGN_trn": 70.29, "domesticNGN_trn": 74.38, "domesticUSD_bn": 48.44, "source": "DMO", "sourceURL": "https://www.dmo.gov.ng/debt-profile/total-public-debt/5215-total-public-debt-as-at-december-31-2024" },
-      { "year": 2025, "quarter": "Q1", "date": "2025-03-31", "totalNGN_trn": 149.39, "source": "DMO" },
-      { "year": 2025, "quarter": "Q2", "date": "2025-06-30", "totalNGN_trn": 152.40, "source": "DMO/ICIR", "sourceURL": "https://www.icirnigeria.org/nigerias-public-debt-hits-%E2%82%A6152-4trn-in-q2-2025-dmo/" },
-      { "year": 2025, "quarter": "Q3", "date": "2025-09-30", "totalNGN_trn": 153.29, "totalUSD_bn": 103.94, "externalNGN_trn": 71.47, "externalUSD_bn": 48.46, "domesticNGN_trn": 81.81, "domesticUSD_bn": 55.47, "source": "DMO", "sourceURL": "https://nairametrics.com/2026/02/20/nigerias-public-debt-hits-n153-29-trillion-in-q3-2025-dmo/" }
+      {
+        "year": 2023,
+        "quarter": "Q4",
+        "date": "2023-12-31",
+        "totalNGN_trn": 97.34,
+        "totalUSD_bn": 108.23,
+        "externalUSD_bn": 42.49,
+        "domesticNGN_trn": 59.12,
+        "source": "DMO"
+      },
+      {
+        "year": 2024,
+        "quarter": "Q1",
+        "date": "2024-03-31",
+        "totalNGN_trn": 121.67,
+        "totalUSD_bn": 91.46,
+        "externalUSD_bn": 42.12,
+        "domesticNGN_trn": 65.65,
+        "source": "DMO/NBS"
+      },
+      {
+        "year": 2024,
+        "quarter": "Q2",
+        "date": "2024-06-30",
+        "totalNGN_trn": 134.3,
+        "totalUSD_bn": 91.35,
+        "externalNGN_trn": 63.07,
+        "domesticNGN_trn": 71.22,
+        "source": "DMO"
+      },
+      {
+        "year": 2024,
+        "quarter": "Q4",
+        "date": "2024-12-31",
+        "totalNGN_trn": 144.67,
+        "totalUSD_bn": 94.23,
+        "externalUSD_bn": 45.78,
+        "externalNGN_trn": 70.29,
+        "domesticNGN_trn": 74.38,
+        "domesticUSD_bn": 48.44,
+        "source": "DMO",
+        "sourceURL": "https://www.dmo.gov.ng/debt-profile/total-public-debt/5215-total-public-debt-as-at-december-31-2024"
+      },
+      {
+        "year": 2025,
+        "quarter": "Q1",
+        "date": "2025-03-31",
+        "totalNGN_trn": 149.39,
+        "source": "DMO"
+      },
+      {
+        "year": 2025,
+        "quarter": "Q2",
+        "date": "2025-06-30",
+        "totalNGN_trn": 152.4,
+        "source": "DMO/ICIR",
+        "sourceURL": "https://www.icirnigeria.org/nigerias-public-debt-hits-%E2%82%A6152-4trn-in-q2-2025-dmo/"
+      },
+      {
+        "year": 2025,
+        "quarter": "Q3",
+        "date": "2025-09-30",
+        "totalNGN_trn": 153.29,
+        "totalUSD_bn": 103.94,
+        "externalNGN_trn": 71.47,
+        "externalUSD_bn": 48.46,
+        "domesticNGN_trn": 81.81,
+        "domesticUSD_bn": 55.47,
+        "source": "DMO",
+        "sourceURL": "https://nairametrics.com/2026/02/20/nigerias-public-debt-hits-n153-29-trillion-in-q3-2025-dmo/"
+      },
+      {
+        "year": 2025,
+        "quarter": "Q4",
+        "date": "2025-12-31",
+        "totalNGN_trn": 159.28,
+        "totalUSD_bn": 110.97,
+        "externalUSD_bn": 51.86,
+        "domesticNGN_trn": 84.85,
+        "source": "DMO",
+        "sourceURL": "https://nairametrics.com/2026/04/15/nigerias-public-debt-rises-to-n159-28-trillion-in-december-2025-dmo/"
+      },
+      {
+        "year": 2026,
+        "quarter": "Q1",
+        "date": "2026-03-31",
+        "totalNGN_trn": 159.35,
+        "totalUSD_bn": 114.95,
+        "externalUSD_bn": 51.9,
+        "domesticNGN_trn": 87.4,
+        "source": "DMO",
+        "sourceURL": "http://nairametrics.com/2026/08/08/nigerias-public-debt-rises-to-n159-35-trillion-in-q1-2026/"
+      }
     ],
     "projection2026": {
       "note": "Debt stock projected to exceed N177.14 trillion by end of 2026, driven by estimated N23.85 trillion budget deficit",
       "source": "BudgIT analysis"
     }
+  },
+  "yearEnd": {
+    "description": "Total public debt (FGN, states and FCT), DMO",
+    "data": [
+      {
+        "label": "Dec 2015",
+        "ngn_trn": 12.6,
+        "usd_bn": 65.43
+      },
+      {
+        "label": "Dec 2019",
+        "ngn_trn": 27.4,
+        "usd_bn": 84.05
+      },
+      {
+        "label": "Dec 2023",
+        "ngn_trn": 97.34,
+        "usd_bn": 108.23
+      },
+      {
+        "label": "Dec 2024",
+        "ngn_trn": 144.67,
+        "usd_bn": 94.23
+      },
+      {
+        "label": "Dec 2025",
+        "ngn_trn": 159.28,
+        "usd_bn": 110.97
+      },
+      {
+        "label": "Mar 2026",
+        "ngn_trn": 159.35,
+        "usd_bn": 114.95
+      }
+    ]
+  },
+  "debtToGdp": {
+    "description": "General government gross debt, % of GDP (IMF WEO, rebased GDP)",
+    "data": [
+      {
+        "year": 2010,
+        "value": 6.7
+      },
+      {
+        "year": 2011,
+        "value": 12.4
+      },
+      {
+        "year": 2012,
+        "value": 12.5
+      },
+      {
+        "year": 2013,
+        "value": 13.0
+      },
+      {
+        "year": 2014,
+        "value": 15.8
+      },
+      {
+        "year": 2015,
+        "value": 14.9
+      },
+      {
+        "year": 2016,
+        "value": 17.4
+      },
+      {
+        "year": 2017,
+        "value": 18.0
+      },
+      {
+        "year": 2018,
+        "value": 20.4
+      },
+      {
+        "year": 2019,
+        "value": 21.4
+      },
+      {
+        "year": 2020,
+        "value": 25.7
+      },
+      {
+        "year": 2021,
+        "value": 26.6
+      },
+      {
+        "year": 2022,
+        "value": 29.8
+      },
+      {
+        "year": 2023,
+        "value": 36.3
+      },
+      {
+        "year": 2024,
+        "value": 39.3
+      },
+      {
+        "year": 2025,
+        "value": 35.5
+      }
+    ]
+  },
+  "debtService": {
+    "jan2022": {
+      "debtService_trn": 1.94,
+      "revenue_trn": 1.63,
+      "note": "January to April 2022: debt service exceeded FG retained revenue by ₦310bn"
+    },
+    "fy2022WorldBank": 96.3,
+    "nineMonths2025": 67.22,
+    "note": "Sources measure revenue differently, so these figures are not joined into one series."
+  },
+  "waysAndMeans": {
+    "approved_trn": 23.72,
+    "secondTranche_trn": 7.3,
+    "note": "CBN overdrafts to the Federal Government, converted into a 40-year bond at 9% in 2023. The debt was restructured, not cleared."
   }
 }

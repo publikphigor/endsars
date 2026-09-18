@@ -1,220 +1,197 @@
 /**
- * Data fetching script for EndSARS Nigeria Governance Tracker
+ * Data refresh script for endsars.online
  *
- * Fetches latest data from World Bank API and other open sources.
+ * Refreshes the series that come from open APIs:
+ *   - CBN daily exchange rates (annual and quarterly averages)
+ *   - World Bank indicators (inflation, external debt, poverty, WGI,
+ *     electricity access, health, remittances)
+ *
+ * Everything else (NBS price watches, DMO debt, budgets, ACLED, SBM, Afrobarometer)
+ * is updated by hand. See the "manual" list printed at the end.
+ *
  * Run: bun run scripts/fetch-data.ts
- *
- * For sources requiring API keys (ACLED), set environment variables:
- *   ACLED_API_KEY=your_key
- *   ACLED_EMAIL=your_email
  */
 
-import { writeFileSync, readFileSync } from "fs";
+import { readFileSync, writeFileSync } from "fs";
 import { join } from "path";
 
 const DATA_DIR = join(import.meta.dir, "..", "data");
 const TODAY = new Date().toISOString().split("T")[0];
 
-interface WorldBankEntry {
-  date: string;
-  value: number | null;
+interface YearValue {
+  year: number;
+  value: number;
 }
 
-interface WorldBankResponse {
-  page: number;
-  pages: number;
-  per_page: number;
-  total: number;
+function loadJSON(filename: string): any {
+  return JSON.parse(readFileSync(join(DATA_DIR, filename), "utf-8"));
+}
+
+function saveJSON(filename: string, data: unknown) {
+  writeFileSync(join(DATA_DIR, filename), JSON.stringify(data, null, 2) + "\n");
+  console.log(`  Saved ${filename}`);
+}
+
+function markRetrieved(dataset: any, urlFragment: string) {
+  for (const s of dataset.sources ?? []) {
+    if (s.url.includes(urlFragment)) s.retrieved = TODAY;
+  }
 }
 
 async function fetchWorldBank(
   indicator: string,
-  startYear: number = 2010,
-  endYear: number = new Date().getFullYear()
-): Promise<{ year: number; value: number }[]> {
-  const url = `https://api.worldbank.org/v2/country/NGA/indicator/${indicator}?format=json&date=${startYear}:${endYear}&per_page=50`;
+  { from = 2010, decimals = 2, source }: { from?: number; decimals?: number; source?: number } = {},
+): Promise<YearValue[]> {
+  const to = new Date().getFullYear();
+  const src = source ? `&source=${source}` : "";
+  const url = `https://api.worldbank.org/v2/country/NGA/indicator/${indicator}?format=json&date=${from}:${to}&per_page=100${src}`;
   const res = await fetch(url);
-  const json = (await res.json()) as [WorldBankResponse, WorldBankEntry[]];
-
-  if (!json[1]) return [];
-
+  const json = (await res.json()) as [unknown, { date: string; value: number | null }[] | null];
+  if (!json[1]) {
+    console.log(`  No data for ${indicator}`);
+    return [];
+  }
+  const f = 10 ** decimals;
   return json[1]
     .filter((d) => d.value !== null)
-    .map((d) => ({
-      year: parseInt(d.date),
-      value: Math.round(d.value! * 100) / 100,
-    }))
+    .map((d) => ({ year: parseInt(d.date), value: Math.round(d.value! * f) / f }))
     .sort((a, b) => a.year - b.year);
 }
 
-function saveJSON(filename: string, data: unknown) {
-  const path = join(DATA_DIR, filename);
-  writeFileSync(path, JSON.stringify(data, null, 2) + "\n");
-  console.log(`  Saved ${path}`);
+/** Replace a series only when the API returned something, so a failed call never wipes data. */
+function replaceIfAny<T>(current: T[], next: T[], label: string): T[] {
+  if (!next.length) {
+    console.log(`  Kept existing ${label}`);
+    return current;
+  }
+  return next;
 }
 
-function loadJSON(filename: string): any {
-  const path = join(DATA_DIR, filename);
-  return JSON.parse(readFileSync(path, "utf-8"));
+async function fetchExchangeRates() {
+  console.log("CBN exchange rates...");
+  const res = await fetch("https://www.cbn.gov.ng/api/GetAllExchangeRates");
+  const rows = (await res.json()) as { currency: string; ratedate: string; centralrate: string }[];
+  const usd = rows.filter((r) => r.currency.toUpperCase() === "US DOLLAR" && r.ratedate >= "2010-01-01");
+  if (!usd.length) return console.log("  No CBN data; kept existing");
+
+  const years = new Map<number, number[]>();
+  const quarters = new Map<string, number[]>();
+  for (const r of usd) {
+    const rate = parseFloat(r.centralrate);
+    if (!Number.isFinite(rate)) continue;
+    const year = parseInt(r.ratedate.slice(0, 4));
+    const q = `${year}-Q${Math.ceil(parseInt(r.ratedate.slice(5, 7)) / 3)}`;
+    years.set(year, [...(years.get(year) ?? []), rate]);
+    quarters.set(q, [...(quarters.get(q) ?? []), rate]);
+  }
+  const avg = (xs: number[]) => Math.round((xs.reduce((a, b) => a + b, 0) / xs.length) * 100) / 100;
+  const thisYear = new Date().getFullYear();
+  const latest = usd.reduce((a, b) => (a.ratedate > b.ratedate ? a : b));
+
+  const fx = loadJSON("exchange-rate.json");
+  fx.annualAverages.data = [...years].sort(([a], [b]) => a - b).map(([year, xs]) => ({
+    year,
+    value: avg(xs),
+    ...(year === thisYear ? { partial: true } : {}),
+  }));
+  fx.quarterlyData.data = [...quarters].sort(([a], [b]) => a.localeCompare(b)).map(([key, xs]) => {
+    const [y, quarter] = key.split("-");
+    return { year: parseInt(y), quarter, value: avg(xs), source: "CBN" };
+  });
+  fx.recentRates.cbnOfficial = {
+    date: latest.ratedate,
+    rate: Math.round(parseFloat(latest.centralrate) * 100) / 100,
+    source: "CBN central rate",
+  };
+  markRetrieved(fx, "cbn.gov.ng");
+  saveJSON("exchange-rate.json", fx);
+  console.log("  The parallel-market rate (recentRates.openMarket) is manual.");
 }
 
-async function fetchExchangeRateQuarterly() {
-  console.log("Fetching quarterly exchange rates from fawazahmed0...");
-  const existing = loadJSON("exchange-rate.json");
+async function fetchWorldBankSeries() {
+  console.log("World Bank indicators...");
 
-  // Update annual averages from World Bank
-  const annualData = await fetchWorldBank("PA.NUS.FCRF");
-  existing.annualAverages.data = annualData;
+  const inflation = loadJSON("inflation.json");
+  inflation.data = replaceIfAny(inflation.data, await fetchWorldBank("FP.CPI.TOTL.ZG"), "inflation");
+  markRetrieved(inflation, "FP.CPI.TOTL.ZG");
+  saveJSON("inflation.json", inflation);
 
-  // Fetch recent monthly rates from fawazahmed0 to update quarterly data
-  const now = new Date();
-  const startDate = new Date("2024-04-01");
-  const months: { date: string; rate: number }[] = [];
-
-  for (let d = new Date(startDate); d <= now; d.setMonth(d.getMonth() + 1)) {
-    const dateStr = d.toISOString().split("T")[0];
-    const url = `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@${dateStr}/v1/currencies/usd.json`;
-    try {
-      const res = await fetch(url);
-      if (!res.ok) continue;
-      const json = (await res.json()) as { usd: Record<string, number> };
-      if (json.usd?.ngn) {
-        months.push({ date: dateStr, rate: Math.round(json.usd.ngn * 100) / 100 });
-      }
-    } catch {
-      // skip failed months
-    }
-  }
-
-  // Aggregate to quarters
-  const quarterMap = new Map<string, number[]>();
-  for (const m of months) {
-    const [y, mo] = m.date.split("-").map(Number);
-    const q = Math.ceil(mo / 3);
-    const key = `${y}-Q${q}`;
-    if (!quarterMap.has(key)) quarterMap.set(key, []);
-    quarterMap.get(key)!.push(m.rate);
-  }
-
-  // Update quarterly data entries from fawazahmed0
-  for (const [key, rates] of quarterMap) {
-    const [yearStr, quarter] = key.split("-");
-    const year = parseInt(yearStr);
-    const avg = Math.round((rates.reduce((a, b) => a + b, 0) / rates.length) * 100) / 100;
-    const idx = existing.quarterlyData.data.findIndex(
-      (d: any) => d.year === year && d.quarter === quarter
-    );
-    const entry = { year, quarter, value: avg, source: "fawazahmed0" };
-    if (idx >= 0) {
-      existing.quarterlyData.data[idx] = entry;
-    } else {
-      existing.quarterlyData.data.push(entry);
-    }
-  }
-
-  existing.quarterlyData.data.sort(
-    (a: any, b: any) => a.year - b.year || a.quarter.localeCompare(b.quarter)
+  const debt = loadJSON("government-debt.json");
+  const ext = await fetchWorldBank("DT.DOD.DECT.CD", { decimals: 1 });
+  debt.externalDebt.data = replaceIfAny(
+    debt.externalDebt.data,
+    ext.map((d) => ({ year: d.year, valueUSD: d.value })),
+    "external debt",
   );
+  markRetrieved(debt, "DT.DOD.DECT.CD");
+  saveJSON("government-debt.json", debt);
 
-  saveJSON("exchange-rate.json", existing);
-  console.log(`  Updated ${months.length} monthly rates, ${quarterMap.size} quarters`);
-}
+  const poverty = loadJSON("poverty.json");
+  poverty.internationalPovertyLine.data = replaceIfAny(
+    poverty.internationalPovertyLine.data,
+    await fetchWorldBank("SI.POV.DDAY"),
+    "international poverty line",
+  );
+  poverty.undernourishment = replaceIfAny(poverty.undernourishment, await fetchWorldBank("SN.ITK.DEFC.ZS", { decimals: 1 }), "undernourishment");
+  markRetrieved(poverty, "SI.POV.DDAY");
+  saveJSON("poverty.json", poverty);
 
-async function fetchInflation() {
-  console.log("Fetching inflation data...");
-  const data = await fetchWorldBank("FP.CPI.TOTL.ZG");
-  const existing = loadJSON("inflation.json");
-  existing.data = data;
-  existing.sources[0].retrieved = TODAY;
-  saveJSON("inflation.json", existing);
-}
+  const corruption = loadJSON("corruption.json");
+  corruption.wgiData.data = replaceIfAny(corruption.wgiData.data, await fetchWorldBank("GOV_WGI_CC.EST", { source: 3 }), "WGI control of corruption");
+  corruption.wgiData.ruleOfLaw = replaceIfAny(corruption.wgiData.ruleOfLaw, await fetchWorldBank("GOV_WGI_RL.EST", { source: 3 }), "WGI rule of law");
+  markRetrieved(corruption, "worldwide-governance-indicators");
+  saveJSON("corruption.json", corruption);
 
-async function fetchDebt() {
-  console.log("Fetching government debt data...");
-  const data = await fetchWorldBank("DT.DOD.DECT.CD");
-  const existing = loadJSON("government-debt.json");
-  existing.data = data;
-  existing.sources[0].retrieved = TODAY;
-  saveJSON("government-debt.json", existing);
-}
+  const electricity = loadJSON("electricity.json");
+  electricity.access = replaceIfAny(electricity.access, await fetchWorldBank("EG.ELC.ACCS.ZS", { decimals: 1 }), "electricity access");
+  markRetrieved(electricity, "EG.ELC.ACCS.ZS");
+  saveJSON("electricity.json", electricity);
 
-async function fetchPoverty() {
-  console.log("Fetching poverty data...");
-  const data = await fetchWorldBank("SI.POV.DDAY");
-  const existing = loadJSON("poverty.json");
-  existing.data = data;
-  existing.sources[0].retrieved = TODAY;
-  saveJSON("poverty.json", existing);
-}
-
-async function fetchCorruption() {
-  console.log("Fetching corruption (WGI) data...");
-  const data = await fetchWorldBank("CC.EST");
-  const existing = loadJSON("corruption.json");
-  existing.wgiData = data;
-  existing.sources[0].retrieved = TODAY;
-  saveJSON("corruption.json", existing);
-}
-
-async function fetchACLED() {
-  const key = process.env.ACLED_API_KEY;
-  const email = process.env.ACLED_EMAIL;
-
-  if (!key || !email) {
-    console.log(
-      "Skipping ACLED (set ACLED_API_KEY and ACLED_EMAIL env vars)"
-    );
-    return;
+  const health = loadJSON("health-education.json");
+  const mmr = await fetchWorldBank("SH.STA.MMRT", { decimals: 0 });
+  const deaths = await fetchWorldBank("SH.MMR.DTHS", { decimals: 0 });
+  if (mmr.length) {
+    health.maternalMortality = mmr.map((d) => ({
+      year: d.year,
+      ratio: d.value,
+      deaths: deaths.find((x) => x.year === d.year)?.value ?? null,
+    }));
   }
+  health.under5 = replaceIfAny(health.under5, await fetchWorldBank("SH.DYN.MORT", { decimals: 1 }), "under-5 mortality");
+  health.lifeExpectancy = replaceIfAny(health.lifeExpectancy, await fetchWorldBank("SP.DYN.LE00.IN"), "life expectancy");
+  health.healthSpendShare = replaceIfAny(health.healthSpendShare, await fetchWorldBank("SH.XPD.GHED.GE.ZS"), "health spending share");
+  for (const code of ["SH.STA.MMRT", "SH.DYN.MORT", "SP.DYN.LE00.IN", "SH.XPD.GHED.GE.ZS"]) markRetrieved(health, code);
+  saveJSON("health-education.json", health);
 
-  console.log("Fetching ACLED violence data...");
-  const existing = loadJSON("violence.json");
-  const currentYear = new Date().getFullYear();
-
-  for (let year = 2010; year <= currentYear; year++) {
-    const url = `https://api.acleddata.com/acled/read?key=${key}&email=${email}&event_date=${year}-01-01|${year}-12-31&event_date_where=BETWEEN&iso=566&limit=0`;
-    try {
-      const res = await fetch(url);
-      const json = (await res.json()) as { count: number; data: any[] };
-      const fatalities = json.data?.reduce(
-        (sum: number, e: any) => sum + (parseInt(e.fatalities) || 0),
-        0
-      );
-
-      const yearEntry = existing.data.find((d: any) => d.year === year);
-      if (yearEntry) {
-        yearEntry.acled_events = json.count || json.data?.length || null;
-        yearEntry.acled_fatalities = fatalities || null;
-      }
-    } catch (e) {
-      console.log(`  Failed for ${year}: ${e}`);
-    }
-  }
-
-  existing.sources[0].retrieved = TODAY;
-  saveJSON("violence.json", existing);
+  const economy = loadJSON("economy.json");
+  const remit = await fetchWorldBank("BX.TRF.PWKR.CD.DT", { decimals: 0 });
+  economy.remittances = replaceIfAny(
+    economy.remittances,
+    remit.map((d) => ({ year: d.year, value: Math.round(d.value / 1e7) / 100 })),
+    "remittances",
+  );
+  markRetrieved(economy, "BX.TRF.PWKR.CD.DT");
+  saveJSON("economy.json", economy);
 }
 
 async function main() {
-  console.log(`\nFetching data (${TODAY})...\n`);
+  console.log(`\nRefreshing data (${TODAY})\n`);
+  await Promise.all([fetchExchangeRates(), fetchWorldBankSeries()]);
 
-  await Promise.all([
-    fetchExchangeRateQuarterly(),
-    fetchInflation(),
-    fetchDebt(),
-    fetchPoverty(),
-    fetchCorruption(),
-  ]);
-
-  await fetchACLED();
-
-  console.log("\nDone. Manual data sources still needed:");
-  console.log("  - Fuel prices: NBS e-Library reports");
-  console.log("  - Budget: Budget Office Appropriation Acts");
-  console.log("  - CPI scores: Transparency International annual reports");
-  console.log(
-    "  - Violence: ACLED API (set ACLED_API_KEY and ACLED_EMAIL)\n"
-  );
+  console.log(`
+Done. Update these by hand:
+  - ACLED fatalities: download the monthly political violence file from
+    https://data.humdata.org/dataset/nigeria-acled-conflict-data and sum by year (data/violence.json -> acled)
+  - Petrol, diesel, LPG, kerosene, food prices: NBS Price Watch reports (fuel-price.json, cost-of-living.json)
+  - Monthly inflation: NBS CPI release (inflation.json -> monthly)
+  - Public debt: DMO quarterly release (government-debt.json -> yearEnd, totalPublicDebt)
+  - Budget: Appropriation Acts (budget.json)
+  - Kidnapping: SBM Intelligence annual report (violence.json -> kidnapping)
+  - IDPs: IDMC on HDX (violence.json -> idps)
+  - CPI: Transparency International each February (corruption.json -> cpiData)
+  - Press freedom and Freedom House: accountability.json
+  - UK visas and Canada PR: japa.json
+`);
 }
 
 main().catch(console.error);

@@ -2,53 +2,387 @@
   "category": "Corruption",
   "description": "Corruption indicators for Nigeria — Transparency International CPI and World Bank WGI Control of Corruption",
   "sources": [
-    { "name": "World Bank - World Governance Indicators", "url": "https://info.worldbank.org/governance/wgi", "indicator": "CC.EST", "retrieved": "2026-04-04" },
-    { "name": "Transparency International CPI", "url": "https://www.transparency.org/en/cpi/2024/index/nga", "retrieved": "2026-04-04" },
-    { "name": "Transparency International CPI 2025", "url": "https://www.transparency.org/en/cpi/2025", "retrieved": "2026-04-04" },
-    { "name": "Wikipedia - List of countries by CPI", "url": "https://en.wikipedia.org/wiki/List_of_countries_by_Corruption_Perceptions_Index", "note": "Historical CPI scores" },
-    { "name": "Nairametrics", "url": "https://nairametrics.com/2025/02/11/nigeria-moves-up-in-2024-corruption-perception-index-ranks-140/", "note": "2024 CPI analysis" }
+    {
+      "name": "World Bank Worldwide Governance Indicators",
+      "url": "https://www.worldbank.org/en/publication/worldwide-governance-indicators",
+      "retrieved": "2026-09-18",
+      "note": "2025 release (updated 18 March 2026, data to 2024). Every past year was restated."
+    },
+    {
+      "name": "Transparency International, CPI 2025",
+      "url": "https://www.transparency.org/en/cpi/2025",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Premium Times, Nigeria 142nd in CPI 2025",
+      "url": "https://www.premiumtimesng.com/news/top-news/855542-nigeria-drops-two-places-to-142nd-in-2025-corruption-ranking-trails-33-african-countries.html",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Wikipedia, list of countries by CPI",
+      "url": "https://en.wikipedia.org/wiki/List_of_countries_by_Corruption_Perceptions_Index",
+      "retrieved": "2026-09-18",
+      "note": "Historical scores"
+    },
+    {
+      "name": "BusinessDay, twelve corruption cases to watch in 2026",
+      "url": "https://businessday.ng/news/article/twelve-high-profile-corruption-cases-to-watch-in-nigeria-in-2026/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "CNBC Africa, Diezani acquitted in UK trial",
+      "url": "https://www.cnbcafrica.com/2026/nigerias-ex-oil-minister-alison-madueke-cleared-of-all-charges-in-uk-corruption-trial",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Premium Times, Dasuki re-arraigned",
+      "url": "https://www.premiumtimesng.com/news/top-news/783927-efcc-re-arraigns-dasuki-three-others-over-alleged-n33-2bn-arms-procurement-fraud.html",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Channels TV, Supreme Court upholds Farouk Lawan sentence",
+      "url": "https://www.channelstv.com/2024/01/26/supreme-court-upholds-five-year-sentence-of-farouk-lawan/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Vanguard, NDDC forensic audit",
+      "url": "https://www.vanguardngr.com/2021/09/nddc-buhari-receives-forensic-audit-report-says-n6trn-approved-in-18yrs/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Premium Times, court orders NDDC audit published",
+      "url": "https://www.premiumtimesng.com/news/top-news/837716-court-orders-tinubu-govt-to-publish-nddc-forensic-audit-report-name-those-indicted.html",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Sahara Reporters, EFCC humanitarian ministry probe",
+      "url": "https://saharareporters.com/2024/04/14/nigerias-efcc-recovers-n327billion-445000-amid-humanitarian-ministry-probe-says-betta",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Punch, EFCC convictions 2014-2025",
+      "url": "https://punchng.com/efcc-records-over-20000-convictions-in-12-years/",
+      "retrieved": "2026-09-18"
+    }
   ],
   "wgiData": {
-    "description": "Control of Corruption estimate — ranges from -2.5 (weak) to 2.5 (strong governance). World Bank composite indicator.",
+    "description": "Control of Corruption estimate, from about -2.5 (weak) to 2.5 (strong). World Bank WGI, 2025 release.",
     "unit": "WGI estimate (-2.5 to 2.5)",
     "data": [
-      { "year": 2010, "value": -1.05 },
-      { "year": 2011, "value": -1.19 },
-      { "year": 2012, "value": -1.18 },
-      { "year": 2013, "value": -1.23 },
-      { "year": 2014, "value": -1.28 },
-      { "year": 2015, "value": -1.10 },
-      { "year": 2016, "value": -1.05 },
-      { "year": 2017, "value": -1.10 },
-      { "year": 2018, "value": -1.08 },
-      { "year": 2019, "value": -1.11 },
-      { "year": 2020, "value": -1.12 },
-      { "year": 2021, "value": -1.10 },
-      { "year": 2022, "value": -1.13 },
-      { "year": 2023, "value": -1.04 }
+      {
+        "year": 2010,
+        "value": -1.13
+      },
+      {
+        "year": 2011,
+        "value": -1.14
+      },
+      {
+        "year": 2012,
+        "value": -1.15
+      },
+      {
+        "year": 2013,
+        "value": -1.19
+      },
+      {
+        "year": 2014,
+        "value": -1.3
+      },
+      {
+        "year": 2015,
+        "value": -1.16
+      },
+      {
+        "year": 2016,
+        "value": -1.09
+      },
+      {
+        "year": 2017,
+        "value": -1.14
+      },
+      {
+        "year": 2018,
+        "value": -1.15
+      },
+      {
+        "year": 2019,
+        "value": -1.13
+      },
+      {
+        "year": 2020,
+        "value": -1.12
+      },
+      {
+        "year": 2021,
+        "value": -1.19
+      },
+      {
+        "year": 2022,
+        "value": -1.23
+      },
+      {
+        "year": 2023,
+        "value": -1.1
+      },
+      {
+        "year": 2024,
+        "value": -1.11
+      }
+    ],
+    "ruleOfLaw": [
+      {
+        "year": 2010,
+        "value": -1.12
+      },
+      {
+        "year": 2011,
+        "value": -1.06
+      },
+      {
+        "year": 2012,
+        "value": -1.09
+      },
+      {
+        "year": 2013,
+        "value": -1.19
+      },
+      {
+        "year": 2014,
+        "value": -1.13
+      },
+      {
+        "year": 2015,
+        "value": -0.96
+      },
+      {
+        "year": 2016,
+        "value": -0.88
+      },
+      {
+        "year": 2017,
+        "value": -0.79
+      },
+      {
+        "year": 2018,
+        "value": -0.81
+      },
+      {
+        "year": 2019,
+        "value": -0.84
+      },
+      {
+        "year": 2020,
+        "value": -0.84
+      },
+      {
+        "year": 2021,
+        "value": -0.93
+      },
+      {
+        "year": 2022,
+        "value": -1.0
+      },
+      {
+        "year": 2023,
+        "value": -0.93
+      },
+      {
+        "year": 2024,
+        "value": -1.01
+      }
     ]
   },
   "cpiData": {
     "description": "Corruption Perceptions Index — score 0-100 (higher = less corrupt). Pre-2012 used 0-10 scale (converted here to 0-100 equivalent).",
     "unit": "CPI Score (0-100)",
     "data": [
-      { "year": 2010, "score": 24, "rank": 134, "totalCountries": 178, "note": "Original scale 2.4/10, converted to 0-100" },
-      { "year": 2011, "score": 24, "rank": 143, "totalCountries": 183, "note": "Original scale 2.4/10, converted to 0-100" },
-      { "year": 2012, "score": 27, "rank": 139, "totalCountries": 176 },
-      { "year": 2013, "score": 25, "rank": 144, "totalCountries": 177 },
-      { "year": 2014, "score": 27, "rank": 136, "totalCountries": 175 },
-      { "year": 2015, "score": 26, "rank": 136, "totalCountries": 168 },
-      { "year": 2016, "score": 28, "rank": 136, "totalCountries": 176 },
-      { "year": 2017, "score": 27, "rank": 148, "totalCountries": 180 },
-      { "year": 2018, "score": 27, "rank": 144, "totalCountries": 180 },
-      { "year": 2019, "score": 26, "rank": 146, "totalCountries": 180 },
-      { "year": 2020, "score": 25, "rank": 149, "totalCountries": 180 },
-      { "year": 2021, "score": 24, "rank": 154, "totalCountries": 180 },
-      { "year": 2022, "score": 24, "rank": 150, "totalCountries": 180 },
-      { "year": 2023, "score": 25, "rank": 145, "totalCountries": 180 },
-      { "year": 2024, "score": 26, "rank": 140, "totalCountries": 180, "source": "https://www.transparency.org/en/cpi/2024/index/nga" },
-      { "year": 2025, "score": 26, "rank": 142, "totalCountries": 182, "source": "https://www.transparency.org/en/cpi/2025" }
+      {
+        "year": 2010,
+        "score": 24,
+        "rank": 134,
+        "totalCountries": 178,
+        "note": "Original scale 2.4/10, converted to 0-100"
+      },
+      {
+        "year": 2011,
+        "score": 24,
+        "rank": 143,
+        "totalCountries": 183,
+        "note": "Original scale 2.4/10, converted to 0-100"
+      },
+      {
+        "year": 2012,
+        "score": 27,
+        "rank": 139,
+        "totalCountries": 176
+      },
+      {
+        "year": 2013,
+        "score": 25,
+        "rank": 144,
+        "totalCountries": 177
+      },
+      {
+        "year": 2014,
+        "score": 27,
+        "rank": 136,
+        "totalCountries": 175
+      },
+      {
+        "year": 2015,
+        "score": 26,
+        "rank": 136,
+        "totalCountries": 168
+      },
+      {
+        "year": 2016,
+        "score": 28,
+        "rank": 136,
+        "totalCountries": 176
+      },
+      {
+        "year": 2017,
+        "score": 27,
+        "rank": 148,
+        "totalCountries": 180
+      },
+      {
+        "year": 2018,
+        "score": 27,
+        "rank": 144,
+        "totalCountries": 180
+      },
+      {
+        "year": 2019,
+        "score": 26,
+        "rank": 146,
+        "totalCountries": 180
+      },
+      {
+        "year": 2020,
+        "score": 25,
+        "rank": 149,
+        "totalCountries": 180
+      },
+      {
+        "year": 2021,
+        "score": 24,
+        "rank": 154,
+        "totalCountries": 180
+      },
+      {
+        "year": 2022,
+        "score": 24,
+        "rank": 150,
+        "totalCountries": 180
+      },
+      {
+        "year": 2023,
+        "score": 25,
+        "rank": 145,
+        "totalCountries": 180
+      },
+      {
+        "year": 2024,
+        "score": 26,
+        "rank": 140,
+        "totalCountries": 180,
+        "source": "https://www.transparency.org/en/cpi/2024/index/nga"
+      },
+      {
+        "year": 2025,
+        "score": 26,
+        "rank": 142,
+        "totalCountries": 182,
+        "source": "https://www.transparency.org/en/cpi/2025"
+      }
     ],
     "context": "Nigeria's CPI score has remained in the 24-28 range since 2012, well below the global average of 43 and Sub-Saharan African average of 33. Nigeria shares its ranking tier with countries like Uganda, Mexico, and Iraq."
+  },
+  "cases": [
+    {
+      "case": "2011 fuel subsidy payments",
+      "era": "Jonathan",
+      "amount": "₦1.7tn paid illegally, per a House committee",
+      "status": "A few convictions, at least one overturned on appeal. The committee chair, Farouk Lawan, was jailed for taking a $500,000 bribe; the Supreme Court upheld it in 2024."
+    },
+    {
+      "case": "Arms procurement at the NSA's office (Dasuki)",
+      "era": "Jonathan",
+      "amount": "$2.1bn alleged; current charge ₦33.2bn",
+      "status": "On trial since 2015. Dasuki was held for four years despite bail orders. No verdict."
+    },
+    {
+      "case": "Diezani Alison-Madueke",
+      "era": "Jonathan",
+      "amount": "Bribery charges in the UK",
+      "status": "Acquitted on all counts by a London jury in June 2026. The US returned $52.88m through civil forfeiture in 2025."
+    },
+    {
+      "case": "NDDC forensic audit",
+      "era": "Buhari",
+      "amount": "About ₦6tn reviewed, 13,777 projects flagged",
+      "status": "Report delivered in 2021 and never published. A court has ordered the government to release it."
+    },
+    {
+      "case": "Godwin Emefiele (CBN governor)",
+      "era": "Buhari",
+      "amount": "$4.5bn and ₦2.8bn alleged in Lagos",
+      "status": "Trials in Abuja and Lagos still running. No verdict."
+    },
+    {
+      "case": "Yahaya Bello (Kogi governor)",
+      "era": "Buhari",
+      "amount": "₦80.2bn and ₦110.4bn alleged",
+      "status": "Two trials running. No verdict."
+    },
+    {
+      "case": "Humanitarian Affairs Ministry",
+      "era": "Tinubu",
+      "amount": "₦585m transfer that led to the minister's suspension",
+      "status": "Minister Betta Edu suspended in January 2024. Not charged. Named to the APC 2027 campaign council in August 2026."
+    }
+  ],
+  "efccConvictions": {
+    "note": "All offences. Most are cybercrime cases, not grand corruption.",
+    "data": [
+      {
+        "year": 2015,
+        "value": 103
+      },
+      {
+        "year": 2016,
+        "value": 195
+      },
+      {
+        "year": 2018,
+        "value": 312
+      },
+      {
+        "year": 2019,
+        "value": 1280
+      },
+      {
+        "year": 2020,
+        "value": 976
+      },
+      {
+        "year": 2021,
+        "value": 2220
+      },
+      {
+        "year": 2022,
+        "value": 3785
+      },
+      {
+        "year": 2023,
+        "value": 2674
+      },
+      {
+        "year": 2024,
+        "value": 4111
+      }
+    ]
   }
 }

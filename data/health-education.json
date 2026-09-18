@@ -1,0 +1,416 @@
+{
+  "category": "Health and Education",
+  "description": "Maternal and child health, health spending, school results and strikes",
+  "sources": [
+    {
+      "name": "World Bank, maternal mortality ratio (UN MMEIG)",
+      "url": "https://data.worldbank.org/indicator/SH.STA.MMRT?locations=NG",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "World Bank, under-5 mortality (UN IGME)",
+      "url": "https://data.worldbank.org/indicator/SH.DYN.MORT?locations=NG",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "World Bank, life expectancy at birth",
+      "url": "https://data.worldbank.org/indicator/SP.DYN.LE00.IN?locations=NG",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "World Bank, government health spending (% of government spending, WHO)",
+      "url": "https://data.worldbank.org/indicator/SH.XPD.GHED.GE.ZS?locations=NG",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Sahara Reporters, WHO maternal mortality report",
+      "url": "https://saharareporters.com/2025/04/08/who-says-nigeria-other-sub-saharan-africa-countries-account-70-global-maternal-deaths",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Vanguard, WAEC scorecard 2015-2017",
+      "url": "https://www.vanguardngr.com/2017/07/waec-presents-score-card-explains-improving-wassce-performance/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Guardian, WAEC 2025 corrected results",
+      "url": "https://guardian.ng/news/62-96-pass-english-maths-as-waec-releases-fresh-results/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "Leadership, WAEC 2026 results",
+      "url": "https://leadership.ng/61-54-of-candidates-obtain-5-credits-as-waec-releases-2026-wassce-results/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "NUC, ASUU suspends eight-month strike",
+      "url": "https://www.nuc.edu.ng/asuu-suspends-eight-months-strike/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "FIJ, ASUU strikes under Buhari",
+      "url": "https://fij.ng/article/asuu-has-spent-19-months-on-strike-under-buhari-and-its-the-longest-since-1999/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "P.M. News, UNICEF: 18.3 million out-of-school children",
+      "url": "https://pmnewsnigeria.com/2026/05/03/nigeria-tops-global-list-with-18-3-million-out-of-school-children-unicef/",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "MSF, malnutrition in northern Nigeria (July 2025)",
+      "url": "https://www.msf.org/mobilisation-needed-avoid-further-deaths-malnutrition-northern-nigeria",
+      "retrieved": "2026-09-18"
+    }
+  ],
+  "maternalMortality": [
+    {
+      "year": 2010,
+      "ratio": 1094,
+      "deaths": 77000
+    },
+    {
+      "year": 2011,
+      "ratio": 1108,
+      "deaths": 79000
+    },
+    {
+      "year": 2012,
+      "ratio": 1124,
+      "deaths": 81000
+    },
+    {
+      "year": 2013,
+      "ratio": 1146,
+      "deaths": 84000
+    },
+    {
+      "year": 2014,
+      "ratio": 1155,
+      "deaths": 86000
+    },
+    {
+      "year": 2015,
+      "ratio": 1168,
+      "deaths": 87000
+    },
+    {
+      "year": 2016,
+      "ratio": 1155,
+      "deaths": 85000
+    },
+    {
+      "year": 2017,
+      "ratio": 1142,
+      "deaths": 84000
+    },
+    {
+      "year": 2018,
+      "ratio": 1118,
+      "deaths": 82000
+    },
+    {
+      "year": 2019,
+      "ratio": 1091,
+      "deaths": 79000
+    },
+    {
+      "year": 2020,
+      "ratio": 1065,
+      "deaths": 77000
+    },
+    {
+      "year": 2021,
+      "ratio": 1046,
+      "deaths": 77000
+    },
+    {
+      "year": 2022,
+      "ratio": 1016,
+      "deaths": 75000
+    },
+    {
+      "year": 2023,
+      "ratio": 993,
+      "deaths": 75000
+    }
+  ],
+  "maternalShareGlobal": 29,
+  "under5": [
+    {
+      "year": 2010,
+      "value": 126.3
+    },
+    {
+      "year": 2011,
+      "value": 123.8
+    },
+    {
+      "year": 2012,
+      "value": 121.6
+    },
+    {
+      "year": 2013,
+      "value": 119.9
+    },
+    {
+      "year": 2014,
+      "value": 118.7
+    },
+    {
+      "year": 2015,
+      "value": 117.8
+    },
+    {
+      "year": 2016,
+      "value": 117.4
+    },
+    {
+      "year": 2017,
+      "value": 117.2
+    },
+    {
+      "year": 2018,
+      "value": 117.2
+    },
+    {
+      "year": 2019,
+      "value": 117.4
+    },
+    {
+      "year": 2020,
+      "value": 117.4
+    },
+    {
+      "year": 2021,
+      "value": 117.6
+    },
+    {
+      "year": 2022,
+      "value": 117.5
+    },
+    {
+      "year": 2023,
+      "value": 116.8
+    },
+    {
+      "year": 2024,
+      "value": 115.6
+    }
+  ],
+  "under5Deaths2024": 855676,
+  "lifeExpectancy": [
+    {
+      "year": 2010,
+      "value": 51.31
+    },
+    {
+      "year": 2011,
+      "value": 51.49
+    },
+    {
+      "year": 2012,
+      "value": 51.69
+    },
+    {
+      "year": 2013,
+      "value": 51.83
+    },
+    {
+      "year": 2014,
+      "value": 51.94
+    },
+    {
+      "year": 2015,
+      "value": 51.94
+    },
+    {
+      "year": 2016,
+      "value": 52.19
+    },
+    {
+      "year": 2017,
+      "value": 52.4
+    },
+    {
+      "year": 2018,
+      "value": 52.67
+    },
+    {
+      "year": 2019,
+      "value": 53.01
+    },
+    {
+      "year": 2020,
+      "value": 53.07
+    },
+    {
+      "year": 2021,
+      "value": 53.45
+    },
+    {
+      "year": 2022,
+      "value": 54.08
+    },
+    {
+      "year": 2023,
+      "value": 54.46
+    },
+    {
+      "year": 2024,
+      "value": 54.63
+    }
+  ],
+  "healthSpendShare": [
+    {
+      "year": 2010,
+      "value": 2.7
+    },
+    {
+      "year": 2011,
+      "value": 2.77
+    },
+    {
+      "year": 2012,
+      "value": 3.67
+    },
+    {
+      "year": 2013,
+      "value": 3.46
+    },
+    {
+      "year": 2014,
+      "value": 3.34
+    },
+    {
+      "year": 2015,
+      "value": 5.33
+    },
+    {
+      "year": 2016,
+      "value": 4.87
+    },
+    {
+      "year": 2017,
+      "value": 4.44
+    },
+    {
+      "year": 2018,
+      "value": 3.88
+    },
+    {
+      "year": 2019,
+      "value": 3.76
+    },
+    {
+      "year": 2020,
+      "value": 4.18
+    },
+    {
+      "year": 2021,
+      "value": 4.31
+    },
+    {
+      "year": 2022,
+      "value": 4.31
+    },
+    {
+      "year": 2023,
+      "value": 4.31
+    }
+  ],
+  "abujaTarget": 15,
+  "waec": [
+    {
+      "year": 2015,
+      "value": 38.68
+    },
+    {
+      "year": 2016,
+      "value": 52.97
+    },
+    {
+      "year": 2017,
+      "value": 59.22
+    },
+    {
+      "year": 2018,
+      "value": 49.98
+    },
+    {
+      "year": 2019,
+      "value": 64.18
+    },
+    {
+      "year": 2020,
+      "value": 65.24
+    },
+    {
+      "year": 2021,
+      "value": 81.7
+    },
+    {
+      "year": 2022,
+      "value": 76.36
+    },
+    {
+      "year": 2023,
+      "value": 79.81
+    },
+    {
+      "year": 2024,
+      "value": 72.12
+    },
+    {
+      "year": 2025,
+      "value": 62.96
+    },
+    {
+      "year": 2026,
+      "value": 61.54
+    }
+  ],
+  "waec2025FirstRelease": 38.32,
+  "asuuStrikes": [
+    {
+      "year": 2013,
+      "from": "1 Jul 2013",
+      "to": "17 Dec 2013",
+      "days": 169
+    },
+    {
+      "year": 2017,
+      "from": "17 Aug 2017",
+      "to": "17 Sep 2017",
+      "days": 31
+    },
+    {
+      "year": 2018,
+      "from": "4 Nov 2018",
+      "to": "7 Feb 2019",
+      "days": 95
+    },
+    {
+      "year": 2020,
+      "from": "23 Mar 2020",
+      "to": "23 Dec 2020",
+      "days": 275
+    },
+    {
+      "year": 2022,
+      "from": "14 Feb 2022",
+      "to": "14 Oct 2022",
+      "days": 242
+    }
+  ],
+  "outOfSchool": {
+    "value": 18.3,
+    "unit": "million",
+    "note": "UNICEF, primary and secondary age. The highest number in the world."
+  },
+  "malnutrition": {
+    "katsinaDeaths2025H1": 652,
+    "treated2024": 300000,
+    "note": "MSF facilities in northern Nigeria"
+  }
+}

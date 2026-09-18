@@ -1,0 +1,119 @@
+{
+  "category": "Electricity",
+  "description": "Access to and use of electricity",
+  "sources": [
+    {
+      "name": "World Bank, access to electricity (% of population)",
+      "url": "https://data.worldbank.org/indicator/EG.ELC.ACCS.ZS?locations=NG",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "World Bank, electric power consumption per person (IEA data)",
+      "url": "https://data.worldbank.org/indicator/EG.USE.ELEC.KH.PC?locations=NG",
+      "retrieved": "2026-09-18"
+    },
+    {
+      "name": "World Bank, population total",
+      "url": "https://data.worldbank.org/indicator/SP.POP.TOTL?locations=NG",
+      "retrieved": "2026-09-18",
+      "note": "People without electricity = (100 - access %) x population, calculated by endsars.online"
+    }
+  ],
+  "access": [
+    {
+      "year": 2010,
+      "value": 48.0
+    },
+    {
+      "year": 2011,
+      "value": 55.9
+    },
+    {
+      "year": 2012,
+      "value": 53.0
+    },
+    {
+      "year": 2013,
+      "value": 55.6
+    },
+    {
+      "year": 2014,
+      "value": 54.2
+    },
+    {
+      "year": 2015,
+      "value": 52.5
+    },
+    {
+      "year": 2016,
+      "value": 59.3
+    },
+    {
+      "year": 2017,
+      "value": 54.4
+    },
+    {
+      "year": 2018,
+      "value": 56.5
+    },
+    {
+      "year": 2019,
+      "value": 55.4
+    },
+    {
+      "year": 2020,
+      "value": 55.4
+    },
+    {
+      "year": 2021,
+      "value": 59.5
+    },
+    {
+      "year": 2022,
+      "value": 60.5
+    },
+    {
+      "year": 2023,
+      "value": 61.2
+    },
+    {
+      "year": 2024,
+      "value": 62.5
+    }
+  ],
+  "withoutPower2024": {
+    "nigeria_m": 87.3,
+    "drc_m": 84.7,
+    "note": "Nigeria has more people without electricity than any other country"
+  },
+  "perCapita2023": [
+    {
+      "country": "Nigeria",
+      "kwh": 144.1
+    },
+    {
+      "country": "Kenya",
+      "kwh": 190.1
+    },
+    {
+      "country": "Sub-Saharan Africa",
+      "kwh": 376.8
+    },
+    {
+      "country": "Ghana",
+      "kwh": 565.0
+    },
+    {
+      "country": "Egypt",
+      "kwh": 1492.9
+    },
+    {
+      "country": "South Africa",
+      "kwh": 3247.1
+    },
+    {
+      "country": "World",
+      "kwh": 3558.5
+    }
+  ]
+}
