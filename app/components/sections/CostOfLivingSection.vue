@@ -1,252 +1,169 @@
 <script setup lang="ts">
-import { use } from 'echarts/core'
-import { LineChart } from 'echarts/charts'
-import {
-  GridComponent,
-  TooltipComponent,
-  LegendComponent,
-  MarkAreaComponent,
-  MarkPointComponent,
-} from 'echarts/components'
-import { CanvasRenderer } from 'echarts/renderers'
-import VChart from 'vue-echarts'
-import type { ComposeOption } from 'echarts/core'
-import type { LineSeriesOption } from 'echarts/charts'
-import type {
-  GridComponentOption,
-  TooltipComponentOption,
-  LegendComponentOption,
-  MarkAreaComponentOption,
-  MarkPointComponentOption,
-} from 'echarts/components'
+import { timeSeries, naira, pct } from '~/utils/chart'
 
-use([LineChart, GridComponent, TooltipComponent, LegendComponent, MarkAreaComponent, MarkPointComponent, CanvasRenderer])
+const { fuelPrice, inflation, costOfLiving } = useDatasets()
 
-type ChartOption = ComposeOption<
-  LineSeriesOption | GridComponentOption | TooltipComponentOption | LegendComponentOption | MarkAreaComponentOption | MarkPointComponentOption
->
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+const short = (ym: string) => `${MONTHS[Number(ym.slice(5, 7)) - 1]} ${ym.slice(2, 4)}`
 
-const { inflation, fuelPrice } = useDatasets()
-
-// Inflation annual data
-const inflationData = inflation.data
-const inflationYears = inflationData.map(d => d.year.toString())
-const inflationValues = inflationData.map(d => d.value)
-
-// Fuel price: extract one price per year (last entry for each year)
-const fuelByYear = new Map<number, number>()
-for (const entry of fuelPrice.data) {
-  fuelByYear.set(entry.year, entry.price)
-}
-
-// Align fuel data to inflation years, fill gaps with previous value
-const fuelValues: (number | null)[] = []
-let lastFuelPrice = 0
-for (const yearStr of inflationYears) {
-  const year = parseInt(yearStr)
-  if (fuelByYear.has(year)) {
-    lastFuelPrice = fuelByYear.get(year)!
-    fuelValues.push(lastFuelPrice)
-  } else if (lastFuelPrice > 0) {
-    fuelValues.push(lastFuelPrice)
-  } else {
-    fuelValues.push(null)
-  }
-}
-
-const chartOption = computed<ChartOption>(() => ({
-  backgroundColor: 'transparent',
-  grid: {
-    left: 55,
-    right: 70,
-    top: 50,
-    bottom: 50,
-  },
-  legend: {
-    top: 5,
-    textStyle: { color: '#1A1A1A', fontFamily: 'Space Grotesk', fontSize: 12 },
-    data: [
-      { name: 'Inflation %', icon: 'roundRect' },
-      { name: 'Fuel Price (₦/L)', icon: 'roundRect' },
-    ],
-  },
-  tooltip: {
-    trigger: 'axis',
-    backgroundColor: '#FFFFFF',
-    borderColor: '#008751',
-    borderWidth: 1,
-    textStyle: { color: '#0A0A0A', fontFamily: 'Space Grotesk' },
-    formatter(params: any) {
-      const items = Array.isArray(params) ? params : [params]
-      let html = `<strong>${items[0].name}</strong>`
-      for (const item of items) {
-        if (item.value != null) {
-          const color = item.seriesIndex === 0 ? '#0A0A0A' : '#008751'
-          html += `<br/><span style="color:${color}">${item.seriesName}: ${item.seriesIndex === 0 ? item.value.toFixed(1) + '%' : '₦' + item.value.toLocaleString()}</span>`
-        }
-      }
-      return html
-    },
-  },
-  xAxis: {
-    type: 'category',
-    data: inflationYears,
-    axisLabel: {
-      color: '#1A1A1A',
-      fontFamily: 'Space Grotesk',
-      fontSize: 11,
-    },
-    axisLine: { lineStyle: { color: '#E0E0E0' } },
-    axisTick: { show: false },
-  },
-  yAxis: [
-    {
-      type: 'value',
-      name: 'Inflation %',
-      nameTextStyle: { color: '#1A1A1A80', fontFamily: 'Space Grotesk', fontSize: 11 },
-      axisLabel: {
-        color: '#1A1A1A',
-        fontFamily: 'Space Grotesk',
-        fontSize: 11,
-        formatter: '{value}%',
-      },
-      splitLine: { lineStyle: { color: '#F0F0F0' } },
-      axisLine: { show: false },
-    },
-    {
-      type: 'value',
-      name: '₦/Litre',
-      nameTextStyle: { color: '#00875180', fontFamily: 'Space Grotesk', fontSize: 11 },
-      position: 'right',
-      axisLabel: {
-        color: '#008751',
-        fontFamily: 'Space Grotesk',
-        fontSize: 11,
-        formatter(val: number) {
-          return `₦${val.toLocaleString()}`
-        },
-      },
-      splitLine: { show: false },
-      axisLine: { show: false },
-    },
-  ],
+const label = (d: { year: number, month?: string }) => (d.month ? `${d.month.slice(0, 3)} ${d.year}` : String(d.year))
+const petrol = fuelPrice.data
+const pump = fuelPrice.pumpLagos.data
+const petrolX = [...new Set([...petrol.map(label), ...pump.map(label)])]
+  .sort((a, b) => {
+    const key = (l: string) => {
+      const [m, y] = l.includes(' ') ? l.split(' ') : ['Jan', l]
+      return Number(y) * 12 + MONTHS.indexOf(m!)
+    }
+    return key(a) - key(b)
+  })
+const petrolOption = computed(() => timeSeries({
+  x: petrolX,
   series: [
-    {
-      name: 'Inflation %',
-      type: 'line',
-      data: inflationValues,
-      smooth: 0.3,
-      symbol: 'circle',
-      symbolSize: 5,
-      lineStyle: { color: '#0A0A0A', width: 2 },
-      itemStyle: { color: '#0A0A0A' },
-      yAxisIndex: 0,
-      markArea: {
-        silent: true,
-        data: [
-          // PDP era
-          [
-            {
-              xAxis: '2010',
-              itemStyle: { color: 'rgba(0, 0, 0, 0.03)' },
-              label: { show: true, position: 'insideTop', color: '#00000040', fontSize: 10, fontFamily: 'Space Grotesk', formatter: 'PDP — Jonathan' },
-            },
-            { xAxis: '2014' },
-          ],
-          // APC Buhari
-          [
-            {
-              xAxis: '2015',
-              itemStyle: { color: 'rgba(0, 135, 81, 0.05)' },
-              label: { show: true, position: 'insideTop', color: '#00875160', fontSize: 10, fontFamily: 'Space Grotesk', formatter: 'APC — Buhari' },
-            },
-            { xAxis: '2022' },
-          ],
-          // APC Tinubu
-          [
-            {
-              xAxis: '2023',
-              itemStyle: { color: 'rgba(0, 135, 81, 0.10)' },
-              label: { show: true, position: 'insideTop', color: '#00875190', fontSize: 10, fontFamily: 'Space Grotesk', formatter: 'APC — Tinubu' },
-            },
-            { xAxis: '2026' },
-          ],
-        ],
-      } as any,
-    },
-    {
-      name: 'Fuel Price (₦/L)',
-      type: 'line',
-      data: fuelValues,
-      step: 'end',
-      symbol: 'circle',
-      symbolSize: 5,
-      lineStyle: { color: '#008751', width: 2 },
-      itemStyle: { color: '#008751' },
-      yAxisIndex: 1,
-      markPoint: {
-        symbol: 'pin',
-        symbolSize: 40,
-        label: {
-          show: true,
-          color: '#FFFFFF',
-          fontSize: 9,
-          fontFamily: 'Space Grotesk',
-          formatter: '!',
-        },
-        data: [
-          {
-            coord: [inflationYears.indexOf('2023'), fuelByYear.get(2023) || 537],
-            name: 'Subsidy removed',
-            value: 'Subsidy is gone',
-            itemStyle: { color: '#008751' },
-            label: {
-              show: true,
-              position: 'top',
-              color: '#008751',
-              fontSize: 10,
-              fontFamily: 'Space Grotesk',
-              formatter: '"Subsidy is gone"',
-              distance: 15,
-            },
-          },
-        ],
-      } as any,
-    },
+    { name: 'Official price to 2020, then NBS national average', data: petrolX.map(x => Math.round(petrol.find(d => label(d) === x)?.price ?? 0) || null), color: '#008751' },
+    { name: 'NNPC pump price, Lagos', data: petrolX.map(x => pump.find(d => label(d) === x)?.price ?? null), color: '#0A0A0A' },
   ],
+  format: naira,
 }))
+
+const annual = inflation.data
+const annualOption = computed(() => timeSeries({
+  x: annual.map(d => d.year),
+  series: [{ name: 'Inflation', data: annual.map(d => d.value), type: 'bar' }],
+  format: pct,
+}))
+
+const monthly = inflation.monthly.data
+const monthlyOption = computed(() => timeSeries({
+  x: monthly.map(d => short(d.month)),
+  series: [
+    { name: 'Headline', data: monthly.map(d => d.headline), color: '#0A0A0A' },
+    { name: 'Food', data: monthly.map(d => d.food ?? null), color: '#008751' },
+  ],
+  format: pct,
+  eras: false,
+}))
+
+const times = (a: number, b: number) => `${(b / a).toFixed(1)}×`
+const jollof = costOfLiving.jollofIndex
+const latestJollof = jollof.newBasis[jollof.newBasis.length - 1]!
 </script>
 
 <template>
   <UiSectionWrapper
     id="cost-of-living"
-    title="The Cost of Survival"
-    subtitle="Inflation has spiralled while fuel prices have increased twentyfold. Nigerians pay more for everything."
-    :section-number="3"
+    title="The price of getting by"
+    subtitle="Petrol cost ₦65 a litre in 2010. On 12 September 2026, NNPC stations in Lagos raised it to ₦1,375."
+    image="/images/fuel.webp"
+    image-alt="Linocut illustration of a long queue of cars and motorcycle taxis stretching away from a single petrol pump"
+    lede="When President Tinubu said &quot;subsidy is gone&quot; on 29 May 2023, the petrol price was left to the market. By October 2023 the national average was ₦631 a litre, three times the December 2022 figure. Transport, food and rent followed. Inflation reached 34.8% in December 2024, then the statistics office changed how it measures prices. On the new measure, food inflation fell to 9% in January 2026 and climbed back to almost 20% by August."
   >
-    <!-- Big stat -->
-    <div
-      v-motion
-      :initial="{ opacity: 0 }"
-      :visible-once="{ opacity: 1, transition: { duration: 500 } }"
-      class="mb-10"
-    >
-      <UiStatCard
-        value="₦65 → ₦1,330 per litre"
-        label="Petrol price — 2010 vs March 2026"
-        source="NBS / NNPC"
-        source-url="https://nigerianstat.gov.ng"
-      />
-    </div>
-
-    <!-- Chart -->
-    <div>
-      <ClientOnly>
-        <VChart :option="chartOption" autoresize class="chart-container" />
-        <template #fallback>
-          <div class="chart-container animate-pulse bg-white-soft" />
+    <div class="space-y-16">
+      <UiCallout source="Vanguard, 12 September 2026" :url="fuelPrice.latestPump.source">
+        Between 21 August and 12 September 2026, Dangote Refinery raised its gantry price four times, from ₦1,165
+        to {{ naira(fuelPrice.latestPump.dangoteGantry) }} a litre.
+        <template #detail>
+          Pump prices followed within days. NNPC stations in Lagos went to {{ naira(fuelPrice.latestPump.nnpcLagos) }},
+          and some stations in Abuja passed ₦1,400.
         </template>
-      </ClientOnly>
+      </UiCallout>
+
+      <UiChart
+        :option="petrolOption"
+        title="Petrol pump price"
+        note="The NBS national average covers every state and runs above Lagos prices. Its latest figure is for May 2026 (₦1,596), so the black line carries NNPC's Lagos price to September."
+        source="NBS Petrol Price Watch; NNPC prices reported by Vanguard"
+      />
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <UiChart
+          :option="annualOption"
+          title="Inflation by year, 2010 to 2024"
+          note="Annual change in consumer prices. December 2024 alone hit 34.8%."
+          source="World Bank (FP.CPI.TOTL.ZG); NBS"
+          small
+        />
+        <UiChart
+          :option="monthlyOption"
+          title="Inflation by month since the 2025 rebasing"
+          note="Year-on-year change on the new NBS measure. Food data is missing for some 2025 months."
+          source="NBS CPI reports via Nairametrics, Premium Times and Tekedia (revised 2025 series)"
+          small
+        />
+      </div>
+      <p class="text-sm text-black-text/60 max-w-3xl -mt-8">
+        {{ inflation.methodologyNote }}
+      </p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div>
+          <h3 class="text-lg font-semibold text-black">Cooking and generator fuel</h3>
+          <p class="text-sm text-black-text/50 mt-1">National average prices, NBS</p>
+          <table class="w-full text-sm mt-4">
+            <thead>
+              <tr class="border-b border-black/20 text-left text-black-text/50">
+                <th class="py-2 pr-4 font-medium">Product</th>
+                <th class="py-2 pr-4 font-medium">May 2023</th>
+                <th class="py-2 pr-4 font-medium">Latest</th>
+                <th class="py-2 font-medium text-right">Change</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="f in fuelPrice.otherFuels" :key="f.product" class="border-b border-black/5">
+                <td class="py-3 pr-4 text-black">
+                  {{ f.product }}
+                  <UiCitation source="NBS Price Watch" :url="f.source" />
+                </td>
+                <td class="py-3 pr-4 text-black-text/70 tabular-nums">{{ naira(Math.round(f.before)) }}</td>
+                <td class="py-3 pr-4 text-black tabular-nums">
+                  {{ naira(Math.round(f.latest)) }}
+                  <span class="block text-xs text-black-text/40">{{ f.latestDate }}</span>
+                </td>
+                <td class="py-3 text-right font-bold text-green tabular-nums">{{ times(f.before, f.latest) }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-black">Food at the market</h3>
+          <p class="text-sm text-black-text/50 mt-1">National average prices, NBS Selected Food Prices Watch</p>
+          <table class="w-full text-sm mt-4">
+            <thead>
+              <tr class="border-b border-black/20 text-left text-black-text/50">
+                <th class="py-2 pr-4 font-medium">Item</th>
+                <th class="py-2 pr-4 font-medium">May 2023</th>
+                <th class="py-2 pr-4 font-medium">Latest</th>
+                <th class="py-2 font-medium text-right">Change</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="f in costOfLiving.foodPrices" :key="f.item" class="border-b border-black/5">
+                <td class="py-3 pr-4 text-black">{{ f.item }}</td>
+                <td class="py-3 pr-4 text-black-text/70 tabular-nums">{{ naira(Math.round(f.may2023)) }}</td>
+                <td class="py-3 pr-4 text-black tabular-nums">
+                  {{ naira(Math.round(f.latest)) }}
+                  <span class="block text-xs text-black-text/40">{{ f.latestDate }}</span>
+                </td>
+                <td class="py-3 text-right font-bold text-green tabular-nums">{{ times(f.may2023, f.latest) }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-xs text-black-text/40 mt-3">
+            We could not find an NBS price for 1kg of rice or a loaf of bread after October 2024.
+          </p>
+        </div>
+      </div>
+
+      <UiCallout source="SBM Intelligence, Jollof Index Q2 2026" url="https://sbmintelligence.substack.com/p/the-sbm-jollof-index-q2-2026-rebasing">
+        A pot of jollof rice for a family of five cost {{ naira(jollof.firstReading.value) }} in July 2016.
+        In June 2026 it cost {{ naira(latestJollof.value) }}.
+        <template #detail>
+          SBM Intelligence has priced the same family meal across Nigerian cities since 2016. It hit a record
+          ₦30,435 in March 2026. SBM changed its ingredient basket in 2025, so readings before and after are not
+          strictly comparable.
+        </template>
+      </UiCallout>
     </div>
   </UiSectionWrapper>
 </template>

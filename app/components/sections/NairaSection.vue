@@ -1,201 +1,92 @@
 <script setup lang="ts">
-import { use } from 'echarts/core'
-import { LineChart } from 'echarts/charts'
-import {
-  GridComponent,
-  TooltipComponent,
-  MarkAreaComponent,
-  MarkPointComponent,
-} from 'echarts/components'
-import { CanvasRenderer } from 'echarts/renderers'
-import VChart from 'vue-echarts'
-import type { ComposeOption } from 'echarts/core'
-import type { LineSeriesOption } from 'echarts/charts'
-import type {
-  GridComponentOption,
-  TooltipComponentOption,
-  MarkAreaComponentOption,
-  MarkPointComponentOption,
-} from 'echarts/components'
+import { timeSeries, naira, usd } from '~/utils/chart'
 
-use([LineChart, GridComponent, TooltipComponent, MarkAreaComponent, MarkPointComponent, CanvasRenderer])
+const { exchangeRate, costOfLiving, economy } = useDatasets()
 
-type ChartOption = ComposeOption<
-  LineSeriesOption | GridComponentOption | TooltipComponentOption | MarkAreaComponentOption | MarkPointComponentOption
->
+const quarters = exchangeRate.quarterlyData.data
+const latest = exchangeRate.recentRates
 
-const { exchangeRate } = useDatasets()
+const rateOption = computed(() => {
+  const option = timeSeries({
+    x: quarters.map(d => `${d.year} ${d.quarter}`),
+    series: [{ name: 'Naira per dollar', data: quarters.map(d => Math.round(d.value)) }],
+    format: naira,
+  })
+  option.xAxis.axisLabel = {
+    ...option.xAxis.axisLabel,
+    interval: 7,
+    formatter: (v: string) => v.slice(0, 4),
+  } as any
+  return option
+})
 
-const quarterlyData = exchangeRate.quarterlyData.data
-const currentRate = exchangeRate.recentRates.cbnOfficial.rate
+const wage = costOfLiving.minimumWage
+const wageOption = computed(() => timeSeries({
+  x: wage.map(d => `${d.year === 2026 ? 'Today' : d.year}: ₦${d.naira.toLocaleString()}`),
+  series: [{ name: 'Monthly minimum wage in US dollars', data: wage.map(d => d.usd), type: 'bar', labels: true }],
+  format: usd,
+  eras: false,
+}))
 
-const categories = quarterlyData.map(d => `${d.year} ${d.quarter}`)
-const values = quarterlyData.map(d => d.value)
-
-const chartOption = computed<ChartOption>(() => ({
-  backgroundColor: 'transparent',
-  grid: {
-    left: 60,
-    right: 30,
-    top: 40,
-    bottom: 50,
-  },
-  tooltip: {
-    trigger: 'axis',
-    backgroundColor: '#FFFFFF',
-    borderColor: '#008751',
-    borderWidth: 1,
-    textStyle: { color: '#0A0A0A', fontFamily: 'Space Grotesk' },
-    formatter(params: any) {
-      const p = Array.isArray(params) ? params[0] : params
-      return `<strong>${p.name}</strong><br/>₦${p.value.toLocaleString()} / USD`
-    },
-  },
-  xAxis: {
-    type: 'category',
-    data: categories,
-    axisLabel: {
-      color: '#1A1A1A',
-      fontFamily: 'Space Grotesk',
-      fontSize: 11,
-      interval: 7,
-      rotate: 0,
-      formatter(val: string) {
-        return val.split(' ')[0] ?? ''
-      },
-    },
-    axisLine: { lineStyle: { color: '#E0E0E0' } },
-    axisTick: { show: false },
-  },
-  yAxis: {
-    type: 'value',
-    axisLabel: {
-      color: '#1A1A1A',
-      fontFamily: 'Space Grotesk',
-      fontSize: 11,
-      formatter(val: number) {
-        return `₦${val.toLocaleString()}`
-      },
-    },
-    splitLine: { lineStyle: { color: '#F0F0F0' } },
-    axisLine: { show: false },
-  },
-  series: [
-    {
-      type: 'line',
-      data: values,
-      smooth: 0.3,
-      symbol: 'none',
-      lineStyle: { color: '#0A0A0A', width: 2 },
-      areaStyle: {
-        color: {
-          type: 'linear',
-          x: 0, y: 0, x2: 0, y2: 1,
-          colorStops: [
-            { offset: 0, color: 'rgba(0, 135, 81, 0.4)' },
-            { offset: 1, color: 'rgba(0, 135, 81, 0)' },
-          ],
-        },
-      },
-      markArea: {
-        silent: true,
-        data: [
-          // PDP era (Jonathan): 2010 Q1 - 2015 Q2 (index 0 to 21)
-          [
-            {
-              xAxis: '2010 Q1',
-              itemStyle: { color: 'rgba(0, 0, 0, 0.03)' },
-              label: { show: true, position: 'insideTop', color: '#00000040', fontSize: 10, fontFamily: 'Space Grotesk', formatter: 'PDP — Jonathan' },
-            },
-            { xAxis: '2015 Q2' },
-          ],
-          // APC Buhari era: 2015 Q3 - 2023 Q2
-          [
-            {
-              xAxis: '2015 Q3',
-              itemStyle: { color: 'rgba(0, 135, 81, 0.05)' },
-              label: { show: true, position: 'insideTop', color: '#00875160', fontSize: 10, fontFamily: 'Space Grotesk', formatter: 'APC — Buhari' },
-            },
-            { xAxis: '2023 Q2' },
-          ],
-          // APC Tinubu era: 2023 Q3 - end
-          [
-            {
-              xAxis: '2023 Q3',
-              itemStyle: { color: 'rgba(0, 135, 81, 0.10)' },
-              label: { show: true, position: 'insideTop', color: '#00875190', fontSize: 10, fontFamily: 'Space Grotesk', formatter: 'APC — Tinubu' },
-            },
-            { xAxis: categories[categories.length - 1] },
-          ],
-        ],
-      } as any,
-      markPoint: {
-        symbol: 'circle',
-        symbolSize: 8,
-        label: {
-          show: true,
-          position: 'top',
-          color: '#1A1A1A',
-          fontSize: 10,
-          fontFamily: 'Space Grotesk',
-          distance: 12,
-        },
-        data: [
-          {
-            coord: [categories.indexOf('2016 Q3'), values[categories.indexOf('2016 Q3')]],
-            name: 'Naira floated',
-            value: 'Naira floated',
-            itemStyle: { color: '#008751' },
-          },
-          {
-            coord: [categories.indexOf('2023 Q3'), values[categories.indexOf('2023 Q3')]],
-            name: 'Second float',
-            value: '2nd float',
-            itemStyle: { color: '#008751' },
-          },
-          {
-            coord: [categories.indexOf('2024 Q1'), values[categories.indexOf('2024 Q1')]],
-            name: 'Feb 2024 crash',
-            value: 'Crash',
-            itemStyle: { color: '#FF4444' },
-          },
-        ],
-      } as any,
-    },
-  ],
+const gdp = economy.gdpPerCapita
+const gdpOption = computed(() => timeSeries({
+  x: gdp.map(d => d.year),
+  series: [{ name: 'GDP per person (USD)', data: gdp.map(d => d.value), type: 'bar' }],
+  format: usd,
 }))
 </script>
 
 <template>
   <UiSectionWrapper
     id="naira"
-    title="The Naira's Freefall"
-    subtitle="From ₦150 to over ₦1,500 per dollar. The Nigerian naira has lost more than 90% of its value since 2015."
-    :section-number="2"
+    title="The naira lost most of its value"
+    subtitle="A dollar cost ₦196.50 at the official rate in May 2015. On 17 September 2026 it cost ₦1,330.78."
+    image="/images/naira.webp"
+    image-alt="Linocut illustration of two hands counting a thick bundle of banknotes beside a small bag of rice on a market table"
+    lede="The naira fell in two big steps. The first came in June 2016, when the central bank stopped holding the rate fixed. The second came in June 2023, when the new government merged the official and market rates and the naira lost more than a quarter of its value in five days. It has recovered a little since late 2024, but a dollar still costs almost seven times what it did in 2015."
   >
-    <!-- Big stat -->
-    <div
-      v-motion
-      :initial="{ opacity: 0 }"
-      :visible-once="{ opacity: 1, transition: { duration: 500 } }"
-      class="mb-10"
-    >
-      <UiStatCard
-        :value="`₦${currentRate.toLocaleString()} / $1`"
-        label="Current CBN official rate (April 2026)"
-        source="CBN"
-        source-url="https://www.cbn.gov.ng/rates/ExchRateByCurrency.html"
-      />
-    </div>
+    <div class="space-y-16">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <UiStatCard value="₦196.50" label="Per dollar, last CBN quote before Buhari took office (May 2015)" source="CBN" source-url="https://www.cbn.gov.ng/rates/ExchRateByCurrency.html" />
+        <UiStatCard value="₦461.06" label="Per dollar, last CBN quote before Tinubu took office (May 2023)" source="CBN" source-url="https://www.cbn.gov.ng/rates/ExchRateByCurrency.html" />
+        <UiStatCard
+          :value="naira(latest.cbnOfficial.rate)"
+          :label="`Per dollar on 17 September 2026. Street rate about ${naira(latest.openMarket.rate)}.`"
+          source="CBN; Vanguard (street rate)"
+          source-url="https://www.vanguardngr.com/2026/09/dollar-to-naira-exchange-rate-today-september-17-2026/"
+        />
+      </div>
 
-    <!-- Chart -->
-    <div>
-      <ClientOnly>
-        <VChart :option="chartOption" autoresize class="chart-container" />
-        <template #fallback>
-          <div class="chart-container animate-pulse bg-white-soft" />
-        </template>
-      </ClientOnly>
+      <UiChart
+        :option="rateOption"
+        title="Official exchange rate, naira per US dollar"
+        note="Quarterly average of the CBN's daily central rate, 2010 to September 2026."
+        source="Central Bank of Nigeria. Averages calculated by endsars.online."
+      />
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div>
+          <UiChart
+            :option="wageOption"
+            title="The minimum wage, in dollars"
+            note="Each new minimum wage converted at the CBN rate on the day it was signed."
+            source="Channels TV (signing dates); CBN (exchange rates)"
+            small
+          />
+          <p class="text-black-text/70 mt-6 leading-relaxed">
+            The ₦18,000 minimum wage of 2011 bought about 277 litres of petrol. Today's ₦70,000 buys about 44 litres
+            at the national average price.
+            <UiCitation source="NBS Petrol Price Watch, May 2026" url="https://www.premiumtimesng.com/business/business-news/890568-nigerias-petrol-price-climbs-to-%E2%82%A61596-per-litre-in-may-nbs.html" />
+          </p>
+        </div>
+        <UiChart
+          :option="gdpOption"
+          title="Income per person, in dollars"
+          note="GDP per person at current prices. It fell from $4,363 in 2014 to $1,084 in 2024."
+          source="IMF World Economic Outlook (consistent with the 2025 GDP rebasing)"
+          small
+        />
+      </div>
     </div>
   </UiSectionWrapper>
 </template>

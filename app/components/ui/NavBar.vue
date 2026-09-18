@@ -1,16 +1,18 @@
 <script setup lang="ts">
 const links = [
-  { label: 'Power', href: '#power' },
+  { label: '2020', href: '#lekki' },
   { label: 'Naira', href: '#naira' },
-  { label: 'Cost of Living', href: '#cost-of-living' },
+  { label: 'Prices', href: '#cost-of-living' },
   { label: 'Debt', href: '#debt' },
   { label: 'Poverty', href: '#poverty' },
+  { label: 'Electricity', href: '#grid' },
+  { label: 'Health', href: '#health' },
+  { label: 'Japa', href: '#japa' },
   { label: 'Violence', href: '#violence' },
   { label: 'Corruption', href: '#corruption' },
-  { label: 'Map', href: '#map' },
+  { label: '2027', href: '#vote' },
 ]
 
-const posthog = usePostHog()
 const scrolled = ref(false)
 const mobileOpen = ref(false)
 
@@ -18,12 +20,7 @@ function onScroll() {
   scrolled.value = window.scrollY > 20
 }
 
-function scrollTo(href: string, label: string) {
-  if (!mobileOpen.value) {
-    posthog?.capture('nav_section_clicked', { section: label, source: 'desktop' })
-  } else {
-    posthog?.capture('nav_section_clicked', { section: label, source: 'mobile' })
-  }
+function scrollTo(href: string) {
   mobileOpen.value = false
   const id = href.replace('#', '')
   const el = document.getElementById(id)
@@ -33,9 +30,6 @@ function scrollTo(href: string, label: string) {
 }
 
 function toggleMobileMenu() {
-  if (!mobileOpen.value) {
-    posthog?.capture('mobile_menu_opened')
-  }
   mobileOpen.value = !mobileOpen.value
 }
 
@@ -52,11 +46,11 @@ onUnmounted(() => {
 <template>
   <nav
     :class="[
-      'fixed top-0 left-0 right-0 z-50 border-b border-green transition-all duration-300',
+      'fixed top-0 left-0 right-0 z-50 border-b border-black/10 transition-all duration-300',
       scrolled ? 'bg-white/90 backdrop-blur-md' : 'bg-white',
     ]"
   >
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="page-container">
       <div class="flex h-16 items-center justify-between">
         <!-- Logo -->
         <NuxtLink to="/" class="shrink-0">
@@ -64,13 +58,13 @@ onUnmounted(() => {
         </NuxtLink>
 
         <!-- Desktop links -->
-        <div class="hidden md:flex items-center gap-6">
+        <div class="hidden xl:flex items-center gap-5">
           <a
             v-for="link in links"
             :key="link.href"
             :href="link.href"
             class="text-sm text-black-text/70 hover:text-black transition-colors duration-150"
-            @click.prevent="scrollTo(link.href, link.label)"
+            @click.prevent="scrollTo(link.href)"
           >
             {{ link.label }}
           </a>
@@ -78,7 +72,7 @@ onUnmounted(() => {
 
         <!-- Mobile hamburger -->
         <button
-          class="md:hidden p-2 text-black-soft"
+          class="xl:hidden p-2 text-black-soft"
           aria-label="Toggle menu"
           @click="toggleMobileMenu()"
         >
@@ -112,7 +106,7 @@ onUnmounted(() => {
     <Transition name="mobile-menu">
       <div
         v-if="mobileOpen"
-        class="md:hidden bg-white border-t border-green/20"
+        class="xl:hidden bg-white border-t border-black/10"
       >
         <div class="px-4 py-4 space-y-1">
           <a
@@ -120,7 +114,7 @@ onUnmounted(() => {
             :key="link.href"
             :href="link.href"
             class="block px-3 py-2 text-sm text-black-text/70 hover:text-black hover:bg-black/5 rounded transition-colors duration-150"
-            @click.prevent="scrollTo(link.href, link.label)"
+            @click.prevent="scrollTo(link.href)"
           >
             {{ link.label }}
           </a>

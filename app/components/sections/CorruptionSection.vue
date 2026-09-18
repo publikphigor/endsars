@@ -1,210 +1,124 @@
 <script setup lang="ts">
-import { use } from 'echarts/core'
-import { LineChart } from 'echarts/charts'
-import { GridComponent, TooltipComponent, LegendComponent, MarkLineComponent } from 'echarts/components'
-import { CanvasRenderer } from 'echarts/renderers'
-import VChart from 'vue-echarts'
-
-use([LineChart, GridComponent, TooltipComponent, LegendComponent, MarkLineComponent, CanvasRenderer])
+import { timeSeries, compact } from '~/utils/chart'
 
 const { corruption } = useDatasets()
 
-const cpiData = corruption.cpiData.data
-const wgiData = corruption.wgiData.data
+const cpi = corruption.cpiData.data.filter(d => d.year >= 2012)
+const latestCPI = cpi[cpi.length - 1]!
+const worstRank = cpi.reduce((a, b) => (b.rank > a.rank ? b : a))
+const latestWGI = corruption.wgiData.data[corruption.wgiData.data.length - 1]!
 
-// Latest CPI entry
-const latestCPI = cpiData[cpiData.length - 1]!
-
-// Average WGI value
-const avgWGI = (wgiData.reduce((sum, d) => sum + d.value, 0) / wgiData.length).toFixed(2)
-
-const chartOption = computed(() => ({
-  backgroundColor: 'transparent',
-  tooltip: {
-    trigger: 'axis' as const,
-    backgroundColor: '#FFFFFF',
-    borderColor: '#008751',
-    borderWidth: 1,
-    textStyle: { color: '#0A0A0A', fontFamily: 'Space Grotesk' },
-    formatter(params: any) {
-      const items = Array.isArray(params) ? params : [params]
-      const year = items[0].name
-      const entry = cpiData.find((d) => String(d.year) === year)
-      let html = `<strong>${year}</strong><br/>`
-      items.forEach((item: any) => {
-        if (item.value !== undefined && item.value !== null) {
-          html += `<span style="color:${item.color}">●</span> ${item.seriesName}: <strong>${item.value}</strong><br/>`
-        }
-      })
-      if (entry) {
-        html += `<span style="color:#0A0A0A66">Rank: ${entry.rank} of ${entry.totalCountries}</span>`
-      }
-      return html
-    },
-  },
-  legend: {
-    data: ['Nigeria CPI', 'Global Average', 'Sub-Saharan Africa Average'],
-    textStyle: { color: '#1A1A1A', fontFamily: 'Space Grotesk', fontSize: 11 },
-    top: 0,
-    itemGap: 16,
-  },
-  grid: {
-    left: 48,
-    right: 24,
-    top: 44,
-    bottom: 40,
-  },
-  xAxis: {
-    type: 'category' as const,
-    data: cpiData.map((d) => String(d.year)),
-    axisLine: { lineStyle: { color: '#E0E0E0' } },
-    axisLabel: { color: '#1A1A1A', fontFamily: 'Space Grotesk' },
-    axisTick: { show: false },
-  },
-  yAxis: {
-    type: 'value' as const,
+const cpiOption = computed(() => {
+  const option = timeSeries({
+    x: cpi.map(d => d.year),
+    series: [
+      { name: 'Nigeria', data: cpi.map(d => d.score) },
+      { name: 'Global average (43)', data: cpi.map(() => 43), color: '#0A0A0A', dashed: true },
+      { name: 'Sub-Saharan Africa average (33)', data: cpi.map(() => 33), color: '#0A0A0A66', dashed: true },
+    ],
     min: 0,
     max: 60,
-    axisLine: { show: false },
-    axisLabel: { color: '#1A1A1A', fontFamily: 'Space Grotesk' },
-    splitLine: { lineStyle: { color: '#F0F0F0' } },
-  },
-  series: [
-    {
-      name: 'Nigeria CPI',
-      type: 'line',
-      data: cpiData.map((d) => d.score),
-      lineStyle: { color: '#008751', width: 3 },
-      itemStyle: { color: '#008751' },
-      symbol: 'circle',
-      symbolSize: 6,
-      emphasis: { itemStyle: { borderColor: '#0A0A0A', borderWidth: 2 } },
-    },
-    {
-      name: 'Global Average',
-      type: 'line',
-      data: cpiData.map(() => 43),
-      lineStyle: { color: '#0A0A0A', width: 1, type: 'dashed' as const },
-      itemStyle: { color: '#0A0A0A' },
-      symbol: 'none',
-    },
-    {
-      name: 'Sub-Saharan Africa Average',
-      type: 'line',
-      data: cpiData.map(() => 33),
-      lineStyle: { color: '#1A1A1A66', width: 1, type: 'dotted' as const },
-      itemStyle: { color: '#1A1A1A66' },
-      symbol: 'none',
-    },
-  ],
-}))
+  })
+  ;(option.tooltip as any).formatter = (params: any) => {
+    const items = Array.isArray(params) ? params : [params]
+    const row = cpi[items[0].dataIndex]!
+    return `<strong>${row.year}</strong><br/>Score: ${row.score} out of 100<br/>Rank: ${row.rank} of ${row.totalCountries}`
+  }
+  option.series.slice(1).forEach((s: any) => { s.symbol = 'none' })
+  return option
+})
+
+const efcc = corruption.efccConvictions.data
+const efccOption = computed(() => {
+  const option = timeSeries({
+    x: efcc.map(d => d.year),
+    series: [{ name: 'EFCC convictions', data: efcc.map(d => d.value), type: 'bar' }],
+  })
+  option.yAxis.axisLabel.formatter = compact as any
+  return option
+})
 </script>
 
 <template>
   <UiSectionWrapper
     id="corruption"
-    title="The Stagnation of Integrity"
-    subtitle="Nigeria's corruption score has barely moved in 15 years."
-    :section-number="7"
+    title="Many cases, few verdicts"
+    :subtitle="`Nigeria scored ${latestCPI.score} out of 100 on Transparency International's 2025 corruption index, ranking ${latestCPI.rank}th of ${latestCPI.totalCountries}. The score has barely moved since 2012.`"
+    lede="Every administration since 2010 has promised to fight corruption, and each has produced headline cases. Very few of the biggest ones have ended in a conviction that stuck. Trials run for a decade, charges are dropped, convictions are overturned on appeal, and in 2022 two jailed former governors were pardoned. The table below follows cases from all three presidencies."
+    dark
   >
-    <div class="space-y-12">
-      <!-- Hero stats -->
-      <div
-        v-motion
-        :initial="{ opacity: 0 }"
-        :visible-once="{ opacity: 1, transition: { duration: 500 } }"
-        class="grid grid-cols-1 md:grid-cols-2 gap-6"
-      >
-        <div class="text-center md:text-left">
-          <p class="text-sm text-green font-semibold tracking-widest uppercase mb-2">
-            CPI Rank ({{ latestCPI.year }})
-          </p>
-          <span class="text-4xl md:text-6xl font-bold tabular-nums text-black">
-            {{ latestCPI.rank }}<span class="text-xl md:text-2xl text-black-text/50">th</span>
-          </span>
-          <p class="text-lg text-black-text/60 mt-1">of {{ latestCPI.totalCountries }} countries</p>
-          <p class="text-xs text-black-text/40 mt-1">
-            <UiCitation
-              source="Transparency International CPI 2025"
-              url="https://www.transparency.org/en/cpi/2025"
-              :number="1"
-            />
-          </p>
-        </div>
-        <div class="text-center md:text-left">
-          <p class="text-sm text-green font-semibold tracking-widest uppercase mb-2">
-            WGI Control of Corruption
-          </p>
-          <span class="text-4xl md:text-6xl font-bold tabular-nums text-black">
-            {{ avgWGI }}
-          </span>
-          <p class="text-lg text-black-text/60 mt-1">Average score (scale: -2.5 to 2.5)</p>
-          <p class="text-xs text-black-text/40 mt-1">
-            Consistently negative since 2010
-            <UiCitation
-              source="World Bank WGI"
-              url="https://info.worldbank.org/governance/wgi"
-              :number="2"
-            />
-          </p>
-        </div>
+    <div class="space-y-16">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <UiStatCard
+          :value="`${latestCPI.score} / 100`"
+          :label="`Corruption Perceptions Index 2025, below the sub-Saharan average of 33`"
+          source="Transparency International"
+          source-url="https://www.transparency.org/en/cpi/2025"
+        />
+        <UiStatCard
+          :value="`${worstRank.rank}th`"
+          :label="`Worst rank, reached in ${worstRank.year} (of ${worstRank.totalCountries} countries)`"
+          source="Transparency International"
+          source-url="https://en.wikipedia.org/wiki/List_of_countries_by_Corruption_Perceptions_Index"
+        />
+        <UiStatCard
+          :value="latestWGI.value.toFixed(2)"
+          :label="`World Bank control of corruption score, ${latestWGI.year} (scale of -2.5 to 2.5). Below zero every year since 2010.`"
+          source="World Bank Worldwide Governance Indicators"
+          source-url="https://www.worldbank.org/en/publication/worldwide-governance-indicators"
+        />
       </div>
 
-      <!-- CPI line chart -->
+      <UiChart
+        :option="cpiOption"
+        title="Corruption Perceptions Index"
+        note="Score out of 100; higher means less corrupt. Starts in 2012, when TI moved to its current scale."
+        source="Transparency International"
+      />
+
       <div>
-        <h3 class="text-lg font-semibold text-black mb-4">
-          Corruption Perceptions Index (2010 - {{ latestCPI.year }})
-        </h3>
-        <ClientOnly>
-          <VChart :option="chartOption" autoresize class="chart-container" />
-          <template #fallback>
-            <div class="chart-container animate-pulse bg-white-medium" />
-          </template>
-        </ClientOnly>
-        <p class="text-xs text-black-text/40 mt-2">
-          Score 0-100 (higher = less corrupt). Dashed line: global average (43). Dotted line: Sub-Saharan Africa average (33).
+        <h3 class="text-lg font-semibold text-black">Where the big cases stand</h3>
+        <p class="text-sm text-black-text/50 mt-1">Amounts are alleged unless a court has ruled. Status as of September 2026.</p>
+        <div class="overflow-x-auto mt-6">
+          <table class="w-full text-sm min-w-[640px]">
+            <thead>
+              <tr class="border-b border-black/20 text-left text-black-text/50">
+                <th class="py-2 pr-4 font-medium">Case</th>
+                <th class="py-2 pr-4 font-medium">Term</th>
+                <th class="py-2 pr-4 font-medium">Amount</th>
+                <th class="py-2 font-medium">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="c in corruption.cases" :key="c.case" class="border-b border-black/5 align-top">
+                <td class="py-3 pr-4 font-semibold text-black">{{ c.case }}</td>
+                <td class="py-3 pr-4 text-black-text/60 whitespace-nowrap">{{ c.era }}</td>
+                <td class="py-3 pr-4 text-black-text/80">{{ c.amount }}</td>
+                <td class="py-3 text-black-text/70">{{ c.status }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-xs text-black-text/40 mt-3">
+          Sources: BusinessDay (January 2026), Premium Times, CNBC Africa, Channels TV, Vanguard, Sahara Reporters. Full
+          links in the sources section below.
         </p>
       </div>
 
-      <!-- Annotation callout -->
-      <div
-        class="border-l-4 border-green bg-white-soft px-6 py-5"
-      >
-        <p class="text-xl md:text-2xl font-bold text-black leading-snug">
-          Nigeria scores below the Sub-Saharan African average
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <UiChart
+          :option="efccOption"
+          title="EFCC convictions"
+          note="All offences, by year. No reliable figure was found for 2017."
+          source="EFCC figures via TheCable and Punch"
+          small
+        />
+        <p class="text-black-text/70 leading-relaxed lg:pt-10">
+          The anti-graft agency's conviction count has climbed from about 100 a year to more than 4,000. Most of those
+          convictions are for online fraud. The politically connected cases in the table above are still in court
+          years later.
+          <UiCitation source="Punch, April 2026" url="https://punchng.com/efcc-records-over-20000-convictions-in-12-years/" />
         </p>
-        <p class="text-sm text-black-text/50 mt-2">
-          {{ corruption.cpiData.context }}
-        </p>
-      </div>
-
-      <!-- CPI score table -->
-      <div
-        class="overflow-x-auto"
-      >
-        <h3 class="text-lg font-semibold text-black mb-4">CPI Score History</h3>
-        <table class="w-full text-sm">
-          <thead>
-            <tr class="border-b border-black/20">
-              <th class="text-left text-black-text/50 py-2 pr-4 font-medium">Year</th>
-              <th class="text-left text-black-text/50 py-2 pr-4 font-medium">Score</th>
-              <th class="text-left text-black-text/50 py-2 pr-4 font-medium">Rank</th>
-              <th class="text-left text-black-text/50 py-2 font-medium hidden md:table-cell">Countries</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="entry in cpiData"
-              :key="entry.year"
-              class="border-b border-black/5"
-            >
-              <td class="py-2 pr-4 text-black font-medium">{{ entry.year }}</td>
-              <td class="py-2 pr-4 text-green font-bold">{{ entry.score }}</td>
-              <td class="py-2 pr-4 text-black-text/70">{{ entry.rank }}</td>
-              <td class="py-2 text-black-text/50 hidden md:table-cell">{{ entry.totalCountries }}</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </UiSectionWrapper>

@@ -26,7 +26,7 @@ const eras = computed<TimelineEra[]>(() => {
       president: jonathan.president,
       vp: jonathan.vicePresident,
       party: jonathan.party,
-      years: "2010 - 2015",
+      years: "2010 to 2015",
       keyEvents: jonathan.keyEvents,
       isCurrent: false,
     },
@@ -34,7 +34,7 @@ const eras = computed<TimelineEra[]>(() => {
       president: "Muhammadu Buhari",
       vp: "Yemi Osinbajo",
       party: "APC",
-      years: "2015 - 2023",
+      years: "2015 to 2023",
       keyEvents: buhariEvents,
       isCurrent: false,
     },
@@ -42,7 +42,7 @@ const eras = computed<TimelineEra[]>(() => {
       president: tinubu.president,
       vp: tinubu.vicePresident,
       party: tinubu.party,
-      years: "2023 - Present",
+      years: "2023 to now",
       keyEvents: tinubu.keyEvents,
       isCurrent: true,
     },
@@ -53,9 +53,8 @@ const eras = computed<TimelineEra[]>(() => {
 <template>
   <UiSectionWrapper
     id="power"
-    title="Who Holds Power"
-    subtitle="A timeline of Nigerian administrations and some key events that defined them."
-    :section-number="1"
+    title="Who has held power"
+    subtitle="Three presidents since 2010. The PDP governed until May 2015 and the APC has governed since. The shaded bands on every chart below mark these terms."
   >
     <!-- Horizontal timeline line -->
     <div class="relative">
@@ -72,7 +71,7 @@ const eras = computed<TimelineEra[]>(() => {
             <div class="w-4 h-4 bg-green border-2 border-black rotate-45" />
             <span
               class="text-xs text-green font-semibold mt-3 whitespace-nowrap"
-              >2015 — APC takes power</span
+              >2015: APC takes power</span
             >
           </div>
         </div>
@@ -88,8 +87,8 @@ const eras = computed<TimelineEra[]>(() => {
             class="relative"
             :class="
               era.isCurrent
-                ? 'border-l-2 border-green pl-5'
-                : 'border-l-2 border-black/20 pl-5'
+                ? 'border-t border-black pt-5'
+                : 'border-t border-black/15 pt-5'
             "
           >
             <!-- Party badge -->
@@ -137,8 +136,8 @@ const eras = computed<TimelineEra[]>(() => {
           class="relative pl-6"
           :class="
             era.isCurrent
-              ? 'border-l-2 border-green'
-              : 'border-l-2 border-black/20'
+              ? 'border-t border-black pt-5'
+              : 'border-t border-black/15 pt-5'
           "
         >
           <!-- Party change marker (before Buhari) -->

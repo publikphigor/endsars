@@ -1,270 +1,109 @@
 <script setup lang="ts">
-import { use } from 'echarts/core'
-import { LineChart, BarChart } from 'echarts/charts'
-import {
-  GridComponent,
-  TooltipComponent,
-  MarkAreaComponent,
-} from 'echarts/components'
-import { CanvasRenderer } from 'echarts/renderers'
-import VChart from 'vue-echarts'
-import type { ComposeOption } from 'echarts/core'
-import type { LineSeriesOption, BarSeriesOption } from 'echarts/charts'
-import type {
-  GridComponentOption,
-  TooltipComponentOption,
-  MarkAreaComponentOption,
-} from 'echarts/components'
-
-use([LineChart, BarChart, GridComponent, TooltipComponent, MarkAreaComponent, CanvasRenderer])
-
-type ChartOption = ComposeOption<
-  LineSeriesOption | BarSeriesOption | GridComponentOption | TooltipComponentOption | MarkAreaComponentOption
->
+import { timeSeries, pct } from '~/utils/chart'
 
 const { governmentDebt, budget } = useDatasets()
 
-// External debt chart data
-const debtData = governmentDebt.externalDebt.data
-const debtYears = debtData.map(d => d.year.toString())
-const debtValues = debtData.map(d => +(d.valueUSD / 1e9).toFixed(1))
+const yearEnd = governmentDebt.yearEnd.data
+const trn = (v: number) => `₦${v}tn`
+const bn = (v: number) => `$${v}bn`
 
-// Budget chart data
-const budgetData = budget.data.filter(d => d.year >= 2010)
-const budgetYears = budgetData.map(d => d.year.toString())
-const budgetValues = budgetData.map(d => d.total_appropriation_trn)
-
-// Admin era bands helper
-function makeAdminBands(years: string[]) {
-  const firstYear = parseInt(years[0]!)
-  const lastYear = parseInt(years[years.length - 1]!)
-
-  const bands: any[][] = []
-
-  // PDP era
-  if (firstYear <= 2014) {
-    bands.push([
-      {
-        xAxis: Math.max(firstYear, 2010).toString(),
-        itemStyle: { color: 'rgba(0, 0, 0, 0.03)' },
-        label: { show: true, position: 'insideTop', color: '#00000040', fontSize: 10, fontFamily: 'Space Grotesk', formatter: 'PDP — Jonathan' },
-      },
-      { xAxis: Math.min(2014, lastYear).toString() },
-    ])
-  }
-
-  // APC Buhari
-  if (firstYear <= 2022 && lastYear >= 2015) {
-    bands.push([
-      {
-        xAxis: Math.max(2015, firstYear).toString(),
-        itemStyle: { color: 'rgba(0, 135, 81, 0.05)' },
-        label: { show: true, position: 'insideTop', color: '#00875160', fontSize: 10, fontFamily: 'Space Grotesk', formatter: 'APC — Buhari' },
-      },
-      { xAxis: Math.min(2022, lastYear).toString() },
-    ])
-  }
-
-  // APC Tinubu
-  if (lastYear >= 2023) {
-    bands.push([
-      {
-        xAxis: Math.max(2023, firstYear).toString(),
-        itemStyle: { color: 'rgba(0, 135, 81, 0.10)' },
-        label: { show: true, position: 'insideTop', color: '#00875190', fontSize: 10, fontFamily: 'Space Grotesk', formatter: 'APC — Tinubu' },
-      },
-      { xAxis: lastYear.toString() },
-    ])
-  }
-
-  return bands
-}
-
-const debtChartOption = computed<ChartOption>(() => ({
-  backgroundColor: 'transparent',
-  grid: {
-    left: 55,
-    right: 20,
-    top: 40,
-    bottom: 50,
-  },
-  tooltip: {
-    trigger: 'axis',
-    backgroundColor: '#FFFFFF',
-    borderColor: '#008751',
-    borderWidth: 1,
-    textStyle: { color: '#0A0A0A', fontFamily: 'Space Grotesk' },
-    formatter(params: any) {
-      const p = Array.isArray(params) ? params[0] : params
-      return `<strong>${p.name}</strong><br/>$${p.value}B`
-    },
-  },
-  xAxis: {
-    type: 'category',
-    data: debtYears,
-    axisLabel: {
-      color: '#1A1A1A',
-      fontFamily: 'Space Grotesk',
-      fontSize: 11,
-      interval: 1,
-    },
-    axisLine: { lineStyle: { color: '#E0E0E0' } },
-    axisTick: { show: false },
-  },
-  yAxis: {
-    type: 'value',
-    axisLabel: {
-      color: '#1A1A1A',
-      fontFamily: 'Space Grotesk',
-      fontSize: 11,
-      formatter: '${value}B',
-    },
-    splitLine: { lineStyle: { color: '#F0F0F0' } },
-    axisLine: { show: false },
-  },
-  series: [
-    {
-      type: 'line',
-      data: debtValues,
-      smooth: 0.3,
-      symbol: 'circle',
-      symbolSize: 5,
-      lineStyle: { color: '#0A0A0A', width: 2 },
-      itemStyle: { color: '#0A0A0A' },
-      areaStyle: {
-        color: {
-          type: 'linear',
-          x: 0, y: 0, x2: 0, y2: 1,
-          colorStops: [
-            { offset: 0, color: 'rgba(0, 135, 81, 0.3)' },
-            { offset: 1, color: 'rgba(0, 135, 81, 0)' },
-          ],
-        },
-      },
-      markArea: {
-        silent: true,
-        data: makeAdminBands(debtYears),
-      } as any,
-    },
-  ],
+const ngnOption = computed(() => timeSeries({
+  x: yearEnd.map(d => d.label),
+  series: [{ name: 'Total public debt, ₦ trillion', data: yearEnd.map(d => d.ngn_trn), type: 'bar', labels: true }],
+  format: trn,
 }))
 
-const budgetChartOption = computed<ChartOption>(() => ({
-  backgroundColor: 'transparent',
-  grid: {
-    left: 55,
-    right: 20,
-    top: 30,
-    bottom: 60,
-  },
-  tooltip: {
-    trigger: 'axis',
-    backgroundColor: '#FFFFFF',
-    borderColor: '#008751',
-    borderWidth: 1,
-    textStyle: { color: '#0A0A0A', fontFamily: 'Space Grotesk' },
-    formatter(params: any) {
-      const p = Array.isArray(params) ? params[0] : params
-      return `<strong>${p.name}</strong><br/>₦${p.value}T`
-    },
-  },
-  xAxis: {
-    type: 'category',
-    data: budgetYears,
-    axisLabel: {
-      color: '#1A1A1A',
-      fontFamily: 'Space Grotesk',
-      fontSize: 10,
-      interval: 1,
-      rotate: 45,
-    },
-    axisLine: { lineStyle: { color: '#E0E0E0' } },
-    axisTick: { show: false },
-  },
-  yAxis: {
-    type: 'value',
-    axisLabel: {
-      color: '#1A1A1A',
-      fontFamily: 'Space Grotesk',
-      fontSize: 11,
-      formatter: '₦{value}T',
-    },
-    splitLine: { lineStyle: { color: '#F0F0F0' } },
-    axisLine: { show: false },
-  },
-  series: [
-    {
-      type: 'bar',
-      data: budgetValues.map((val, i) => ({
-        value: val,
-        itemStyle: {
-          color: parseInt(budgetYears[i]!) >= 2023 ? '#008751' : parseInt(budgetYears[i]!) >= 2015 ? '#00875180' : '#1A1A1A40',
-        },
-      })),
-      barWidth: '50%',
-      markArea: {
-        silent: true,
-        data: makeAdminBands(budgetYears),
-      } as any,
-    },
-  ],
+const usdOption = computed(() => timeSeries({
+  x: yearEnd.map(d => d.label),
+  series: [{ name: 'Total public debt, US$ billion', data: yearEnd.map(d => d.usd_bn), type: 'bar', labels: true, color: '#0A0A0A' }],
+  format: bn,
 }))
 
-const latestDebtBn = debtValues[debtValues.length - 1]
-const latestBudgetTrn = budgetValues[budgetValues.length - 1]
+const gdp = governmentDebt.debtToGdp.data
+const gdpOption = computed(() => timeSeries({
+  x: gdp.map(d => d.year),
+  series: [{ name: 'Debt, % of GDP', data: gdp.map(d => d.value) }],
+  format: pct,
+}))
+
+const budgets = budget.data.filter(d => d.year >= 2010)
+const budgetOption = computed(() => timeSeries({
+  x: budgets.map(d => d.year),
+  series: [{ name: 'Budget, ₦ trillion', data: budgets.map(d => d.total_appropriation_trn), type: 'bar' }],
+  format: trn,
+}))
+
+const ds = governmentDebt.debtService
+const latestBudget = budgets[budgets.length - 1]!
+const debtShare = Math.round((latestBudget.debt_service_trn! / latestBudget.total_appropriation_trn) * 100)
 </script>
 
 <template>
   <UiSectionWrapper
     id="debt"
-    title="Borrowing Into Oblivion"
-    subtitle="Nigeria's debt has nearly quadrupled under APC while the budget has ballooned fifteenfold."
-    :section-number="4"
+    title="Borrowing to pay for borrowing"
+    subtitle="Public debt was ₦12.6 trillion at the end of 2015. By March 2026 it was ₦159.35 trillion."
+    lede="Part of that jump comes from the naira's fall, which makes foreign loans look bigger when they are counted in naira. Measured in dollars, the debt still grew from $65 billion to $115 billion. The harder problem is what it costs to carry. For the first four months of 2022, the federal government spent more servicing its debts than it collected in revenue."
+    dark
   >
-    <!-- Big stats row -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-      <UiStatCard
-        :value="`$${latestDebtBn}B`"
-        label="External debt stock (2024)"
-        source="World Bank"
-        source-url="https://data.worldbank.org/indicator/DT.DOD.DECT.CD?locations=NG"
-      />
-      <UiStatCard
-        :value="`₦${latestBudgetTrn}T`"
-        label="2026 budget appropriation"
-        source="Budget Office"
-        source-url="https://budgetoffice.gov.ng"
-      />
-    </div>
-
-    <!-- Narrative callout -->
-    <div class="bg-white-soft border-l-2 border-green px-6 py-4 mb-10">
-      <p class="text-black-text/80 text-base">
-        The budget grew <strong class="text-black">15x</strong> from ₦4.6T (2010) to ₦68.3T (2026)
-        while poverty doubled. More spending has not meant more development — it has meant more debt.
-      </p>
-    </div>
-
-    <!-- Charts side by side -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-      <div>
-        <h3 class="text-lg font-semibold text-black mb-4">External Debt (USD)</h3>
-        <ClientOnly>
-          <VChart :option="debtChartOption" autoresize class="chart-container-sm" />
-          <template #fallback>
-            <div class="chart-container-sm bg-white-soft" />
-          </template>
-        </ClientOnly>
+    <div class="space-y-16">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <UiChart
+          :option="ngnOption"
+          title="Total public debt in naira"
+          note="Federal government, states and FCT, at year end."
+          source="Debt Management Office (DMO), via NBS and Nairametrics"
+          small
+        />
+        <UiChart
+          :option="usdOption"
+          title="Total public debt in dollars"
+          note="The same debt, converted at the DMO's exchange rate for each date."
+          source="Debt Management Office (DMO), via NBS and Nairametrics"
+          small
+        />
       </div>
 
-      <div>
-        <h3 class="text-lg font-semibold text-black mb-4">Budget Appropriation (NGN)</h3>
-        <ClientOnly>
-          <VChart :option="budgetChartOption" autoresize class="chart-container-sm" />
-          <template #fallback>
-            <div class="chart-container-sm bg-white-soft" />
-          </template>
-        </ClientOnly>
+      <UiCallout source="Nairametrics, citing the Finance Ministry" url="https://nairametrics.com/2022/07/21/nigeria-spends-n1-94-trillion-on-debt-service-between-january-april-2022-surpasses-revenue">
+        From January to April 2022, the government spent ₦{{ ds.jan2022.debtService_trn }} trillion on debt service and
+        earned ₦{{ ds.jan2022.revenue_trn }} trillion.
+        <template #detail>
+          The World Bank put debt service at {{ ds.fy2022WorldBank }}% of revenue for all of 2022. The ratio has since fallen,
+          to {{ ds.nineMonths2025 }}% for the first nine months of 2025, but the bill keeps growing: the 2026 budget sets aside
+          ₦{{ latestBudget.debt_service_trn }} trillion for debt service, about {{ debtShare }}% of the total.
+        </template>
+      </UiCallout>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <UiChart
+          :option="gdpOption"
+          title="Debt as a share of the economy"
+          note="General government debt, % of GDP. Uses the rebased GDP series, which made the economy about a third bigger in naira."
+          source="IMF World Economic Outlook"
+          small
+        />
+        <UiChart
+          :option="budgetOption"
+          title="Federal budget as signed"
+          note="Nominal naira, not adjusted for inflation or the exchange rate."
+          source="Budget Office of the Federation; State House; Nairametrics"
+          small
+        />
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-black-text/70 leading-relaxed">
+        <p>
+          In 2023 lawmakers agreed to turn ₦{{ governmentDebt.waysAndMeans.approved_trn }} trillion of central bank
+          overdrafts, known as Ways and Means, into a 40-year bond. Another ₦{{ governmentDebt.waysAndMeans.secondTranche_trn }}
+          trillion followed that December. The debt was restructured, not paid off.
+          <UiCitation source="Nairametrics, May 2023" url="https://nairametrics.com/2023/05/04/house-of-reps-approves-president-buharis-n23-7-trillion-ways-and-means-loan-request/" />
+        </p>
+        <p>
+          Budgets also go unspent. By the third quarter of 2025, only {{ budget.capitalRelease2025.value }}% of that year's
+          capital budget had been released. In December 2025 the National Assembly repealed and re-passed both the 2024
+          and 2025 budgets, cutting 2025 from ₦54.99 trillion to ₦48.32 trillion.
+          <UiCitation source="State House; Economic Confidential" :url="budget.capitalRelease2025.source" />
+        </p>
       </div>
     </div>
   </UiSectionWrapper>

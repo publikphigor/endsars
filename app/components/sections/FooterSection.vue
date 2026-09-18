@@ -1,21 +1,17 @@
 <script setup lang="ts">
 const currentYear = new Date().getFullYear()
-const posthog = usePostHog()
-
-function trackFooterLink(label: string) {
-  posthog?.capture('footer_link_clicked', { label })
-}
 </script>
 
 <template>
-  <footer class="bg-white-soft border-t-2 border-green">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+  <footer class="bg-white-soft border-t border-black/10">
+    <div class="page-container py-12">
       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
         <!-- Logo and tagline -->
         <div>
           <UiLogo size="md" block />
           <p class="text-sm text-black-text/50 mt-3 max-w-md">
-            Built with data from the World Bank, CBN, NBS, Transparency International, ACLED, and others.
+            Built on public data from the CBN, NBS, DMO, World Bank, IMF, ACLED, Afrobarometer and others.
+            Illustrations are AI-generated.
           </p>
         </div>
 
@@ -26,7 +22,6 @@ function trackFooterLink(label: string) {
             target="_blank"
             rel="noopener noreferrer"
             class="text-sm text-black-text/50 hover:text-green transition-colors duration-150"
-            @click="trackFooterLink('open_source')"
           >
             This project is open source &nearr;
           </a>
@@ -35,16 +30,16 @@ function trackFooterLink(label: string) {
             target="_blank"
             rel="noopener noreferrer"
             class="text-sm text-black-text/50 hover:text-green transition-colors duration-150"
-            @click="trackFooterLink('flag_false_info')"
           >
             Flag false information &nearr;
           </a>
           <a
-            href="mailto:publikphigor@gmail.com"
+            href="https://koladeleolaitan.com/"
+            target="_blank"
+            rel="noopener noreferrer"
             class="text-sm text-black-text/50 hover:text-green transition-colors duration-150"
-            @click="trackFooterLink('contact_developer')"
           >
-            Contact Developer
+            Developed by K. Olaitan &nearr;
           </a>
         </div>
       </div>

@@ -1,10 +1,5 @@
 <script setup lang="ts">
 const datasets = useDatasets();
-const posthog = usePostHog();
-
-function trackSourceLink(sourceName: string, category: string) {
-  posthog?.capture('source_link_clicked', { source_name: sourceName, category })
-}
 
 interface SourceGroup {
   category: string;
@@ -16,124 +11,69 @@ interface SourceGroup {
   }[];
 }
 
-const sourceGroups = computed<SourceGroup[]>(() => [
-  {
-    category: "Exchange Rate",
-    sources: datasets.exchangeRate.sources.map((s) => ({
-      name: s.name,
-      url: s.url,
-      retrieved: s.retrieved,
-      note: s.note,
-    })),
-  },
-  {
-    category: "Inflation",
-    sources: datasets.inflation.sources.map((s) => ({
-      name: s.name,
-      url: s.url,
-      retrieved: s.retrieved,
-      note: s.note,
-    })),
-  },
-  {
-    category: "Government Debt",
-    sources: datasets.governmentDebt.sources.map((s) => ({
-      name: s.name,
-      url: s.url,
-      retrieved: s.retrieved,
-      note: s.note,
-    })),
-  },
-  {
-    category: "Federal Budget",
-    sources: datasets.budget.sources.map((s) => ({
-      name: s.name,
-      url: s.url,
-      retrieved: s.retrieved,
-      note: s.note,
-    })),
-  },
-  {
-    category: "Fuel Prices",
-    sources: datasets.fuelPrice.sources.map((s) => ({
-      name: s.name,
-      url: s.url,
-      retrieved: s.retrieved,
-      note: s.note,
-    })),
-  },
-  {
-    category: "Poverty",
-    sources: datasets.poverty.sources.map((s) => ({
-      name: s.name,
-      url: s.url,
-      retrieved: s.retrieved,
-      note: s.note,
-    })),
-  },
-  {
-    category: "Corruption",
-    sources: datasets.corruption.sources.map((s) => ({
-      name: s.name,
-      url: s.url,
-      note: s.note,
-    })),
-  },
-  {
-    category: "Violence & Security",
-    sources: datasets.violence.sources.map((s) => ({
-      name: s.name,
-      url: s.url,
-      note: s.note,
-    })),
-  },
-  {
-    category: "Government Officials",
-    sources: datasets.governmentOfficials.sources.map((s) => ({
-      name: s.name,
-      url: s.url,
-      retrieved: s.retrieved,
-      note: s.note,
-    })),
-  },
-]);
+const groups: [string, { sources: SourceGroup["sources"] }][] = [
+  ["#EndSARS, protest and elections", datasets.accountability],
+  ["Exchange rate", datasets.exchangeRate],
+  ["Fuel prices", datasets.fuelPrice],
+  ["Inflation", datasets.inflation],
+  ["Wages and food prices", datasets.costOfLiving],
+  ["Debt", datasets.governmentDebt],
+  ["Federal budget", datasets.budget],
+  ["GDP and remittances", datasets.economy],
+  ["Poverty and hunger", datasets.poverty],
+  ["Electricity", datasets.electricity],
+  ["Health and education", datasets.healthEducation],
+  ["Emigration", datasets.japa],
+  ["Violence and security", datasets.violence],
+  ["Corruption", datasets.corruption],
+  ["Government officials", datasets.governmentOfficials],
+];
+
+const sourceGroups = computed<SourceGroup[]>(() =>
+  groups.map(([category, d]) => ({
+    category,
+    sources: d.sources.map((s) => ({ name: s.name, url: s.url, retrieved: s.retrieved, note: s.note })),
+  })),
+);
 </script>
 
 <template>
   <UiSectionWrapper
     id="sources"
-    title="Sources & Methodology"
-    subtitle="Every data point on this site is traceable to a credible source."
-    :section-number="9"
+    title="Sources and method"
+    subtitle="Every number on this page links back to where it came from."
     dark
   >
     <div class="space-y-12">
       <!-- Methodology -->
       <div class="max-w-3xl">
-        <h3 class="text-lg font-semibold text-green mb-3">Methodology</h3>
-        <p class="text-sm text-black-text/70 leading-relaxed">
-          All data presented on this site is sourced from credible international
-          institutions (World Bank, IMF, Transparency International, ACLED),
-          Nigerian government agencies (CBN, NBS, Budget Office, DMO), and
-          respected civil society organizations (BudgIT, TheCable, SBM
-          Intelligence). Where official data is unavailable, we use World Bank
-          modelled estimates or projections and clearly label them as such.
-          Historical CPI scores prior to 2012 have been converted from the 0-10
-          scale to the current 0-100 scale for consistency.
-        </p>
-        <p class="text-sm text-black-text/70 leading-relaxed mt-3">
-          Violence data for 2010-2022 is sourced from media reports and human
-          rights organizations. The NBS Crime Experience Survey (2024) reports
-          significantly higher figures than media-tracked datasets, reflecting
-          underreporting in public records.
-        </p>
+        <h3 class="text-lg font-semibold text-black mb-3">How we worked</h3>
+        <div class="space-y-3 text-sm text-black-text/70 leading-relaxed">
+          <p>
+            We use official statistics (CBN, NBS, DMO, the Budget Office), international bodies (World Bank, IMF,
+            UN agencies) and independent monitors (ACLED, SBM Intelligence, Transparency International, Afrobarometer).
+            Where we used a news report, it is because the report quotes an official release we could not open directly.
+          </p>
+          <p>
+            Some figures are our own arithmetic on public data, such as yearly ACLED totals, CBN exchange rate averages,
+            UK visa totals and Afrobarometer percentages. Those are labelled "calculated by endsars.online" and the
+            underlying data is linked. We do not join series that measure different things. When a statistics office
+            changed its method, as the NBS did for inflation in 2025, we say so on the chart.
+          </p>
+          <p>
+            Some things we could not source well enough to publish: a police-to-population ratio, the number of
+            officers convicted over #EndSARS, yearly counts of national grid collapses, and deaths broken down by armed
+            group. They are left out on purpose.
+          </p>
+          <p>The illustrations on this site are AI-generated. They are not photographs of real events.</p>
+        </div>
       </div>
 
       <!-- Source groups -->
       <div class="space-y-8">
         <div v-for="group in sourceGroups" :key="group.category">
           <h3
-            class="text-base font-semibold text-green mb-3 border-b border-black/10 pb-2"
+            class="text-base font-semibold text-black mb-3 border-b border-black/10 pb-2"
           >
             {{ group.category }}
           </h3>
@@ -148,7 +88,6 @@ const sourceGroups = computed<SourceGroup[]>(() => [
                 target="_blank"
                 rel="noopener noreferrer"
                 class="text-sm text-black hover:text-green transition-colors duration-150"
-                @click="trackSourceLink(source.name, group.category)"
               >
                 {{ source.name }}
                 <span class="text-green ml-1">&nearr;</span>
@@ -157,7 +96,7 @@ const sourceGroups = computed<SourceGroup[]>(() => [
                 Retrieved {{ source.retrieved }}
               </span>
               <span v-if="source.note" class="text-xs text-black-text/40">
-                &mdash; {{ source.note }}
+                {{ source.note }}
               </span>
             </li>
           </ul>
@@ -166,7 +105,7 @@ const sourceGroups = computed<SourceGroup[]>(() => [
 
       <!-- Last updated -->
       <div class="text-xs text-black-text/40 border-t border-black/10 pt-4">
-        <p>Last updated: April 4, 2026</p>
+        <p>Last updated: 18 September 2026</p>
       </div>
     </div>
   </UiSectionWrapper>
