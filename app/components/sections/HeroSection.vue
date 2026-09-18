@@ -25,30 +25,22 @@ const stats = [
   <section id="hero" class="relative bg-white px-4 sm:px-6 lg:px-12 2xl:px-20 pt-28 pb-20 md:pt-36 md:pb-28">
     <div class="page-container-inner grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       <div>
-        <div
-          v-motion
-          :initial="{ opacity: 0 }"
-          :enter="{ opacity: 1, transition: { duration: 600 } }"
-          class="mb-8"
-        >
-          <p class="text-3xl md:text-4xl font-bold tracking-tight text-black">
-            endsars <span class="text-green">protests</span>
-          </p>
-        </div>
-
         <h1
           v-motion
           :initial="{ opacity: 0 }"
           :enter="{ opacity: 1, transition: { duration: 600 } }"
           class="text-5xl md:text-7xl font-bold text-black leading-[1.05]"
         >
-          They asked for five things.
+          A decade of <span class="text-green">decline</span>
         </h1>
 
         <p class="mt-6 text-lg md:text-xl text-black-text/70 max-w-xl leading-relaxed">
-          On 20 October 2020, soldiers opened fire on young Nigerians protesting police brutality at
-          the Lekki toll gate in Lagos. Six years on, this page looks at the country they were asking
-          to fix. Every number here comes from a named source you can verify.
+          Under three presidents since 2010, the naira has collapsed, prices have soared, debt has piled
+          up and killings have spread across the country. In October 2020, young Nigerians marched against
+          police brutality under the #EndSARS banner and made five demands. On 20 October, soldiers opened
+          fire on protesters at the Lekki toll gate in Lagos. The protests became an awakening for a
+          generation. This page sets out the record of Nigeria's governments since 2010, and every number
+          here comes from a named source you can verify.
         </p>
       </div>
 
