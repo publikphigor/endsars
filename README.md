@@ -1,141 +1,124 @@
 # endsars.online
 
-A data-driven transparency platform documenting Nigerian governance from 2010 to present. Every chart, every number, every claim is backed by data from credible international and Nigerian institutions.
+What happened to Nigeria after the #EndSARS protests, told with public data from 2010 to today. The page follows one story, from the Lekki toll gate shooting on 20 October 2020 to the presidential election on 16 January 2027, and every number on it links to its source.
 
-**Live site**: [endsars.online](https://endsars.online)
+**Live site:** [endsars.online](https://endsars.online)
 
-## What This Project Tracks
+## What the page covers
 
-| Category | Sources |
-|----------|---------|
-| Exchange Rate (NGN→USD) | Central Bank of Nigeria, World Bank, fawazahmed0 |
-| Inflation (CPI) | World Bank, National Bureau of Statistics, IMF |
-| Fuel Prices (PMS) | NBS, NNPC, PPPRA |
-| Government Debt | Debt Management Office, World Bank, IMF |
-| Federal Budget | Budget Office of the Federation, BudgIT |
-| Violence & Kidnapping | ACLED, NHRC, CFR, TheCable, Sahara Reporters |
-| Poverty | World Bank, NBS, UNDP |
-| Corruption (CPI) | Transparency International, World Governance Indicators |
-| Government Officials | Wikipedia (cross-referenced with official sources) |
+| Chapter | Main sources |
+|---|---|
+| The five #EndSARS demands, protest and press freedom | Lagos judicial panel reporting, Amnesty International, RSF, Freedom House, CIVICUS |
+| Who has held power | Official records, cross-checked with news reports |
+| The naira | Central Bank of Nigeria daily rates, IMF |
+| Prices: petrol, food, cooking fuel, inflation | NBS price watches and CPI, NNPC and Dangote prices, SBM Intelligence Jollof Index |
+| Debt and the budget | Debt Management Office, Budget Office, IMF, World Bank |
+| Poverty and hunger | World Bank, NBS, Cadre Harmonisé, WFP |
+| Electricity | World Bank (Tracking SDG7, IEA data) |
+| Health and schools | UN agencies via the World Bank, WHO, WAEC, UNICEF, MSF |
+| Emigration ("japa") | UK Home Office, IRCC (Canada), NMC, Afrobarometer |
+| Violence | ACLED, SBM Intelligence, NBS crime survey, IDMC |
+| Corruption | Transparency International, World Bank governance indicators, court reporting |
+| Elections and public opinion | INEC, International IDEA, Afrobarometer |
 
-All data covers **2010 to present**, spanning the Jonathan (PDP), Buhari (APC), and Tinubu (APC) administrations.
+Every time-series chart is shaded by administration: Jonathan (PDP), Buhari (APC) and Tinubu (APC). The full source list, with links and retrieval dates, is at [endsars.online/#sources](https://endsars.online/#sources).
 
-## Tech Stack
+## Tech stack
 
-- **Framework**: [Nuxt 4](https://nuxt.com) + Vue 3 + TypeScript
-- **Styling**: TailwindCSS v4, Space Grotesk font (self-hosted)
-- **Charts**: Apache ECharts via vue-echarts
-- **Animations**: @vueuse/motion
-- **SEO**: @nuxtjs/seo, JSON-LD, Open Graph
-- **Package Manager**: [Bun](https://bun.sh)
+- [Nuxt 4](https://nuxt.com), Vue 3 and TypeScript, generated as a static site
+- Tailwind CSS v4 and Space Grotesk (self-hosted)
+- Apache ECharts through vue-echarts
+- @nuxtjs/seo for the sitemap, robots and structured data
+- [Bun](https://bun.sh) as the package manager
+- Hosted on Cloudflare Pages
 
-## Getting Started
+## Running it locally
 
 ```bash
-# Clone the repo
 git clone git@github.com:publikphigor/endsars.git
 cd endsars
-
-# Install dependencies
 bun install
-
-# Start dev server
 bun run dev
 ```
 
 The site runs at `http://localhost:3000`.
 
-## Project Structure
+| Command | What it does |
+|---|---|
+| `bun run dev` | Development server |
+| `bun run generate` | Builds the static site |
+| `bun run preview` | Serves the built site |
+| `bun run fetch-data` | Refreshes the series that come from open APIs |
+
+## Project layout
 
 ```
-data/               # Static JSON datasets (15 files, all sourced)
-scripts/            # Data fetching scripts
+data/                  JSON datasets, one per topic, each with its own sources list
+scripts/fetch-data.ts  Refreshes CBN exchange rates and World Bank indicators
 app/
-  pages/            # Single index page (scroll-based storytelling)
+  pages/index.vue      The single page, section order, SEO tags
   components/
-    ui/             # Reusable UI: NavBar, Logo, Citation, CountUp, StatCard
-    sections/       # Page sections: Hero, Power, Naira, Debt, etc.
-  composables/      # useDatasets, useAdministration, useCountUp
-  types/            # TypeScript interfaces for all datasets
-  utils/            # Colors, formatting, ECharts defaults
-  assets/css/       # Tailwind theme, fonts
-public/             # Favicon, OG image, robots.txt, llms.txt
+    sections/          One component per chapter
+    ui/                Chart, Callout, Citation, Illustration, SectionWrapper and friends
+  utils/chart.ts       Shared chart builders with administration bands
+  types/data.ts        Types for every dataset
+public/                Illustrations, share image, llms.txt
 ```
 
-## Available Commands
+## Updating the data
 
-```bash
-bun run dev          # Development server (localhost:3000)
-bun run build        # Production build
-bun run generate     # Static site generation
-bun run preview      # Preview production build
-bun run fetch-data   # Refresh data from World Bank & other APIs
-```
+`bun run fetch-data` refreshes the CBN exchange rates and the World Bank series (inflation, external debt, poverty, governance indicators, electricity access, health, remittances). It prints a list of everything that still needs a manual update, such as:
 
-## Updating Data
+- ACLED fatalities (monthly file on [HDX](https://data.humdata.org/dataset/nigeria-acled-conflict-data), summed by year)
+- NBS petrol, fuel and food prices, and monthly inflation
+- DMO public debt, which is published each quarter
+- Appropriation Acts, SBM kidnap reports, IDMC displacement figures, TI's corruption index, UK and Canadian migration data
 
-Run `bun run fetch-data` to pull the latest data from:
-- World Bank API (exchange rate, inflation, debt, poverty, corruption indicators)
-- fawazahmed0/currency-api (quarterly exchange rates via jsDelivr CDN)
+A few rules keep the data honest:
 
-Some data requires manual updates:
-- **Fuel prices**: NBS monthly PMS price reports
-- **Budget**: Budget Office Appropriation Acts
-- **Violence**: ACLED (requires free API key), NHRC reports, media sources
-- **CPI scores**: Transparency International annual reports
+1. Every figure needs a named source, a link and a retrieval date in its JSON file.
+2. Don't join series that measure different things. When a statistics office changes its method, say so on the chart.
+3. If a number can't be traced to a specific report or dataset, leave it out.
+
+## Deployment
+
+Cloudflare Pages builds and deploys the site automatically:
+
+- A merge to `main` deploys to [endsars.online](https://endsars.online).
+- Pull requests from branches in this repo get their own preview link, posted on the PR by Cloudflare. Pull requests from forks are not built automatically.
+
+There is nothing to deploy by hand. The build runs `bun install --frozen-lockfile && bun run generate` and publishes the `dist` folder.
 
 ## Contributing
 
-Contributions are welcome. This project relies on accurate, well-sourced data.
+Contributions are welcome, especially corrections to the data.
 
-### Data Contributions
+`main` is protected. Changes go through a pull request, and a PR needs an approving review before it can be merged. Force-pushes and branch deletion are blocked.
 
-1. **All data must come from credible sources** — government agencies (CBN, NBS, DMO, Budget Office), international institutions (World Bank, IMF, UNDP), or established research organizations (ACLED, Transparency International, BudgIT).
-2. **Every data point must include a reference** — add a `source` URL and `retrieved` date in the dataset JSON.
-3. **No unverified claims** — if a number cannot be attributed to a specific report or dataset, it should not be included.
-4. **Cross-reference when possible** — use multiple sources to verify figures, especially for violence/kidnapping data which varies between methodologies.
+1. Fork the repo and create a branch.
+2. Make your change and check it with `bun run dev`.
+3. Open a pull request that says what changed and where the numbers come from.
+4. A maintainer reviews the change and merges it.
 
-### Code Contributions
+When writing code, follow the patterns already in the repo:
 
-1. Fork the repo and create a feature branch
-2. Follow the existing patterns:
-   - Components use `<script setup lang="ts">` with Composition API
-   - Charts wrap `<VChart>` in `<ClientOnly>` with skeleton fallbacks
-   - Colors: green (#008751), white (#FFFFFF), black shades only — no gray, no gradients
-   - Animations: opacity-only (no position shifts)
-3. Test with `bun run dev` and verify no SSR errors
-4. Submit a PR with a clear description of what changed and why
+- Build charts with `UiChart` and the helpers in `app/utils/chart.ts`, so every chart gets the administration bands.
+- Use green (`#008751`), white and black only, with no grey and no gradients.
+- Keep animations to opacity changes, with no movement.
+- Write copy in plain language, with sentence-case headings and no em dashes.
 
-### Reporting Issues
+## Reporting a wrong number
 
-If you find inaccurate data, a broken source link, or missing information:
-- Open an issue with the category (e.g., "Violence data for 2024")
-- Include the correct data with a link to the credible source
-- We'll verify and update
+If a figure is wrong, out of date or has a broken source link, [open an issue](https://github.com/publikphigor/endsars/issues). Name the chart or section and include a link to the correct source.
 
-## Design Principles
+## Security
 
-- **Light mode only** — white backgrounds, black text, green accents
-- **No gradients** — flat colors throughout
-- **Every chart shows who was in power** — PDP/APC era bands on all time-series
-- **Citations are non-blocking** — superscript numbers that link to sources, with hover tooltips
-- **Performance first** — all data is static JSON bundled at build time, no runtime API calls
-- **SEO optimized** — JSON-LD structured data, OG image, sitemap, llms.txt
+To report a security problem, use [private vulnerability reporting](https://github.com/publikphigor/endsars/security/advisories/new) instead of a public issue. Secret scanning with push protection and Dependabot alerts are enabled on this repo.
 
-## Data Sources
+## Illustrations
 
-Full source list with links available on the site at [endsars.online/#sources](https://endsars.online/#sources).
-
-Key sources include:
-- [World Bank Open Data](https://data.worldbank.org) — Exchange rates, inflation, debt, poverty
-- [Central Bank of Nigeria](https://www.cbn.gov.ng) — Official exchange rates
-- [National Bureau of Statistics](https://nigerianstat.gov.ng) — CPI, fuel prices, crime survey
-- [Debt Management Office](https://www.dmo.gov.ng) — Public debt profile
-- [Budget Office of the Federation](https://budgetoffice.gov.ng) — Appropriation Acts
-- [Transparency International](https://www.transparency.org) — Corruption Perceptions Index
-- [ACLED](https://acleddata.com) — Armed conflict events and fatalities
-- [NHRC](https://www.nigeriarights.gov.ng) — Human rights and violence reports
+The illustrations are AI-generated. They are not photographs of real events.
 
 ## License
 
-This project is open source. Data is publicly sourced and cited. See individual dataset files in `data/` for specific source attributions.
+The code is released under the [MIT License](LICENSE). The data belongs to the organisations that published it. Each dataset in `data/` lists its sources.
