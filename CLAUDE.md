@@ -42,7 +42,7 @@ app/
   types/data.ts             # TypeScript interfaces for all JSON datasets
   utils/                    # colors, format, chartDefaults
   assets/css/main.css       # Tailwind theme tokens, chart container sizes
-data/                       # 9 static JSON datasets (committed, sourced)
+data/                       # 15 static JSON datasets (committed, sourced)
 scripts/fetch-data.ts       # Automated data refresh script
 public/                     # favicon.svg, og-image.png, robots.txt, llms.txt
 ```
@@ -74,6 +74,21 @@ public/                     # favicon.svg, og-image.png, robots.txt, llms.txt
 
 - Components in `sections/` are auto-imported as `SectionsXxxSection`
 - Components in `ui/` are auto-imported as `UiXxx`
+- New charts: use `UiChart` with `timeSeries()` / `rankedBars()` from `app/utils/chart.ts` (era bands built in)
+
+## Copy and Images
+
+- Write all copy with the /humanizer rules: no em dashes in prose, sentence-case headings, plain words
+- Illustrations: two-colour linocut style (black + green on pure white), generated with /image-gen, stored in `public/images/*.webp`
+- Illustrations carry no per-image caption; the footer and sources section state they are AI-generated
+- Sections with an illustration must use a white background (not `dark`)
+- Illustrations are cropped tight to the ink and landscape; sizes live in `app/utils/images.ts`
+
+## Layout
+
+- Use `.page-container` (fluid up to 2400px, gutters grow with the screen); never `max-w-7xl`
+- Root font-size steps up at 1920px and 2560px; chart text scales with it via `fs()` in `app/utils/chart.ts`
+- `UiChart` keeps a minimum width on phones and scrolls sideways (hidden scrollbar)
 
 ## Commit Rules
 

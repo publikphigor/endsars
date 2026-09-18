@@ -48,7 +48,7 @@ The site runs at `http://localhost:3000`.
 ## Project Structure
 
 ```
-data/               # Static JSON datasets (9 files, all sourced)
+data/               # Static JSON datasets (15 files, all sourced)
 scripts/            # Data fetching scripts
 app/
   pages/            # Single index page (scroll-based storytelling)
